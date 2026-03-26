@@ -246,14 +246,7 @@ export default function Home() {
                   THE HEART OF <span className="gold-gradient-text italic">PUNJABI DABA</span>
                 </motion.h1>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.25 }}
-                  className="text-base md:text-lg text-muted-foreground mb-8 font-light tracking-wide text-left leading-relaxed"
-                >
-                  Authentic North Indian, Delhi & Bombay flavors — heritage recipes and pure ingredients — served across Dubai Silicon Oasis & International City.
-                </motion.p>
+
 
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
@@ -360,14 +353,7 @@ export default function Home() {
               <span className="gold-gradient-text">OF PUNJAB</span>
             </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-base md:text-xl text-white/70 mb-6 max-w-2xl mx-auto font-light tracking-wide"
-            >
-              Authentic Punjabi cuisine — crafted with heritage recipes, pure ingredients,<br className="hidden md:block" /> and served in the heart of International City, Dubai.
-            </motion.p>
+
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
