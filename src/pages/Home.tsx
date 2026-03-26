@@ -1,8 +1,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Star, ChevronDown, Utensils, Clock, MapPin, ShieldCheck, Flame, Award, Users, Package } from "lucide-react";
+import { ArrowRight, Star, ChevronDown, Utensils, MapPin, ShieldCheck, Flame, Award, Users, Package } from "lucide-react";
 import { useCafeMenu } from "@/hooks/useCafeMenu";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, type RefObject } from "react";
+import { useTemplate, TEMPLATES, type TemplateLayout } from "@/contexts/TemplateContext";
 
 function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -30,10 +31,10 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 }
 
 const features = [
-  { icon: Flame, title: "Authentic Spices", desc: "Hand-ground masalas sourced directly from Punjab's finest spice markets." },
-  { icon: Award, title: "Premium Quality", desc: "Only the freshest halal ingredients, prepared daily with zero compromise." },
-  { icon: Clock, title: "Fast Delivery", desc: "Hot food delivered to International City and Dubai Silicon Oasis." },
-  { icon: ShieldCheck, title: "Trusted Experience", desc: "Hundreds of loyal customers who return for the real taste of home." },
+  { icon: Flame, title: "Authentic North Indian", desc: "Hand-ground masalas and recipes from the heart of Delhi, Bombay, and Punjab." },
+  { icon: Award, title: "Haveli Experience", desc: "A premium Punjabi Daba experience with zero compromise on quality and pure traditional standards." },
+  { icon: Package, title: "Tiffin & Catering", desc: "4-week meal plans and premium catering for events, including Punjabi song shoots." },
+  { icon: MapPin, title: "Wide Delivery", desc: "Serving Silicon Oasis, Academic City, Al Warqa, and Warsan 4." },
 ];
 
 const testimonials = [
@@ -44,10 +45,141 @@ const testimonials = [
   { name: "Usman A.", review: "Loved the Kashmiri chai and Gulab Jaman. Perfect ending to a beautiful meal.", rating: 5 },
 ];
 
+/** Optional YouTube hero — off by default (embed often black on localhost / without referrer). Set `VITE_HERO_USE_YOUTUBE=1` to try. */
+const HERO_YOUTUBE_ID = "fMCtQ-h6_mw";
+const HERO_YOUTUBE_POSTER = `https://i.ytimg.com/vi/${HERO_YOUTUBE_ID}/hqdefault.jpg`;
+
+/** Always-visible still (under video) so the hero never flashes empty black while the MP4 buffers. */
+const HERO_STILL_BG =
+  "https://images.unsplash.com/photo-1626776880227-9415683a690d?q=80&w=2070&auto=format&fit=crop";
+
+/** Smaller files first so the first frame appears sooner. */
+const HERO_MP4_SOURCES = [
+  { src: "https://videos.pexels.com/video-files/5834304/5834304-hd_1280_720_24fps.mp4", type: "video/mp4" },
+  { src: "https://videos.pexels.com/video-files/5834304/5834304-hd_1920_1080_24fps.mp4", type: "video/mp4" },
+  { src: "https://videos.pexels.com/video-files/4092617/4092617-hd_1920_1080_30fps.mp4", type: "video/mp4" },
+] as const;
+
+function heroYoutubeEmbedSrc(id: string, pageOrigin: string) {
+  const p = new URLSearchParams({
+    autoplay: "1",
+    mute: "1",
+    loop: "1",
+    playlist: id,
+    controls: "0",
+    modestbranding: "1",
+    playsinline: "1",
+    rel: "0",
+    iv_load_policy: "3",
+    disablekb: "1",
+    enablejsapi: "1",
+  });
+  if (pageOrigin) p.set("origin", pageOrigin);
+  return `https://www.youtube.com/embed/${id}?${p.toString()}`;
+}
+
+type HeroMediaProps = {
+  heroVideoRef: RefObject<HTMLVideoElement | null>;
+  prefersReducedMotion: boolean;
+  useYoutubeHero: boolean;
+  youtubeEmbedSrc: string | null;
+};
+
+function HeroMediaStack({ heroVideoRef, prefersReducedMotion, useYoutubeHero, youtubeEmbedSrc }: HeroMediaProps) {
+  return (
+    <>
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+        style={{ backgroundImage: `url(${HERO_STILL_BG})` }}
+        aria-hidden
+      />
+      {prefersReducedMotion ? null : useYoutubeHero ? (
+        <div className="absolute inset-0 overflow-hidden bg-black z-[1]">
+          {youtubeEmbedSrc ? (
+            <iframe
+              title="Daba Choice hero background"
+              src={youtubeEmbedSrc}
+              className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-0"
+              style={{
+                width: "100vw",
+                height: "56.25vw",
+                minHeight: "100vh",
+                minWidth: "177.78vh",
+              }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen={false}
+              referrerPolicy="strict-origin-when-cross-origin"
+              aria-hidden
+            />
+          ) : (
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${HERO_YOUTUBE_POSTER})` }}
+            />
+          )}
+        </div>
+      ) : (
+        <video
+          ref={heroVideoRef}
+          className="absolute inset-0 z-[1] h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={HERO_STILL_BG}
+          aria-hidden
+        >
+          {HERO_MP4_SOURCES.map((s) => (
+            <source key={s.src} src={s.src} type={s.type} />
+          ))}
+        </video>
+      )}
+    </>
+  );
+}
+
 export default function Home() {
+  const templateId = useTemplate();
+  const layout: TemplateLayout =
+    templateId && templateId in TEMPLATES ? TEMPLATES[templateId].layout : "cinema";
+  const isRoyal = layout === "royal";
+
   const { data: menuItems = [] } = useCafeMenu();
   const reviews = testimonials;
   const heroRef = useRef<HTMLDivElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+  const [youtubeEmbedSrc, setYoutubeEmbedSrc] = useState<string | null>(null);
+
+  const useYoutubeHero = import.meta.env.VITE_HERO_USE_YOUTUBE === "1";
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mq.matches);
+    const onChange = () => setPrefersReducedMotion(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  useEffect(() => {
+    if (!useYoutubeHero || prefersReducedMotion) return;
+    setYoutubeEmbedSrc(heroYoutubeEmbedSrc(HERO_YOUTUBE_ID, window.location.origin));
+  }, [useYoutubeHero, prefersReducedMotion]);
+
+  useEffect(() => {
+    const v = heroVideoRef.current;
+    if (!v || prefersReducedMotion || useYoutubeHero) return;
+    const tryPlay = () => {
+      void v.play().catch(() => {});
+    };
+    tryPlay();
+    v.addEventListener("canplay", tryPlay, { once: true });
+    return () => v.removeEventListener("canplay", tryPlay);
+  }, [prefersReducedMotion, useYoutubeHero]);
+
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
@@ -59,122 +191,250 @@ export default function Home() {
     <div className="min-h-screen overflow-x-hidden">
 
       {/* ─── HERO ─── */}
-      <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
-        <motion.div
-          style={{
-            backgroundImage: `url(https://images.unsplash.com/photo-1541167760496-1628856ab752?q=80&w=2070&auto=format&fit=crop)`,
-            y: heroY,
-          }}
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
-
-        {/* Floating decorative elements */}
-        <div className="absolute top-1/4 left-8 w-px h-32 bg-gradient-to-b from-transparent via-primary/50 to-transparent hidden lg:block" />
-        <div className="absolute top-1/4 right-8 w-px h-32 bg-gradient-to-b from-transparent via-primary/50 to-transparent hidden lg:block" />
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-          className="absolute top-20 right-20 w-40 h-40 border border-primary/10 rounded-full hidden lg:block"
-        />
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-32 left-16 w-24 h-24 border border-primary/10 rounded-full hidden lg:block"
-        />
-
-        <motion.div
-          style={{ opacity: heroOpacity }}
-          className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20"
+      {isRoyal ? (
+        <section
+          ref={heroRef}
+          className="relative min-h-[min(820px,90vh)] lg:min-h-screen overflow-hidden border-b border-white/10"
         >
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-block text-primary font-bold tracking-[0.4em] uppercase text-xs md:text-sm mb-6 border border-primary/30 px-6 py-2 rounded-full backdrop-blur-sm bg-primary/5"
-          >
-            Welcome to Dubai's Finest Punjabi Cafe
-          </motion.span>
+          <div className="grid lg:grid-cols-2 min-h-[min(820px,90vh)] lg:min-h-screen">
+            <motion.div
+              style={{ y: heroY }}
+              className="relative min-h-[42vh] lg:min-h-full order-2 lg:order-1 overflow-hidden"
+            >
+              <div className="absolute inset-3 sm:inset-4 lg:inset-8 overflow-hidden rounded-sm border-2 border-double border-primary/35 shadow-[inset_0_0_80px_hsl(0_0%_0%/0.45)]">
+                <div className="absolute inset-0 z-0 overflow-hidden">
+                  <HeroMediaStack
+                    heroVideoRef={heroVideoRef}
+                    prefersReducedMotion={prefersReducedMotion}
+                    useYoutubeHero={useYoutubeHero}
+                    youtubeEmbedSrc={youtubeEmbedSrc}
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-black/50 to-black/25 pointer-events-none z-[2]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent pointer-events-none z-[2] hidden lg:block" />
+              </div>
+              <div
+                className="absolute inset-3 sm:inset-4 lg:inset-8 rounded-sm pointer-events-none z-[3] ring-1 ring-inset ring-accent/25"
+                aria-hidden
+              />
+            </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 leading-[1.05]"
-          >
-            THE REAL TASTE<br />
-            <span className="gold-gradient-text">OF PUNJAB</span>
-          </motion.h1>
+            <motion.div
+              style={{ opacity: heroOpacity }}
+              className="relative z-10 order-1 lg:order-2 flex flex-col justify-center px-5 sm:px-10 lg:pl-14 lg:pr-16 xl:pr-24 py-14 lg:py-16 bg-background lg:bg-gradient-to-bl from-background via-secondary/25 to-background"
+            >
+              <div className="max-w-xl mx-auto lg:mx-0 w-full">
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="flex items-center gap-3 mb-8"
+                >
+                  <div className="h-px flex-1 max-w-[4rem] bg-gradient-to-r from-primary/80 to-transparent" />
+                  <span className="text-accent text-[10px] sm:text-xs font-semibold tracking-[0.35em] uppercase whitespace-nowrap">
+                    Heritage kitchen · Dubai
+                  </span>
+                  <div className="h-px flex-1 bg-gradient-to-l from-primary/40 to-transparent hidden sm:block" />
+                </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base md:text-xl text-white/70 mb-6 max-w-2xl mx-auto font-light tracking-wide"
-          >
-            Authentic Punjabi cuisine — crafted with heritage recipes, halal ingredients,<br className="hidden md:block" /> and served in the heart of International City, Dubai.
-          </motion.p>
+                <motion.h1
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.75, delay: 0.1 }}
+                  className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-5 leading-[1.08] text-left uppercase tracking-tight"
+                >
+                  THE HEART OF <span className="gold-gradient-text italic">PUNJABI DABA</span>
+                </motion.h1>
 
-          {/* Trust badges */}
+                <motion.p
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.25 }}
+                  className="text-base md:text-lg text-muted-foreground mb-8 font-light tracking-wide text-left leading-relaxed"
+                >
+                  Authentic North Indian, Delhi & Bombay flavors — heritage recipes and pure ingredients — served across Dubai Silicon Oasis & International City.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.35 }}
+                  className="flex flex-wrap gap-x-8 gap-y-3 mb-10 text-muted-foreground text-sm"
+                >
+                  <span className="flex items-center gap-2">
+                    <Star size={16} className="fill-primary text-primary shrink-0" />
+                    4.9/5 Rating
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Users size={16} className="text-primary shrink-0" />
+                    1000+ guests
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <ShieldCheck size={16} className="text-primary shrink-0" />
+                    100% Authentic
+                  </span>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.45 }}
+                  className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+                >
+                  <Link
+                    href="/menu"
+                    className="gold-button px-10 py-4 rounded-sm text-sm tracking-[0.2em] text-center"
+                  >
+                    EXPLORE MENU
+                  </Link>
+                  <Link
+                    href="/reservation"
+                    className="outline-button px-10 py-4 rounded-sm text-sm tracking-[0.2em] text-center bg-card/40 backdrop-blur-sm"
+                  >
+                    BOOK A TABLE
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mb-8 text-white/80 text-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground/60"
           >
-            <span className="flex items-center gap-2">
-              <Star size={16} className="fill-primary text-primary" />
-              4.9/5 Rating
-            </span>
-            <span className="flex items-center gap-2">
-              <Users size={16} className="text-primary" />
-              1000+ Happy Guests
-            </span>
-            <span className="flex items-center gap-2">
-              <ShieldCheck size={16} className="text-primary" />
-              100% Halal
-            </span>
+            <span className="text-[10px] tracking-[0.35em] uppercase">Scroll</span>
+            <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
+              <ChevronDown size={20} />
+            </motion.div>
+          </motion.div>
+        </section>
+      ) : (
+        <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
+          <motion.div style={{ y: heroY }} className="absolute inset-0 z-0 overflow-hidden">
+            <HeroMediaStack
+              heroVideoRef={heroVideoRef}
+              prefersReducedMotion={prefersReducedMotion}
+              useYoutubeHero={useYoutubeHero}
+              youtubeEmbedSrc={youtubeEmbedSrc}
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-black/50 pointer-events-none" />
+
+          <div className="absolute top-1/4 left-8 w-px h-32 bg-gradient-to-b from-transparent via-primary/50 to-transparent hidden lg:block" />
+          <div className="absolute top-1/4 right-8 w-px h-32 bg-gradient-to-b from-transparent via-primary/50 to-transparent hidden lg:block" />
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            className="absolute top-20 right-20 w-40 h-40 border border-primary/10 rounded-full hidden lg:block"
+          />
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-32 left-16 w-24 h-24 border border-primary/10 rounded-full hidden lg:block"
+          />
+
+          <motion.div
+            style={{ opacity: heroOpacity }}
+            className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20"
+          >
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-block text-primary font-bold tracking-[0.4em] uppercase text-xs md:text-sm mb-6 border border-primary/30 px-6 py-2 rounded-full backdrop-blur-sm bg-primary/5"
+            >
+              Welcome to Dubai's Finest Punjabi Cafe
+            </motion.span>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 leading-[1.05]"
+            >
+              THE REAL TASTE<br />
+              <span className="gold-gradient-text">OF PUNJAB</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-base md:text-xl text-white/70 mb-6 max-w-2xl mx-auto font-light tracking-wide"
+            >
+              Authentic Punjabi cuisine — crafted with heritage recipes, pure ingredients,<br className="hidden md:block" /> and served in the heart of International City, Dubai.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mb-8 text-white/80 text-sm"
+            >
+              <span className="flex items-center gap-2">
+                <Star size={16} className="fill-primary text-primary" />
+                4.9/5 Rating
+              </span>
+              <span className="flex items-center gap-2">
+                <Users size={16} className="text-primary" />
+                1000+ Happy Guests
+              </span>
+              <span className="flex items-center gap-2">
+                <ShieldCheck size={16} className="text-primary" />
+                100% Authentic
+              </span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
+              <Link href="/menu" className="gold-button px-10 py-4 rounded-full text-sm tracking-[0.2em] w-full sm:w-auto text-center">
+                EXPLORE MENU
+              </Link>
+              <Link href="/reservation" className="outline-button px-10 py-4 rounded-full text-sm tracking-[0.2em] w-full sm:w-auto text-center bg-black/30 backdrop-blur-md">
+                BOOK A TABLE
+              </Link>
+            </motion.div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40"
           >
-            <Link href="/menu" className="gold-button px-10 py-4 rounded-full text-sm tracking-[0.2em] w-full sm:w-auto text-center">
-              EXPLORE MENU
-            </Link>
-            <Link href="/reservation" className="outline-button px-10 py-4 rounded-full text-sm tracking-[0.2em] w-full sm:w-auto text-center bg-black/30 backdrop-blur-md">
-              BOOK A TABLE
-            </Link>
+            <span className="text-xs tracking-[0.3em] uppercase">Scroll</span>
+            <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
+              <ChevronDown size={20} />
+            </motion.div>
           </motion.div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40"
-        >
-          <span className="text-xs tracking-[0.3em] uppercase">Scroll</span>
-          <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
-            <ChevronDown size={20} />
-          </motion.div>
-        </motion.div>
-      </section>
+        </section>
+      )}
 
       {/* ─── STATS BAR ─── */}
-      <section className="py-12 bg-black border-y border-white/5 relative overflow-hidden">
+      <section
+        className={`py-12 border-y border-white/5 relative overflow-hidden ${
+          isRoyal ? "bg-gradient-to-r from-secondary/40 via-black to-secondary/40" : "bg-black"
+        }`}
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div
+            className={`grid grid-cols-2 md:grid-cols-4 text-center ${
+              isRoyal ? "gap-6 md:gap-0 md:divide-x md:divide-white/10 [&>div]:md:px-6" : "gap-8"
+            }`}
+          >
             {[
               { value: 73, suffix: "+", label: "Authentic Dishes" },
               { value: 12, suffix: "", label: "Menu Categories" },
-              { value: 100, suffix: "%", label: "Halal Certified" },
+              { value: 100, suffix: "%", label: "Authentic Recipes" },
               { value: 5, suffix: "★", label: "Average Rating" },
             ].map((stat, i) => (
               <motion.div
@@ -198,9 +458,13 @@ export default function Home() {
       <section className="py-28 bg-background relative">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-20 items-center ${
+              isRoyal ? "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1" : ""
+            }`}
+          >
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: isRoyal ? 50 : -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
@@ -225,7 +489,7 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: isRoyal ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
@@ -236,10 +500,10 @@ export default function Home() {
               </h2>
               <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent rounded-full mb-8" />
               <p className="text-muted-foreground leading-relaxed text-lg mb-6">
-                At Daba Choice, every dish tells a story — the story of Punjab's rich culinary heritage. Our chefs bring decades of experience, using time-tested recipes passed down through generations to craft food that feels like home.
+                At Daba Choice, every dish tells a story — the story of North India’s rich culinary heritage from Delhi to Bombay. Our chefs bring decades of experience, inspired by the legendary Haveli style, to craft food that feels like home.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-10">
-                From the smoky char of our BBQ to the silky richness of our Karahi, every plate is prepared with the finest halal ingredients and served with genuine Punjabi warmth right here in International City, Dubai.
+                From the smoky char of our BBQ to our signature Tiffin services, every plate is prepared with the finest ingredients and served with genuine Punjabi warmth. We are the preferred choice for all clients, even powering Punjabi song shoots with our premium catering.
               </p>
 
               <div className="grid grid-cols-2 gap-6 mb-10">
@@ -282,7 +546,13 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              className={
+                isRoyal
+                  ? "grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-2 gap-6 lg:gap-5 lg:items-stretch"
+                  : "grid grid-cols-1 md:grid-cols-3 gap-8"
+              }
+            >
               {featuredItems.map((item, i) => (
                 <motion.div
                   key={item.id}
@@ -290,9 +560,19 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.15 }}
-                  className="glass-card rounded-2xl overflow-hidden group cursor-pointer"
+                  className={`glass-card overflow-hidden group cursor-pointer flex flex-col ${
+                    isRoyal
+                      ? i === 0
+                        ? "lg:col-span-7 lg:row-span-2 rounded-sm"
+                        : "lg:col-span-5 rounded-sm"
+                      : "rounded-2xl"
+                  }`}
                 >
-                  <div className="h-64 overflow-hidden relative">
+                  <div
+                    className={`overflow-hidden relative shrink-0 ${
+                      isRoyal && i === 0 ? "h-64 lg:h-auto lg:flex-1 lg:min-h-[300px]" : "h-64"
+                    }`}
+                  >
                     <img
                       src={item.image_url || "https://images.unsplash.com/photo-1585937421612-70a8d5ab6bc9?w=800&fit=crop"}
                       alt={item.name}
@@ -348,7 +628,13 @@ export default function Home() {
               WHY CHOOSE <span className="gold-gradient-text">US</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            className={
+              isRoyal
+                ? "grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto"
+                : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            }
+          >
             {features.map((f, i) => (
               <motion.div
                 key={i}
@@ -356,20 +642,82 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card p-8 rounded-2xl text-center group hover:bg-primary/5"
+                className={
+                  isRoyal
+                    ? "glass-card p-7 rounded-sm border-l-4 border-l-primary text-left flex gap-5 items-start hover:bg-primary/[0.04]"
+                    : "glass-card p-8 rounded-2xl text-center group hover:bg-primary/5"
+                }
               >
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6 group-hover:bg-primary group-hover:text-black transition-all duration-300">
-                  <f.icon size={28} />
+                <div
+                  className={
+                    isRoyal
+                      ? "w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center text-primary shrink-0"
+                      : "w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6 group-hover:bg-primary group-hover:text-black transition-all duration-300"
+                  }
+                >
+                  <f.icon size={isRoyal ? 22 : 28} />
                 </div>
-                <h3 className="font-display text-lg font-bold mb-3">{f.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{f.desc}</p>
+                <div className={isRoyal ? "min-w-0" : ""}>
+                  <h3 className={`font-display text-lg font-bold mb-3 ${isRoyal ? "" : ""}`}>{f.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{f.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── TIFFIN SERVICES ─── */}
+      {/* ─── CATERING & SONG SHOOTS ─── */}
+      <section className="py-28 relative overflow-hidden bg-black/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <span className="text-primary font-bold tracking-[0.3em] uppercase text-xs block">Event Catering</span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight">
+                FROM CORPORATE TO<br />
+                <span className="gold-gradient-text italic">SONG SHOOTS</span>
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Whether it's a small gathering or a high-profile Punjabi song shoot, our catering team brings the authentic Haveli flavors to your set or event. We manage everything from menu planning to live counters.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="tel:+971504247836" className="gold-button px-8 py-3 rounded-full text-sm text-center">
+                  Inquire for Catering
+                </a>
+                <Link href="/gallery" className="outline-button px-8 py-3 rounded-full text-sm text-center">
+                  View Gallery
+                </Link>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 border border-white/5"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2070&auto=format&fit=crop" 
+                alt="Event Catering" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-6 left-6 flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-black">
+                  <Star className="fill-current" size={20} />
+                </div>
+                <p className="text-white font-bold text-lg">Trusted by Professionals</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── TIFFIN SERVICES (EXISTING) ─── */}
       <section className="py-28 bg-card/20 border-y border-white/5 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"

@@ -1,4 +1,7 @@
 import { createContext, useContext, useMemo, useState, useEffect, type ReactNode } from "react";
+import { features } from "@/config/features";
+import dabaConfig from "@/config/daba.json";
+
 
 export interface CafeConfig {
   id: string;
@@ -45,6 +48,12 @@ export function CafeProvider({ children, defaultSlug }: { children: ReactNode; d
       return;
     }
     const loadCafe = async () => {
+      if (features.use_local_cafe) {
+        setCafe(dabaConfig.cafe as CafeConfig);
+        setIsLoading(false);
+        return;
+      }
+
       const { supabase } = await import("@/lib/supabase");
       const { data, error: err } = await supabase
         .from("cafes")
@@ -52,16 +61,17 @@ export function CafeProvider({ children, defaultSlug }: { children: ReactNode; d
         .eq("slug", slug)
         .eq("is_active", true)
         .maybeSingle();
-    if (err) {
-      setError(err.message);
-      setCafe(null);
-    } else if (data) {
-      setCafe(data as CafeConfig);
-    } else {
-      setError("Cafe not found");
-      setCafe(null);
-    }
-    setIsLoading(false);
+      
+      if (err) {
+        setError(err.message);
+        setCafe(null);
+      } else if (data) {
+        setCafe(data as CafeConfig);
+      } else {
+        setError("Cafe not found");
+        setCafe(null);
+      }
+      setIsLoading(false);
     };
     loadCafe();
   }, [slug]);

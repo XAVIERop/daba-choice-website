@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -34,62 +34,214 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-:root {
-  --background: 0 0% 4%;
-  --foreground: 45 15% 92%;
-  --card: 0 0% 8%;
-  --card-foreground: 45 15% 88%;
-  --popover: 0 0% 8%;
-  --popover-foreground: 45 15% 88%;
-  
-  --primary: 43 85% 55%;
-  --primary-foreground: 0 0% 4%;
-  
-  --secondary: 0 0% 14%;
-  --secondary-foreground: 45 15% 92%;
-  
-  --muted: 0 0% 12%;
-  --muted-foreground: 45 10% 60%;
-  
-  --accent: 22 95% 55%;
-  --accent-foreground: 0 0% 4%;
-  
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
-  
-  --border: 43 30% 20%;
-  --input: 43 30% 20%;
-  --ring: 43 85% 55%;
-  
+/* Day (light) — when <html> does not have .dark */
+html {
+  color-scheme: light;
+  --background: 40 28% 97%;
+  --foreground: 24 18% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 24 18% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 24 18% 11%;
+
+  --primary: 43 76% 44%;
+  --primary-foreground: 24 18% 8%;
+
+  --secondary: 38 22% 92%;
+  --secondary-foreground: 24 18% 11%;
+
+  --muted: 38 18% 93%;
+  --muted-foreground: 24 10% 38%;
+
+  --accent: 22 88% 46%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 84% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 35 16% 86%;
+  --input: 35 16% 86%;
+  --ring: 43 76% 44%;
+
   --radius: 0.75rem;
 }
 
-.dark {
+/* Night (dark) — default for new visitors; toggled via theme control */
+html.dark {
+  color-scheme: dark;
   --background: 0 0% 4%;
   --foreground: 45 15% 92%;
   --card: 0 0% 8%;
   --card-foreground: 45 15% 88%;
   --popover: 0 0% 8%;
   --popover-foreground: 45 15% 88%;
-  
+
   --primary: 43 85% 55%;
   --primary-foreground: 0 0% 4%;
-  
+
   --secondary: 0 0% 14%;
   --secondary-foreground: 45 15% 92%;
-  
+
   --muted: 0 0% 12%;
   --muted-foreground: 45 10% 60%;
-  
+
   --accent: 22 95% 55%;
   --accent-foreground: 0 0% 4%;
-  
+
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
-  
+
   --border: 43 30% 20%;
   --input: 43 30% 20%;
   --ring: 43 85% 55%;
+}
+
+/* Template 2: Copper Warm */
+[data-template="2"] {
+  --primary: 25 65% 45%;
+  --accent: 20 90% 42%;
+  --border: 25 40% 25%;
+  --input: 25 40% 25%;
+  --ring: 25 65% 45%;
+}
+[data-template="2"] .gold-gradient-text {
+  background: linear-gradient(90deg, #E8B4A0, #B87333, #8B5A2B);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+[data-template="2"] .gold-button {
+  background: linear-gradient(90deg, #B87333, #8B5A2B);
+  box-shadow: 0 4px 14px hsl(var(--primary) / 0.25);
+}
+[data-template="2"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #B87333, #8B5A2B);
+}
+[data-template="2"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #E8B4A0, #B87333);
+}
+
+/* Template 3: Emerald Luxe */
+[data-template="3"] {
+  --primary: 160 84% 31%;
+  --accent: 43 85% 55%;
+  --border: 160 30% 25%;
+  --input: 160 30% 25%;
+  --ring: 160 84% 31%;
+}
+[data-template="3"] .gold-gradient-text {
+  background: linear-gradient(90deg, #6EE7B7, #10B981, #047857);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+[data-template="3"] .gold-button {
+  background: linear-gradient(90deg, #10B981, #047857);
+  box-shadow: 0 4px 14px hsl(var(--primary) / 0.25);
+}
+[data-template="3"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #10B981, #047857);
+}
+[data-template="3"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #6EE7B7, #10B981);
+}
+
+/* Template 4: Cream Minimal (light theme) */
+[data-template="4"] {
+  --background: 30 10% 96%;
+  --foreground: 24 10% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 24 10% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 24 10% 10%;
+  --primary: 25 35% 45%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 30 15% 92%;
+  --secondary-foreground: 24 10% 10%;
+  --muted: 30 10% 90%;
+  --muted-foreground: 25 10% 45%;
+  --accent: 25 90% 38%;
+  --accent-foreground: 0 0% 98%;
+  --border: 30 15% 88%;
+  --input: 30 15% 88%;
+  --ring: 25 35% 45%;
+}
+[data-template="4"] body {
+  background-image: radial-gradient(circle at top right, hsl(var(--primary) / 0.08), transparent 40%),
+                    radial-gradient(circle at bottom left, hsl(var(--accent) / 0.06), transparent 40%);
+}
+[data-template="4"] .glass-card {
+  background: hsl(var(--card) / 0.8);
+  border-color: hsl(var(--border));
+}
+[data-template="4"] .gold-gradient-text {
+  background: linear-gradient(90deg, #78716C, #57534E, #44403C);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+[data-template="4"] .gold-button {
+  background: linear-gradient(90deg, #78716C, #57534E);
+  color: white;
+  box-shadow: 0 4px 14px hsl(var(--primary) / 0.2);
+}
+[data-template="4"] ::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+[data-template="4"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #78716C, #57534E);
+}
+[data-template="4"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #A8A29E, #78716C);
+}
+
+/* Template 5: Royal editorial — distinct display face for headings */
+[data-template="5"] {
+  --font-display: "Playfair Display", "Cinzel", serif;
+  --primary: 348 52% 36%;
+  --primary-foreground: 45 15% 95%;
+  --accent: 43 74% 52%;
+  --accent-foreground: 0 0% 4%;
+  --secondary: 348 30% 12%;
+  --border: 348 35% 22%;
+  --input: 348 35% 22%;
+  --ring: 348 52% 36%;
+}
+[data-template="5"] body {
+  background-image: radial-gradient(circle at top right, hsl(var(--primary) / 0.08), transparent 45%),
+                    radial-gradient(circle at bottom left, hsl(43 74% 52% / 0.04), transparent 45%);
+}
+[data-template="5"] .gold-gradient-text {
+  background: linear-gradient(90deg, #E8C4A0, #D4AF37, #AA7C11);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+[data-template="5"] .gold-button {
+  background: linear-gradient(90deg, #8B2942, #6B1E32);
+  color: #FDE08B;
+  box-shadow: 0 4px 14px hsl(var(--primary) / 0.35);
+}
+[data-template="5"] .gold-button:hover {
+  background: linear-gradient(90deg, #9B3552, #7B2E42);
+  box-shadow: 0 6px 20px hsl(var(--primary) / 0.4);
+}
+[data-template="5"] .outline-button {
+  border-color: hsl(var(--accent) / 0.5);
+  color: hsl(var(--accent));
+}
+[data-template="5"] .outline-button:hover {
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+[data-template="5"] .glass-card {
+  border-color: hsl(348 30% 25% / 0.5);
+}
+[data-template="5"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8B2942, #6B1E32);
+}
+[data-template="5"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #A63D58, #8B2942);
 }
 
 @layer base {
@@ -104,6 +256,11 @@
     background-attachment: fixed;
   }
 
+  html:not(.dark) body {
+    background-image: radial-gradient(circle at top right, hsl(var(--primary) / 0.14), transparent 42%),
+                      radial-gradient(circle at bottom left, hsl(var(--accent) / 0.1), transparent 42%);
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     @apply tracking-wide font-medium;
@@ -115,8 +272,20 @@
   @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50;
 }
 
+html:not(.dark) .glass-panel {
+  @apply bg-white/75 backdrop-blur-xl border border-black/10 shadow-xl shadow-black/15;
+}
+
 .glass-card {
   @apply bg-card/60 backdrop-blur-md border border-white/5 shadow-xl shadow-black/40 hover:border-primary/30 transition-all duration-300;
+}
+
+html:not(.dark) .glass-card {
+  @apply bg-card/90 backdrop-blur-md border border-black/10 shadow-lg shadow-black/10 hover:border-primary/35 transition-all duration-300;
+}
+
+html:not(.dark) .glass-card:hover {
+  box-shadow: 0 8px 40px -8px hsl(var(--primary) / 0.14), 0 0 0 1px hsl(var(--primary) / 0.12);
 }
 
 .gold-gradient-text {
@@ -199,6 +368,11 @@ input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {
   filter: invert(0.7) sepia(1) saturate(3) hue-rotate(10deg);
   cursor: pointer;
+}
+
+html:not(.dark) input[type="date"]::-webkit-calendar-picker-indicator,
+html:not(.dark) input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.35) sepia(1) saturate(2.5) hue-rotate(5deg);
 }
 
 /* Glass card hover glow */

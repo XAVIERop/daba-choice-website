@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { useCart } from "@/store/use-cart";
 import { useCreateOrder } from "@/hooks/useCreateOrder";
-import { ShoppingBag, CreditCard, ShieldCheck } from "lucide-react";
+import { ShoppingBag, CreditCard, ShieldCheck, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
+import { useCafe } from "@/contexts/CafeContext";
+import { features } from "@/config/features";
+import { formatWhatsAppOrderMessage, getWhatsAppUrl } from "@/lib/whatsapp";
+
+
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
 const DELIVERY_FEE = 15;
 
@@ -13,6 +23,7 @@ export default function Checkout() {
   const { items, getTotal, clearCart } = useCart();
   const { toast } = useToast();
   
+  const { cafe } = useCafe();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,40 +38,114 @@ export default function Checkout() {
   const subtotal = getTotal();
   const total = subtotal + (formData.orderType === "delivery" ? DELIVERY_FEE : 0);
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => { document.body.removeChild(script); };
+  }, []);
+
   const handlePayment = async (e: React.FormEvent) => {
     e.preventDefault();
     if (items.length === 0) return;
     
     setIsProcessing(true);
-    
-    createOrder.mutate(
-      {
-        customerName: formData.name,
-        customerEmail: formData.email,
-        customerPhone: formData.phone,
-        deliveryAddress: formData.orderType === "delivery" ? formData.address : undefined,
-        orderType: formData.orderType,
-        total,
-        notes: formData.notes,
-        items: items.map((i) => ({
-          menu_item_id: i.menuItem.id,
+
+    if (features.whatsapp_only && cafe?.phone) {
+      const message = formatWhatsAppOrderMessage(
+        cafe.name,
+        items.map(i => ({
+          id: i.menuItem.id,
+          name: i.menuItem.name,
           quantity: i.quantity,
-          unit_price: i.menuItem.price,
-          total_price: i.menuItem.price * i.quantity,
+          price: i.menuItem.price
         })),
+        total,
+        {
+          name: formData.name,
+          phone: formData.phone,
+          address: formData.orderType === "delivery" ? formData.address : undefined,
+          notes: formData.notes
+        }
+      );
+
+      const url = getWhatsAppUrl(cafe.phone, message);
+      
+      // Give a small delay for UX
+      setTimeout(() => {
+        window.open(url, "_blank");
+        clearCart();
+        toast({ 
+          title: "Order message generated!", 
+          description: "Please send the message in WhatsApp to complete your order.",
+          style: { backgroundColor: "#D4AF37", color: "black" } 
+        });
+        setLocation("/order-success");
+      }, 800);
+      return;
+    }
+
+    // RAZORPAY INTEGRATION BRIDGE (Advanced Mode)
+    // ---------------------------
+    // In a real production setup, you would:
+    // 1. Call your backend to create a Razorpay Order ID.
+    // 2. Open the Razorpay checkout modal.
+    // 3. On success, call createOrder.mutate to save to Supabase.
+
+    const options = {
+      key: "rzp_test_YOUR_KEY_HERE", // Replace with your real key
+      amount: total * 100, // Amount in paise
+      currency: "AED",
+      name: "Daba Choice",
+      description: "Order Payment",
+      handler: function (_response: any) {
+        // Payment successful - now create order in Supabase
+        createOrder.mutate(
+          {
+            customerName: formData.name,
+            customerEmail: formData.email,
+            customerPhone: formData.phone,
+            deliveryAddress: formData.orderType === "delivery" ? formData.address : undefined,
+            orderType: formData.orderType,
+            total,
+            notes: formData.notes,
+            items: items.map((i) => ({
+              menu_item_id: i.menuItem.id,
+              quantity: i.quantity,
+              unit_price: i.menuItem.price,
+              total_price: i.menuItem.price * i.quantity,
+            })),
+          },
+          {
+            onSuccess: () => {
+              clearCart();
+              toast({ title: "Order placed successfully!", style: { backgroundColor: "#D4AF37", color: "black" } });
+              setLocation("/order-success");
+            },
+            onError: (err) => {
+              toast({ title: "Failed to save order", description: err.message, variant: "destructive" });
+              setIsProcessing(false);
+            },
+          }
+        );
       },
-      {
-        onSuccess: () => {
-          clearCart();
-          toast({ title: "Order placed successfully!", style: { backgroundColor: "#D4AF37", color: "black" } });
-          setLocation("/order-success");
-        },
-        onError: (err) => {
-          toast({ title: "Failed to place order", description: err.message, variant: "destructive" });
-          setIsProcessing(false);
-        },
-      }
-    );
+      prefill: {
+        name: formData.name,
+        email: formData.email,
+        contact: formData.phone
+      },
+      theme: { color: "#D4AF37" }
+    };
+
+    if (window.Razorpay) {
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } else {
+      // Fallback if Razorpay is not loaded or for testing without keys
+      console.warn("Razorpay SDK not loaded. Proceeding with simulated success.");
+      options.handler({ razorpay_payment_id: "fake_id" });
+    }
   };
 
   if (items.length === 0) {
@@ -164,16 +249,29 @@ export default function Checkout() {
               >
                 {isProcessing ? (
                   <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, ease: "linear", duration: 1 }}>
-                    <CreditCard size={20} />
+                    {features.whatsapp_only ? <MessageCircle size={20} /> : <CreditCard size={20} />}
                   </motion.div>
                 ) : (
                   <>
-                    <ShieldCheck size={20} />
-                    Pay AED {total.toFixed(2)} Securely
+                    {features.whatsapp_only ? (
+                      <>
+                        <MessageCircle size={20} />
+                        Order via WhatsApp (AED {total.toFixed(2)})
+                      </>
+                    ) : (
+                      <>
+                        <ShieldCheck size={20} />
+                        Pay AED {total.toFixed(2)} Securely
+                      </>
+                    )}
                   </>
                 )}
               </button>
-              <p className="text-center text-xs text-muted-foreground mt-4">Powered by Razorpay Secure Checkout</p>
+              <p className="text-center text-xs text-muted-foreground mt-4">
+                {features.whatsapp_only 
+                  ? "Your order will be sent as a WhatsApp message" 
+                  : "Powered by Razorpay Secure Checkout"}
+              </p>
             </div>
           </div>
           

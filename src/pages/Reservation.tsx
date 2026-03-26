@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Users, Clock, CheckCircle2, MapPin, Phone, Star, ChevronRight } from "lucide-react";
+import { useCreateReservation } from "@/hooks/useCreateReservation";
+import { useToast } from "@/hooks/use-toast";
+import { useCafe } from "@/contexts/CafeContext";
+import { features } from "@/config/features";
+import { formatWhatsAppReservationMessage, getWhatsAppUrl } from "@/lib/whatsapp";
 
 const timeSlots = [
   "08:00", "08:30", "09:00", "09:30", "10:00", "10:30",
@@ -10,17 +15,19 @@ const timeSlots = [
   "20:00", "20:30", "21:00", "21:30", "22:00", "22:30",
 ];
 
-const features = [
+const reservationFeatures = [
   { icon: "🍛", label: "Authentic Punjabi Cuisine" },
   { icon: "🌶️", label: "Fresh Daily Ingredients" },
-  { icon: "✅", label: "100% Halal Certified" },
+  { icon: "✅", label: "100% Authentic Ingredients" },
   { icon: "🎉", label: "Group & Event Bookings" },
 ];
 
 export default function Reservation() {
   const [success, setSuccess] = useState(false);
   const [selectedTime, setSelectedTime] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const createReservation = useCreateReservation();
+  const { toast } = useToast();
+  const { cafe } = useCafe();
 
   const [form, setForm] = useState({
     name: "", email: "", phone: "", date: "", time: "", guests: 2, specialRequests: ""
@@ -28,8 +35,56 @@ export default function Reservation() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => { setIsSubmitting(false); setSuccess(true); }, 500);
+    if (!selectedTime) return;
+
+    if (features.whatsapp_only && cafe?.phone) {
+      const message = formatWhatsAppReservationMessage(
+        cafe.name,
+        {
+          name: form.name,
+          phone: form.phone,
+          date: form.date,
+          time: selectedTime,
+          guests: form.guests,
+          specialRequests: form.specialRequests
+        }
+      );
+
+      const url = getWhatsAppUrl(cafe.phone, message);
+      
+      // Give a small delay for UX
+      setTimeout(() => {
+        window.open(url, "_blank");
+        setSuccess(true);
+        toast({ 
+          title: "Reservation request generated!", 
+          description: "Please send the message in WhatsApp to complete your booking.",
+          style: { backgroundColor: "#D4AF37", color: "black" } 
+        });
+      }, 800);
+      return;
+    }
+
+    createReservation.mutate({
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      date: form.date,
+      time: selectedTime,
+      guests: form.guests,
+      specialRequests: form.specialRequests
+    }, {
+      onSuccess: () => {
+        setSuccess(true);
+      },
+      onError: (err: any) => {
+        toast({
+          title: "Reservation failed",
+          description: err.message || "Something went wrong. Please try again.",
+          variant: "destructive"
+        });
+      }
+    });
   };
 
   if (success) {
@@ -194,10 +249,10 @@ export default function Reservation() {
 
               <button
                 type="submit"
-                disabled={isSubmitting || !selectedTime}
+                disabled={createReservation.isPending || !selectedTime}
                 className="w-full gold-button py-4 rounded-xl text-base disabled:opacity-50 flex items-center justify-center gap-2"
               >
-                {isSubmitting ? "Submitting..." : (
+                {createReservation.isPending ? "Submitting..." : (
                   <>Confirm Reservation <ChevronRight size={18} /></>
                 )}
               </button>
@@ -266,7 +321,7 @@ export default function Reservation() {
             <div className="glass-panel p-6 rounded-2xl border border-white/10">
               <p className="font-display text-sm font-bold text-white mb-4 uppercase tracking-widest">Why Dine With Us</p>
               <div className="grid grid-cols-2 gap-3">
-                {features.map((f, i) => (
+                {reservationFeatures.map((f, i) => (
                   <div key={i} className="flex items-center gap-2">
                     <span className="text-lg">{f.icon}</span>
                     <span className="text-muted-foreground text-xs">{f.label}</span>

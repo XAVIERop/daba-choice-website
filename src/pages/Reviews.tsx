@@ -1,12 +1,21 @@
-import { Star, Quote } from "lucide-react";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { Star, Quote, ExternalLink, PenLine, MessageSquareQuote, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { useToast } from "@/hooks/use-toast";
 
-const PLACEHOLDER_REVIEWS = [
-  { id: "1", authorName: "Priya S.", comment: "Authentic Punjabi flavours! The butter chicken was incredible.", rating: 5, createdAt: "2024-01-15" },
-  { id: "2", authorName: "Rahul M.", comment: "Best dal makhani in Dubai. Will definitely come back.", rating: 5, createdAt: "2024-02-01" },
-  { id: "3", authorName: "Anita K.", comment: "Great ambience and friendly staff. Food was fresh and delicious.", rating: 4, createdAt: "2024-02-20" },
+const REAL_REVIEWS = [
+  { id: "1", authorName: "Rahul Bhagat", comment: "If you love authentic Punjabi food, this place is a must-visit! The flavors are rich, portions are generous, and every dish feels like it’s made with love. From buttery dal makhni to perfectly spiced tandoori roti, everything tasted fresh and homely.", rating: 5, createdAt: "2023-08-15" },
+  { id: "2", authorName: "prabhpreet singh", comment: "Absolutely loved the food from Daba Restaurant! Their Indian and Punjabi dishes are top-notch – the Daal Makhani, Kadhai Chicken, and Tawa Chicken were all bursting with authentic flavors. Quality, taste, and presentation were all spot on.", rating: 5, createdAt: "2023-04-10" },
+  { id: "3", authorName: "Harira Normal", comment: "Just perfect. After ordering like 2-3 times now, the consistent quality is unbelievable. The taste of absolutely everything is just impeccable. The meat tastes very fresh, juicy, right amount of spices. Highly recommended.", rating: 5, createdAt: "2023-11-05" },
+  { id: "4", authorName: "Shehzad Ahmed", comment: "Dhaba Choice Restaurant is a very nice place to enjoy delicious food. The quality of the food is excellent, and the taste is truly mouth-watering. I tried the Chicken Malai Tikka, and it was absolutely delicious.", rating: 5, createdAt: "2024-02-28" },
+  { id: "5", authorName: "KOmal Kang", comment: "I had such a wonderful experience dining here! The food was absolutely delicious every dish was fresh, flavorful, and beautifully presented. You can really taste the quality of the ingredients and the care put into each recipe.", rating: 5, createdAt: "2024-02-15" },
+  { id: "6", authorName: "Aashu Sona", comment: "I’ve ordered twice from this restaurant, and both experiences were excellent! The food is absolutely delicious, fresh ingredients, perfectly cooked, and full of flavor. The portions are generous.", rating: 5, createdAt: "2023-08-20" },
+  { id: "7", authorName: "daman bhatia", comment: "Dana choice is the latest Punjabi restaurant in International city. Restaurant although is small with respect to sitting arrangement but their menu is quite exhaustive. Tried few items and the food is awesome.", rating: 5, createdAt: "2023-06-10" },
+  { id: "8", authorName: "Dheeraj", comment: "From the moment I took the first bite, I knew I was in for something special. The food was not just good — it was exceptional. Every dish was thoughtfully prepared, beautifully presented, and bursting with flavor.", rating: 5, createdAt: "2023-08-01" },
+  { id: "9", authorName: "Sushank Malik", comment: "Very nice and delicious food. Many options for veg and non veg items. Service is very fast and the prices are also very reasonable. Highly recommended.", rating: 5, createdAt: "2023-04-25" },
 ];
+
+const GOOGLE_REVIEWS_URL = "https://www.google.com/search?sca_esv=4e0bfa84728bf4dd&sxsrf=ANbL-n4Q5nGPltlBCm-N4XDMsauBDcdOWg:1774552575010&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOXg-ELctQKPGBy0YbKEp3V2GqyxHkr2_duP1EztZ8ISD59zQWQKAYVlC71bhnILycM03nOGgg1RjfQ6sUZtAK3zG80MjhnIgcxBVxj7LSOa9KK-Wc1dpdwAD6PCb8YB8ClM3am0%3D&q=Daba+choice+restaurant+%28Indian+restaurant%29+Reviews&sa=X&ved=2ahUKEwjitvi-o76TAxWQR2wGHdx_MD4Q0bkNegQIMxAF&biw=1512&bih=868&dpr=2";
 
 function RatingBar({ label, count, total }: { label: string; count: number; total: number }) {
   const pct = total > 0 ? (count / total) * 100 : 0;
@@ -29,7 +38,54 @@ function RatingBar({ label, count, total }: { label: string; count: number; tota
 
 export default function Reviews() {
   const [filterRating, setFilterRating] = useState<number | null>(null);
-  const allReviews = PLACEHOLDER_REVIEWS;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [reviewForm, setReviewForm] = useState({ name: "", rating: 5, review: "" });
+  const [allReviews, setAllReviews] = useState(REAL_REVIEWS);
+  
+  const { toast } = useToast();
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("daba_local_reviews");
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          setAllReviews([...parsed, ...REAL_REVIEWS]);
+        }
+      }
+    } catch (e) {}
+  }, []);
+
+  const handleSubmitReview = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!reviewForm.name || !reviewForm.review) return;
+
+    const newReview = {
+      id: "local_" + Date.now().toString(),
+      authorName: reviewForm.name,
+      comment: reviewForm.review,
+      rating: reviewForm.rating,
+      createdAt: new Date().toISOString().split("T")[0]
+    };
+
+    const updatedReviews = [newReview, ...allReviews];
+    setAllReviews(updatedReviews);
+
+    try {
+      const stored = localStorage.getItem("daba_local_reviews");
+      const existingStored = stored ? JSON.parse(stored) : [];
+      localStorage.setItem("daba_local_reviews", JSON.stringify([newReview, ...existingStored]));
+    } catch (e) {}
+
+    toast({
+      title: "Review Published!",
+      description: "Thank you for sharing your experience. Your review has been added.",
+      style: { backgroundColor: "#D4AF37", color: "black" }
+    });
+    
+    setIsModalOpen(false);
+    setReviewForm({ name: "", rating: 5, review: "" });
+  };
   const filtered = filterRating ? allReviews.filter(r => r.rating === filterRating) : allReviews;
   const avgRating = allReviews.length ? allReviews.reduce((s, r) => s + r.rating, 0) / allReviews.length : 0;
 
@@ -49,9 +105,25 @@ export default function Reviews() {
           <h1 className="font-display text-5xl md:text-6xl font-bold mb-4">
             GUEST <span className="gold-gradient-text">EXPERIENCES</span>
           </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
             Hear what our valued guests have to say about their Daba Choice experience.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center relative z-20">
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 gold-button px-6 py-3 rounded-xl text-sm font-medium w-full sm:w-auto justify-center"
+            >
+              View on Google <ExternalLink size={16} />
+            </a>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="inline-flex items-center gap-2 outline-button px-6 py-3 rounded-xl text-sm font-medium w-full sm:w-auto justify-center cursor-pointer hover:bg-white/5 transition-colors"
+            >
+              <PenLine size={16} /> Leave a Review
+            </button>
+          </div>
         </div>
 
         {/* Rating Summary + Filter */}
@@ -142,6 +214,77 @@ export default function Reviews() {
         </div>
 
       </div>
+
+      {/* Write a Review Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setIsModalOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              className="relative glass-card border border-primary/20 p-6 sm:p-8 rounded-3xl w-full max-w-md shadow-2xl"
+            >
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="absolute top-4 right-4 p-2 text-muted-foreground hover:text-white transition-colors rounded-full hover:bg-white/10"
+              >
+                <X size={20} />
+              </button>
+              
+              <div className="text-center mb-6">
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                  <MessageSquareQuote size={20} className="text-primary" />
+                </div>
+                <h3 className="font-display text-2xl font-bold">Share Your Experience</h3>
+                <p className="text-sm text-muted-foreground mt-2">Your feedback helps us improve and serves others.</p>
+              </div>
+
+              <form onSubmit={handleSubmitReview} className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Your Name *</label>
+                  <input required value={reviewForm.name} onChange={e => setReviewForm({...reviewForm, name: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none" />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Rating *</label>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => setReviewForm({...reviewForm, rating: star})}
+                        className="p-1 focus:outline-none hover:scale-110 transition-transform"
+                      >
+                        <Star 
+                          size={28} 
+                          className={star <= reviewForm.rating ? "fill-primary text-primary" : "text-muted-foreground/30"} 
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Your Review *</label>
+                  <textarea required rows={4} value={reviewForm.review} onChange={e => setReviewForm({...reviewForm, review: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none resize-none" />
+                </div>
+
+                <button type="submit" className="gold-button w-full py-4 rounded-xl font-medium mt-2 text-black">
+                  Submit Review
+                </button>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

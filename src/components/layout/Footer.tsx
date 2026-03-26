@@ -1,5 +1,6 @@
 import { MapPin, Phone, ExternalLink } from "lucide-react";
 import { Link } from "wouter";
+import { SITE_LOGO_URL, SITE_WORDMARK } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -14,7 +15,20 @@ export function Footer() {
           
           {/* Brand */}
           <div>
-            <h3 className="font-display text-2xl font-bold gold-gradient-text mb-6">DABA CHOICE</h3>
+            <div className="mb-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
+              <img
+                src={SITE_LOGO_URL}
+                alt=""
+                className="h-14 w-auto md:h-20 object-contain object-left max-w-[200px] md:max-w-[240px]"
+                width={240}
+                height={80}
+                decoding="async"
+                aria-hidden
+              />
+              <h3 className="font-display text-2xl md:text-3xl font-bold tracking-widest gold-gradient-text">
+                {SITE_WORDMARK}
+              </h3>
+            </div>
             <p className="text-muted-foreground leading-relaxed mb-6">
               The Real Taste of Punjab in the heart of International City, Dubai. Dine-in, takeaway, delivery & tiffin services. Authentic recipes, premium ingredients, warm Punjabi hospitality.
             </p>
@@ -39,6 +53,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li><Link href="/menu" className="text-muted-foreground hover:text-primary transition-colors">Our Menu</Link></li>
               <li><Link href="/tiffin" className="text-muted-foreground hover:text-primary transition-colors">Tiffin Plans</Link></li>
+              <li><Link href="/catering" className="text-muted-foreground hover:text-primary transition-colors">Catering</Link></li>
               <li><Link href="/reservation" className="text-muted-foreground hover:text-primary transition-colors">Book a Table</Link></li>
               <li><Link href="/offers" className="text-muted-foreground hover:text-primary transition-colors">Special Offers</Link></li>
               <li><Link href="/gallery" className="text-muted-foreground hover:text-primary transition-colors">Gallery</Link></li>
@@ -100,12 +115,17 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-sm">
-            &copy; {new Date().getFullYear()} Daba Choice. All rights reserved. · England Cluster, International City, Dubai
-          </p>
-          <div className="flex gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-primary">Privacy Policy</a>
-            <a href="#" className="hover:text-primary">Terms of Service</a>
+          <div className="flex flex-col gap-1 items-center md:items-start text-center md:text-left">
+            <p className="text-muted-foreground text-sm">
+              &copy; {new Date().getFullYear()} Daba Choice. All rights reserved. · England Cluster, International City, Dubai
+            </p>
+            <p className="text-xs text-muted-foreground font-medium">
+              Powered by <span className="text-primary font-bold tracking-wide">Plattr OS</span>
+            </p>
+          </div>
+          <div className="flex gap-6 text-sm text-muted-foreground mt-4 md:mt-0">
+            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

@@ -2,20 +2,64 @@ import { useState } from "react";
 import { MapPin, Phone, Mail, Send, MessageCircle, ExternalLink } from "lucide-react";
 import { Link } from "wouter";
 import { useToast } from "@/hooks/use-toast";
+import { useSubmitContact } from "@/hooks/useSubmitContact";
+import { useCafe } from "@/contexts/CafeContext";
+import { features } from "@/config/features";
+import { formatWhatsAppContactMessage, getWhatsAppUrl } from "@/lib/whatsapp";
 
 export default function Contact() {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submitContact = useSubmitContact();
+  const { cafe } = useCafe();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      toast({ title: "Message Sent", description: "We will get back to you shortly.", style: { backgroundColor: "#D4AF37", color: "black" } });
-      setForm({ name: "", email: "", subject: "", message: "" });
-      setIsSubmitting(false);
-    }, 500);
+
+    if (features.whatsapp_only && cafe?.phone) {
+      const message = formatWhatsAppContactMessage(
+        cafe.name,
+        {
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message
+        }
+      );
+
+      const url = getWhatsAppUrl(cafe.phone, message);
+      
+      // Small UX delay
+      setTimeout(() => {
+        window.open(url, "_blank");
+        toast({ 
+          title: "Message prepared!", 
+          description: "Please send the message in WhatsApp to reach out to us.",
+          style: { backgroundColor: "#D4AF37", color: "black" } 
+        });
+        setForm({ name: "", email: "", subject: "", message: "" });
+      }, 800);
+      return;
+    }
+
+    submitContact.mutate({
+      name: form.name,
+      email: form.email,
+      subject: form.subject,
+      message: form.message
+    }, {
+      onSuccess: () => {
+        toast({ title: "Message Sent", description: "We will get back to you shortly.", style: { backgroundColor: "#D4AF37", color: "black" } });
+        setForm({ name: "", email: "", subject: "", message: "" });
+      },
+      onError: (err: any) => {
+        toast({
+          title: "Failed to send message",
+          description: err.message || "Something went wrong. Please try again.",
+          variant: "destructive"
+        });
+      }
+    });
   };
 
   return (
@@ -109,8 +153,8 @@ export default function Contact() {
             <input required placeholder="Subject" value={form.subject} onChange={e=>setForm({...form, subject:e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 focus:border-primary focus:outline-none" />
             <textarea required placeholder="Your Message" rows={5} value={form.message} onChange={e=>setForm({...form, message:e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 focus:border-primary focus:outline-none resize-none" />
             
-            <button type="submit" disabled={isSubmitting} className="gold-button w-full py-4 rounded-xl flex items-center justify-center gap-2 text-lg disabled:opacity-50">
-              <Send size={18} /> {isSubmitting ? "Sending..." : "Send Message"}
+            <button type="submit" disabled={submitContact.isPending} className="gold-button w-full py-4 rounded-xl flex items-center justify-center gap-2 text-lg disabled:opacity-50">
+              <Send size={18} /> {submitContact.isPending ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>

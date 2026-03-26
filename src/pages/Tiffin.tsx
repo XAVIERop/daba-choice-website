@@ -61,10 +61,10 @@ const membershipOptions = [
     note: "Ideal for trying out",
   },
   {
-    title: "Monthly Plan",
-    desc: "20–26 days",
-    price: "From AED 450",
-    note: "Save up to 15%",
+    title: "4-Week Plan",
+    desc: "28 days (Monthly)",
+    price: "From AED 499",
+    note: "Best for regular savings",
   },
   {
     title: "Custom Plan",
@@ -105,7 +105,7 @@ export default function Tiffin() {
             </div>
             <div>
               <p className="font-display font-bold text-white text-lg">Fresh Daily · Delivered Hot</p>
-              <p className="text-muted-foreground text-sm">We deliver to International City, International City 2, and Dubai Silicon Oasis.</p>
+              <p className="text-muted-foreground text-sm">We deliver to International City Phase 2, Warsan 4, Al Warqa 1-4, Dubai Silicon Oasis, and Academic City.</p>
             </div>
           </div>
           <a

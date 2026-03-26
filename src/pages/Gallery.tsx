@@ -3,27 +3,21 @@ import { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
 
 const galleryItems = [
-  { src: "https://images.unsplash.com/photo-1565557702975-a4c3b96c9c09?w=900&fit=crop", category: "Food", label: "Chicken Biryani", size: "tall" },
+  { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/istockphoto-1292436403-612x612.jpg", category: "Food", label: "Chicken Tikka Biryani", size: "tall" },
+  { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/360_F_746343390_cz4z2B0qgHcvhzqwyvvXQj7bsS0LxlpG.jpg", category: "Food", label: "Chicken Dum Biryani", size: "normal" },
   { src: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=900&fit=crop", category: "Food", label: "Dal Makhani", size: "normal" },
+  { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/catering/ab6761610000e5ebaf94287a28816f8bfb8776e1.jpg", category: "Catering", label: "Punjabi Song Shoots", size: "wide" },
   { src: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=900&fit=crop", category: "Food", label: "Garlic Naan", size: "normal" },
   { src: "https://images.unsplash.com/photo-1574484284002-952d92456975?w=900&fit=crop", category: "BBQ", label: "Chicken Tikka", size: "tall" },
-  { src: "https://images.unsplash.com/photo-1585937421612-70a8d5ab6bc9?w=900&fit=crop", category: "Food", label: "Lamb Biryani", size: "normal" },
-  { src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&fit=crop", category: "Ambiance", label: "Restaurant Interior", size: "wide" },
+  { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/catering/closed-metal-pots_1203-2059.avif", category: "Catering", label: "Corporate Catering", size: "normal" },
   { src: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=900&fit=crop", category: "BBQ", label: "Mixed Grill", size: "normal" },
   { src: "https://images.unsplash.com/photo-1573225342350-16731dd9bf83?w=900&fit=crop", category: "Drinks", label: "Mango Lassi", size: "normal" },
   { src: "https://images.unsplash.com/photo-1512058556646-c4da40fba323?w=900&fit=crop", category: "Food", label: "Dal Tadka", size: "normal" },
-  { src: "https://images.unsplash.com/photo-1547592180-85f173990554?w=900&fit=crop", category: "Food", label: "Egg Chana", size: "tall" },
-  { src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&fit=crop", category: "Ambiance", label: "Dining Experience", size: "normal" },
-  { src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&fit=crop", category: "Food", label: "Desi Platter", size: "normal" },
-  { src: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=900&fit=crop", category: "BBQ", label: "Lamb Chops", size: "normal" },
   { src: "https://images.unsplash.com/photo-1530648672449-81f6c723e2f5?w=900&fit=crop", category: "Drinks", label: "Kashmiri Chai", size: "normal" },
   { src: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=900&fit=crop", category: "Food", label: "Fresh Herbs & Spices", size: "normal" },
-  { src: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&fit=crop", category: "Food", label: "Beef Haleem", size: "normal" },
-  { src: "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=900&fit=crop", category: "BBQ", label: "Seekh Kebab", size: "normal" },
-  { src: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=900&fit=crop", category: "Food", label: "Butter Chicken", size: "normal" },
 ];
 
-const CATEGORIES = ["All", "Food", "BBQ", "Drinks", "Ambiance"];
+const CATEGORIES = ["All", "Food", "BBQ", "Catering", "Drinks", "Ambiance"];
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("All");

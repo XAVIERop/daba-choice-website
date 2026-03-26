@@ -1,0 +1,1911 @@
+{
+  "cafe": {
+    "id": "daba-choice-local",
+    "name": "Daba Choice",
+    "slug": "dabachoice",
+    "description": "Authentic North Indian, Delhi & Bombay flavors. The heart of Punjabi Daba brought to your doorstep.",
+    "phone": "+971504247836",
+    "location": "Serving Dubai Silicon Oasis, Academic City & surrounding areas",
+    "primary_color": "#D4AF37",
+    "image_url": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=2000&auto=format&fit=crop",
+    "delivery_areas": [
+      "International City Phase 2",
+      "Warsan 4",
+      "Al Warqa 1, 2, 3, 4",
+      "Dubai Silicon Oasis",
+      "Academic City"
+    ],
+    "services": {
+      "catering": "Premium catering for all events, including Punjabi song shoots and corporate gatherings.",
+      "tiffin": "Balanced 4-week meal plans starting from AED 499."
+    }
+  },
+  "menu": [
+    {
+      "id": "081ef6c5-d4e0-43b5-ba0e-de29eff75a4d",
+      "name": "Chicken Dum Biryani",
+      "description": "Chicken dum biryani",
+      "price": 16,
+      "category": "Biryani",
+      "image_url": "https://ik.imagekit.io/foodclub/Daba%20Choice/360_F_746343390_cz4z2B0qgHcvhzqwyvvXQj7bsS0LxlpG.jpg",
+      "is_available": true
+    },
+    {
+      "id": "030d102c-2554-4bb2-8aed-1342cbd3ed49",
+      "name": "Chicken Hyderabadi Biryani",
+      "description": "Chicken Hyderabadi biryani",
+      "price": 18,
+      "category": "Biryani",
+      "image_url": "https://ik.imagekit.io/foodclub/Daba%20Choice/traditional-chicken-biryani-served-brass-600nw-2622739739.webp",
+      "is_available": true
+    },
+    {
+      "id": "afd90cb0-7fc6-43dd-a8ba-c1f666bff43e",
+      "name": "Chicken Tikka Biryani",
+      "description": "Chicken tikka biryani",
+      "price": 20,
+      "category": "Biryani",
+      "image_url": "https://ik.imagekit.io/foodclub/Daba%20Choice/istockphoto-1292436403-612x612.jpg",
+      "is_available": true
+    },
+    {
+      "id": "6a976624-0b75-4955-9d6c-10720c36e89e",
+      "name": "Fish Biryani",
+      "description": "Fish biryani",
+      "price": 22,
+      "category": "Biryani",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "2e0f1d35-8353-4e30-9173-6253680c9f0c",
+      "name": "Mutton Dum Biryani",
+      "description": "Mutton dum biryani",
+      "price": 20,
+      "category": "Biryani",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "314f11b7-e8c9-47e7-ba24-0242271db8f3",
+      "name": "Mutton Dum Hyderabadi Biryani",
+      "description": "Mutton Hyderabadi biryani",
+      "price": 22,
+      "category": "Biryani",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "e39c7338-0bdb-4582-aff8-3ae79fe92e97",
+      "name": "Prawns Biryani",
+      "description": "Prawns biryani",
+      "price": 25,
+      "category": "Biryani",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "fe6631b6-9da9-4520-89e6-c3eed2c47805",
+      "name": "Butter Naan",
+      "description": "Butter naan",
+      "price": 5,
+      "category": "Bread",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "613eb4e4-8c96-4a24-83e8-327e519061e3",
+      "name": "Butter Roti",
+      "description": "Butter roti",
+      "price": 2.5,
+      "category": "Bread",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "d0bb91f6-9142-4f49-945e-a11a55bcaf77",
+      "name": "Chilli Paratha",
+      "description": "Chilli paratha",
+      "price": 6,
+      "category": "Bread",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "d6315f71-729b-4b21-bcd9-4b44a48cde4a",
+      "name": "Garlic Naan",
+      "description": "Garlic naan",
+      "price": 5,
+      "category": "Bread",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "ec32ba3c-b236-4ed0-98a9-f8b692d3fdc2",
+      "name": "Kulcha",
+      "description": "Amritsari kulcha",
+      "price": 5,
+      "category": "Bread",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "8b1f4515-bcbd-4dac-94c6-14e9936cb8ab",
+      "name": "Lacha Paratha",
+      "description": "Layered lacha paratha",
+      "price": 6,
+      "category": "Bread",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "fcb7ab87-8b82-460e-be04-a65f5d56fc4c",
+      "name": "Mix Roti Basket",
+      "description": "Assorted roti basket",
+      "price": 18,
+      "category": "Bread",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "8c79dcde-a194-46f1-9d57-209459c1b7ab",
+      "name": "Plain Naan",
+      "description": "Plain naan",
+      "price": 4,
+      "category": "Bread",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "15872af6-13c3-4f50-bce9-f2c7b449160d",
+      "name": "Tandoori Roti",
+      "description": "1 piece",
+      "price": 1.5,
+      "category": "Bread",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "8418835f-41fa-44ff-a27a-f2d1a2a0f20e",
+      "name": "Tawa Roti",
+      "description": "Tawa roti",
+      "price": 2,
+      "category": "Bread",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "fa862d64-dbae-468f-a2ef-e916e8cd479f",
+      "name": "Ajwani Prathi",
+      "description": "Ajwain prathi",
+      "price": 3,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "1caca088-6b4b-4fa3-a342-a33d275d393c",
+      "name": "Aloo Poha",
+      "description": "Potato poha",
+      "price": 6,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "e8cd171d-ed68-46c8-8dd3-2b323c4a3153",
+      "name": "Aloo Pyaza Paratha",
+      "description": "Aloo pyaza paratha",
+      "price": 5,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "02566822-22b3-42b3-afad-9b48858a513c",
+      "name": "Bread Omelette",
+      "description": "Omelette with bread",
+      "price": 6,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "c81736ce-9407-46e2-b54f-fd78ddcdefaf",
+      "name": "Chicken Keema Paratha",
+      "description": "Chicken keema paratha",
+      "price": 10,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "0ef3a4b5-8ceb-432c-a584-99612cf44811",
+      "name": "Chole Bhuture",
+      "description": "Chole with bhatura",
+      "price": 10,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "6bf60ec5-f4bd-43db-8469-772788510f49",
+      "name": "Egg Burji with Bread",
+      "description": "Egg bhurji with bread",
+      "price": 8,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "6e928fcb-2220-4b63-a01c-e6054259a0c3",
+      "name": "Gobi Paratha",
+      "description": "Cauliflower paratha",
+      "price": 6,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "9427490a-03eb-410f-bebf-7325486b108f",
+      "name": "Kanda Poha",
+      "description": "Onion poha",
+      "price": 6,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "9de01c59-3945-4f9c-a6e5-dd4224fc685a",
+      "name": "Masala Omelette",
+      "description": "Masala omelette",
+      "price": 5,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "be5f1c95-1bd1-4d91-9ec9-f7387f7ad8d0",
+      "name": "Mix Paratha",
+      "description": "Mixed paratha",
+      "price": 7,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "a6640291-a086-4bda-a6f8-fc7f920d30b9",
+      "name": "Paneer Paratha",
+      "description": "Paneer paratha",
+      "price": 8,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "9e6ee957-1dfd-4b77-941f-c023857f40e2",
+      "name": "Punjabi Prathi",
+      "description": "Punjabi prathi",
+      "price": 2,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "4ad9aa47-b3d0-4e67-9e78-7bc8e81173b3",
+      "name": "Puri Bhaji / Channa",
+      "description": "Puri with bhaji or channa",
+      "price": 10,
+      "category": "Breakfast",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "f290d36e-0881-44bb-b3e4-49cfddc2cc4c",
+      "name": "Bel Puri",
+      "description": "Bel puri mix",
+      "price": 12,
+      "category": "Chaat",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "508eb9c4-4a57-4185-b5e2-6c7e9310299b",
+      "name": "Chicken Pakoda",
+      "description": "Chicken pakoda",
+      "price": 18,
+      "category": "Chaat",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "857283d6-ae64-4c8f-916f-0c9177c95850",
+      "name": "Dahi Puri",
+      "description": "Dahi puri",
+      "price": 12,
+      "category": "Chaat",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "8cddc07c-ab70-499f-a4ff-7f6be8f54dfe",
+      "name": "Fresh Malai Paneer (1 kg)",
+      "description": "Fresh malai paneer",
+      "price": 32,
+      "category": "Chaat",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "12438837-731c-4c13-9892-af9bc9aaba02",
+      "name": "Gobi Pakoda",
+      "description": "Cauliflower pakoda",
+      "price": 12,
+      "category": "Chaat",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "93e0045f-16b4-4fbe-9782-f3d5fb1374b6",
+      "name": "Mix Pakoda",
+      "description": "Mixed vegetable pakoda",
+      "price": 14,
+      "category": "Chaat",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "1e10faa3-e0d8-47cf-817f-54018e7a9d68",
+      "name": "Pani Puri (8 pcs)",
+      "description": "Classic pani puri",
+      "price": 8,
+      "category": "Chaat",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "e0337e5f-4666-4227-96b1-f51ad7d20fe2",
+      "name": "Papdi Chaat",
+      "description": "Crispy papdi with chutneys",
+      "price": 10,
+      "category": "Chaat",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "0f28be5d-cd1e-4569-a5c6-f33340db40ee",
+      "name": "Punjabi Samosa",
+      "description": "Crispy aloo samosa",
+      "price": 2,
+      "category": "Chaat",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "b989736a-d94c-49d2-8ff1-b0a7a65cf28d",
+      "name": "Sev Puri",
+      "description": "Sev puri with tamarind",
+      "price": 12,
+      "category": "Chaat",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "7c0972a1-2506-43cb-a3fd-2e249f3579d5",
+      "name": "Stuffed Paneer Pakoda",
+      "description": "Paneer stuffed pakoda",
+      "price": 16,
+      "category": "Chaat",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "082b7fb9-fc8e-412d-9b56-d9f0e2476eeb",
+      "name": "Mix Fried Rice",
+      "description": "Mixed fried rice",
+      "price": 22,
+      "category": "Chinese Main Course",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "e834bcef-ad09-4f7e-8873-17365790eae9",
+      "name": "Veg Fried Rice",
+      "description": "Egg or Chicken option",
+      "price": 18,
+      "category": "Chinese Main Course",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "9dcf7a0c-b8da-4234-9d37-3d6196eb3264",
+      "name": "Veg Hakka Noodles",
+      "description": "Small/Medium/Large",
+      "price": 16,
+      "category": "Chinese Main Course",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "8723a69a-ca2a-428c-8782-92d74bb3f2fe",
+      "name": "Veg Schezwan Noodles",
+      "description": "Egg or Chicken option",
+      "price": 18,
+      "category": "Chinese Main Course",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "fcfda95f-97c2-498c-95c7-e3bd1a3e9995",
+      "name": "Veg Schezwan Rice",
+      "description": "Egg or Chicken option",
+      "price": 19,
+      "category": "Chinese Main Course",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "8299c8d4-5147-4cc8-9375-851b5fa6c543",
+      "name": "Gobi Manchurian",
+      "description": "Dry or Gravy",
+      "price": 19,
+      "category": "Chinese Starter Veg",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "b7766b97-ec7c-4fdc-b733-b9d69d2ff3ef",
+      "name": "Honey Chilli Cauliflower",
+      "description": "Dry or Gravy",
+      "price": 18,
+      "category": "Chinese Starter Veg",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "f428dd84-b1ae-48ee-901b-093b37c15315",
+      "name": "Honey Chilli Potato",
+      "description": "Honey chilli potato",
+      "price": 18,
+      "category": "Chinese Starter Veg",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "48df6d68-d426-42e9-8f74-22f8b4f9b3b5",
+      "name": "Mushroom Chilli",
+      "description": "Dry or Gravy",
+      "price": 19,
+      "category": "Chinese Starter Veg",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "7a447ca0-6ee6-43c3-b782-58b690eda7b9",
+      "name": "Paneer 65",
+      "description": "Crispy paneer 65",
+      "price": 20,
+      "category": "Chinese Starter Veg",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "205c15bb-66e6-4a64-94a4-8709f7b724c1",
+      "name": "Veg Manchurian",
+      "description": "Dry or Gravy",
+      "price": 19,
+      "category": "Chinese Starter Veg",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "b67a7def-3208-4dc9-b991-80451ea10e33",
+      "name": "Veg Spring Roll",
+      "description": "Vegetable spring roll",
+      "price": 12,
+      "category": "Chinese Starter Veg",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "5bd12f12-b7e8-47a1-abce-4f85e1a91526",
+      "name": "Butter Scotch Shake",
+      "description": "Butterscotch shake",
+      "price": 12,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "eae7198a-f36f-4de0-9e46-1c72dafd8481",
+      "name": "Chocolate Shake",
+      "description": "Chocolate shake",
+      "price": 10,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "e91fb245-720b-42c4-8d0e-fdbbafc9884c",
+      "name": "Cold Coffee",
+      "description": "Iced coffee",
+      "price": 8,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "74d6f9c8-a6e8-4844-86ea-e83f783870d0",
+      "name": "Fresh Lemon Soda",
+      "description": "Lemon soda",
+      "price": 5,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "eebed379-6b94-4601-81f1-231c10d4d251",
+      "name": "Fresh Orange Juice",
+      "description": "Orange juice",
+      "price": 8,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "5c2d3d55-7e8c-4321-ab4e-ee43b1d7d837",
+      "name": "Fresh Watermelon Juice",
+      "description": "Watermelon juice",
+      "price": 8,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "8002eef8-28fb-4496-a287-e6b32c6de745",
+      "name": "Gud Wali Tea",
+      "description": "Jaggery tea",
+      "price": 4,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "7f8525ab-2f8c-47b8-8b37-e808ffd76aa0",
+      "name": "Jaljeera",
+      "description": "Jaljeera",
+      "price": 5,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "71a3f452-bb5e-4773-9e0f-0b5268b67c99",
+      "name": "Lassi (Salt)",
+      "description": "Salty lassi",
+      "price": 8,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "e24e9e31-213c-4545-b91b-1741f9316401",
+      "name": "Lassi (Sweet)",
+      "description": "Sweet lassi",
+      "price": 8,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "91bab6ae-92e7-4f47-a625-e5ac5dd1d71f",
+      "name": "Lemon Mint Juice",
+      "description": "Lemon mint",
+      "price": 8,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "a9b83eb7-5104-4173-9f01-f6f2d967ad22",
+      "name": "Mango Lassi",
+      "description": "Mango lassi",
+      "price": 10,
+      "category": "Drinks",
+      "image_url": "https://images.unsplash.com/photo-1544145945-f904253d0c7b?w=800&auto=format&fit=crop",
+      "is_available": true
+    },
+    {
+      "id": "5248c777-54a6-4b87-b4f8-4545fbc2cbb0",
+      "name": "Milk Tea",
+      "description": "Milk tea",
+      "price": 3,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "b4e039ba-bfd5-4cab-a0a8-b42a640ca16d",
+      "name": "Mojito",
+      "description": "Mojito",
+      "price": 8,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "bc019735-71cc-498f-90d0-4ec8ba044c67",
+      "name": "Vanilla Shake",
+      "description": "Vanilla shake",
+      "price": 10,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "9f4c4559-ece4-4b8c-92c9-6acbb28cc9ca",
+      "name": "Water (Big)",
+      "description": "Large water",
+      "price": 3,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "84058258-76e6-487a-9163-c364ee87eb27",
+      "name": "Water (Small)",
+      "description": "Small water",
+      "price": 1,
+      "category": "Drinks",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "1b5f2d16-21da-4c97-8b12-2edd4b089f60",
+      "name": "Aloo Kulcha",
+      "description": "Aloo kulcha with channa",
+      "price": 10,
+      "category": "Kulcha with Channa",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "209637f2-ef30-4ebc-8b7e-9ee130a9cc75",
+      "name": "Gobi Kulcha",
+      "description": "Gobi kulcha with channa",
+      "price": 11,
+      "category": "Kulcha with Channa",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "826cc4ee-db2d-4947-a839-e780ac2b14af",
+      "name": "Keema Naan with Gravy",
+      "description": "Keema naan with gravy",
+      "price": 15,
+      "category": "Kulcha with Channa",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "2e27669c-e2b4-44f3-8ad9-92cacce7029f",
+      "name": "Mix Kulcha",
+      "description": "Mix kulcha with channa",
+      "price": 12,
+      "category": "Kulcha with Channa",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "a60979db-3039-42cf-a29a-b99347b4d55d",
+      "name": "Paneer Kulcha",
+      "description": "Paneer kulcha with channa",
+      "price": 14,
+      "category": "Kulcha with Channa",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "a57ff059-4547-4e2c-9ef6-369c9f0846ab",
+      "name": "Tandoori Paratha (Aloo)",
+      "description": "Aloo tandoori paratha",
+      "price": 8,
+      "category": "Kulcha with Channa",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "9e5ef64a-356a-409b-ab57-686fa0edfb9b",
+      "name": "Tandoori Paratha (Gobi)",
+      "description": "Gobi tandoori paratha",
+      "price": 9,
+      "category": "Kulcha with Channa",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "0d728505-93e0-4d04-bb6a-1fdc03a318c3",
+      "name": "Tandoori Paratha (Mix)",
+      "description": "Mix tandoori paratha",
+      "price": 10,
+      "category": "Kulcha with Channa",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "7e6b44c6-5f02-4b63-822e-c6a1a3742782",
+      "name": "Tandoori Paratha (Paneer)",
+      "description": "Paneer tandoori paratha",
+      "price": 10,
+      "category": "Kulcha with Channa",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "4dbaba40-7600-40e3-8cf7-dc08d5fb79e0",
+      "name": "Chicken 65",
+      "description": "Spicy chicken 65",
+      "price": 20,
+      "category": "Non Veg Chinese Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "85988742-5736-43c0-a6ad-d86f33942565",
+      "name": "Chicken Garlic",
+      "description": "Dry or Gravy",
+      "price": 19,
+      "category": "Non Veg Chinese Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "30161c8c-c28b-418e-a032-83105dc5ae7b",
+      "name": "Chicken Manchurian",
+      "description": "Dry or Gravy",
+      "price": 19,
+      "category": "Non Veg Chinese Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "658bac3e-f2d8-4b4d-b6b6-6e0840b7aab8",
+      "name": "Chilli Chicken",
+      "description": "Dry or Gravy",
+      "price": 21,
+      "category": "Non Veg Chinese Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "3c30b8da-b1de-4b3b-8a9d-aa17273143fd",
+      "name": "Crispy Chicken",
+      "description": "Crispy fried chicken",
+      "price": 20,
+      "category": "Non Veg Chinese Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "3908a749-d6b0-421d-91ab-b317a72398e1",
+      "name": "Fish Chilli",
+      "description": "Dry or Gravy",
+      "price": 19,
+      "category": "Non Veg Chinese Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "b617c110-6c9a-4194-8bd7-37d0ba615ee7",
+      "name": "Lemon Chicken",
+      "description": "Dry or Gravy",
+      "price": 19,
+      "category": "Non Veg Chinese Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "e2249ece-7e67-4292-b3c0-e2eb4e37ba1b",
+      "name": "Prawns Chilli",
+      "description": "Dry or Gravy",
+      "price": 21,
+      "category": "Non Veg Chinese Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "11554e02-f2a2-449b-abc2-cd35bfc8e032",
+      "name": "Chicken Do Pyaza",
+      "description": "Chicken do pyaza",
+      "price": 18,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "423c89a2-08fd-4c1e-b7ab-e7f1555d10b0",
+      "name": "Chicken Handi",
+      "description": "Chicken handi",
+      "price": 20,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "a018a941-8793-4378-a79b-f27a8de99189",
+      "name": "Chicken Kolapuri",
+      "description": "Spicy Kolapuri chicken",
+      "price": 18,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "930e17b1-9609-4789-8083-e681b1eacaa5",
+      "name": "Chicken Lababdar",
+      "description": "Chicken lababdar",
+      "price": 22,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "4aa84c9c-2216-4441-bff0-ae86b3b0c855",
+      "name": "Chicken Masala",
+      "description": "Chicken masala",
+      "price": 18,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "106f4fb2-2ac6-4386-9864-f83c0078f02f",
+      "name": "Chicken Seekh Kabab Masala",
+      "description": "Seekh kabab masala",
+      "price": 22,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "d50353b3-be10-493e-a659-4f96e7f8ce39",
+      "name": "Chicken Tikka Masala",
+      "description": "Chicken tikka masala",
+      "price": 22,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "f363f29e-a5b8-4550-aa91-5819ca28927c",
+      "name": "Egg Bhurji",
+      "description": "Egg bhurji",
+      "price": 12,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "9564c555-43c3-419e-93a9-5b07505ce15f",
+      "name": "Egg Curry",
+      "description": "Egg curry",
+      "price": 14,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "23ab8a00-98da-4ff7-9507-92e3ff10c05d",
+      "name": "Egg Masala",
+      "description": "Egg masala",
+      "price": 15,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "81394921-af42-46c1-b88f-599d944fd815",
+      "name": "Fish Curry",
+      "description": "Fish curry",
+      "price": 20,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "c5a92f4e-2a8b-45bf-888f-2eacdfe3b138",
+      "name": "Fish Masala",
+      "description": "Fish masala",
+      "price": 18,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "bbb573be-1952-4eee-b76f-68f239d39170",
+      "name": "Home Made Chicken",
+      "description": "Home style chicken",
+      "price": 22,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "ad5db2e8-d7b7-4cc7-a245-7801164daf0c",
+      "name": "Kadai Chicken",
+      "description": "Kadai chicken",
+      "price": 20,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "eaa77c0d-5e43-4103-83e8-c908d72aadec",
+      "name": "Lemon Chicken",
+      "description": "Lemon chicken",
+      "price": 20,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "54e9d7db-7f8f-4f59-86ed-01c9ba000ef8",
+      "name": "Murg Makhani Wala",
+      "description": "Boneless or bone",
+      "price": 24,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "37c03ac0-40da-41ef-a9c0-afa82862cfc0",
+      "name": "Mutton Bunna",
+      "description": "Mutton bunna",
+      "price": 25,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "4c87425d-a753-41a3-af94-6941914b68bb",
+      "name": "Mutton Kadai",
+      "description": "Mutton kadai",
+      "price": 22,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "9559b2fe-c2d0-4eda-be71-b37638949a71",
+      "name": "Mutton Masala",
+      "description": "Mutton masala",
+      "price": 22,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "ee4c8631-3dab-4f4c-bf77-d4526512cf65",
+      "name": "Mutton Rara",
+      "description": "Mutton rara",
+      "price": 25,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "181eabcc-bf0f-4259-9974-a4d625c95e50",
+      "name": "Mutton Rogan Josh",
+      "description": "Mutton rogan josh",
+      "price": 25,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "2b18efa0-6683-4e6a-ba5b-632eb3bb3dbf",
+      "name": "Prawns Curry",
+      "description": "Prawns curry",
+      "price": 22,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "6d2b7e27-d375-42d3-a7bc-4dd1da378ce4",
+      "name": "Prawns Masala",
+      "description": "Prawns masala",
+      "price": 25,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "6c1f93db-00f2-46eb-9c26-577153cba20c",
+      "name": "Rara Chicken",
+      "description": "Rara chicken",
+      "price": 20,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "4cb4c373-a367-4f9e-94a2-01d56dd7d1d7",
+      "name": "Tawa Chicken",
+      "description": "Tawa chicken",
+      "price": 20,
+      "category": "Non Veg Special",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "5c238bfe-0a4a-4df8-bba1-a1996fdb599a",
+      "name": "Amritsari Fish",
+      "description": "Amritsari fish tikka",
+      "price": 20,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "501791b3-0be0-4b48-af2b-022b6ed7e909",
+      "name": "Chicken Achari Tikka",
+      "description": "Achari chicken tikka",
+      "price": 18,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "fac4e8fd-9825-4d32-b0e6-deddc53edc4c",
+      "name": "Chicken Angara Tikka",
+      "description": "Angara tikka",
+      "price": 22,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "2f0f3bb0-6353-4e38-8323-c896a2064f38",
+      "name": "Chicken Kali Mirch Tikka",
+      "description": "Black pepper tikka",
+      "price": 18,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "7eef9816-df42-41f1-8473-c31436b32ad7",
+      "name": "Chicken Lasooni Tikka",
+      "description": "Garlic chicken tikka",
+      "price": 20,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "0d8224c7-35ed-4634-b72c-2cdd79f4843b",
+      "name": "Chicken Pahadi Tikka",
+      "description": "Pahadi chicken tikka",
+      "price": 20,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "842e4b24-59aa-4435-b355-ee6eb02e3c18",
+      "name": "Chicken Seekh Kabab",
+      "description": "Seekh kabab",
+      "price": 18,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "f2cbf738-7b77-43d9-8cd0-9bea1e502727",
+      "name": "Chicken Tikka",
+      "description": "Tandoori chicken tikka",
+      "price": 18,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "867b2735-40b1-4dff-8ac8-aacef79ce795",
+      "name": "Daba Choice Non Veg Platter",
+      "description": "3 Chicken Tikka, 3 Malai Tikka, 3 Pahadi, 3 Fish, 3 Mutton Seekh, 2 Tandoori",
+      "price": 46,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "459d4245-6844-4b52-bfd8-9d4bec53b3d3",
+      "name": "Fish Ajwani Tikka",
+      "description": "Ajwain fish tikka",
+      "price": 22,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "f259af92-d984-48e3-a737-ec5dd1e12cb6",
+      "name": "Murg Afghani (Full)",
+      "description": "Full Afghani chicken",
+      "price": 34,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "18f381a5-75f2-456f-8372-fd53f382cc1b",
+      "name": "Murg Afghani (Half)",
+      "description": "Half Afghani chicken",
+      "price": 18,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "b051e459-5ffc-4742-9675-79c29574eb20",
+      "name": "Murg Malai Tikka",
+      "description": "Malai chicken tikka",
+      "price": 20,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "7a7d9535-6d37-4a2f-a905-2239b2246628",
+      "name": "Murg Tandoori (Full)",
+      "description": "Full tandoori chicken",
+      "price": 32,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "e96b487c-3683-468a-979c-168c9a0c44a9",
+      "name": "Murg Tandoori (Half)",
+      "description": "Half tandoori chicken",
+      "price": 18,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "d52c755c-e0af-4896-864d-c4cb77268eda",
+      "name": "Mutton Seekh Kabab",
+      "description": "Mutton seekh kabab",
+      "price": 25,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "0d2fa293-cce9-40d3-90e3-46b502206611",
+      "name": "Prawns Fry",
+      "description": "Fried prawns",
+      "price": 20,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "c4e5284e-fced-48c7-8af5-fc9e344dde2b",
+      "name": "Tandoori Prawns",
+      "description": "Tandoori prawns",
+      "price": 20,
+      "category": "Non Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "6eae4f6f-9c66-4450-a584-3985f533802c",
+      "name": "Fried Papad",
+      "description": "Fried papad",
+      "price": 2,
+      "category": "Papad",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "fb0c2a20-93d1-43e5-94df-9144d7e497d0",
+      "name": "Masala Papad",
+      "description": "Masala papad",
+      "price": 4,
+      "category": "Papad",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "e3fcf4f9-a87c-4c05-8c95-7ba7e5f9df05",
+      "name": "Roasted Papad",
+      "description": "Roasted papad",
+      "price": 1.5,
+      "category": "Papad",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "38582e37-424a-4840-9dfe-8d1555940896",
+      "name": "Biryani Rice",
+      "description": "Plain biryani rice",
+      "price": 12,
+      "category": "Rice",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "0caa4197-08f6-48ab-a052-f5ebadab7012",
+      "name": "Jeera Rice",
+      "description": "Cumin rice",
+      "price": 10,
+      "category": "Rice",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "79ea6213-6c78-40e0-bfd5-8492e1e63a02",
+      "name": "Lemon Rice",
+      "description": "Lemon rice",
+      "price": 10,
+      "category": "Rice",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "6c7be8b8-8ccc-460a-b2f7-62cfae06b2b4",
+      "name": "Paneer Tikka Biryani",
+      "description": "Paneer tikka biryani",
+      "price": 20,
+      "category": "Rice",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "ff58fedf-3575-4cb6-b989-bdfc1cc3ccc1",
+      "name": "Steam Rice",
+      "description": "Steamed rice",
+      "price": 8,
+      "category": "Rice",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "b4be6e6e-edfa-436e-a90b-373bb6a71812",
+      "name": "Tawa Pulao",
+      "description": "Tawa pulao",
+      "price": 15,
+      "category": "Rice",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "e54150c4-f7a7-4854-9d26-cdbc1d11005b",
+      "name": "Veg Dum Biryani",
+      "description": "Veg dum biryani",
+      "price": 14,
+      "category": "Rice",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "50a9e4ef-5ca1-4d02-9ed4-ff89f0b69eca",
+      "name": "Veg Dum Hyderabadi Biryani",
+      "description": "Veg Hyderabadi biryani",
+      "price": 16,
+      "category": "Rice",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "ee85acfd-d393-40f4-82ca-d40650b99516",
+      "name": "Veg Pulao",
+      "description": "Vegetable pulao",
+      "price": 13,
+      "category": "Rice",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "331178a5-5552-4567-b341-169a6b19ee0d",
+      "name": "Bundi Raitha",
+      "description": "Bundi raitha",
+      "price": 6,
+      "category": "Salad / Raitha",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "be090bc8-f2ab-4bfc-bc1c-10e4153da4a4",
+      "name": "Cucumber Raitha",
+      "description": "Cucumber raitha",
+      "price": 6,
+      "category": "Salad / Raitha",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "042ad8d1-2ad0-4acd-b5c2-be7affe72f39",
+      "name": "Cucumber Salad",
+      "description": "Cucumber salad",
+      "price": 5,
+      "category": "Salad / Raitha",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "8f0f26c8-a5a5-4af4-8a10-93ff8351f6ea",
+      "name": "Green Salad",
+      "description": "Fresh green salad",
+      "price": 5,
+      "category": "Salad / Raitha",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "6c3ce936-87c8-4da1-a0fc-3f57d3c34184",
+      "name": "Mix Raitha",
+      "description": "Mixed raitha",
+      "price": 6,
+      "category": "Salad / Raitha",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "4fd7ba34-ac3b-4bd8-9eba-0e153f01b82d",
+      "name": "Pineapple Raitha",
+      "description": "Pineapple raitha",
+      "price": 8,
+      "category": "Salad / Raitha",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "4a983fb6-f020-4d27-887b-9f826090be18",
+      "name": "Punjabi Salad",
+      "description": "Punjabi style salad",
+      "price": 6,
+      "category": "Salad / Raitha",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "77ac80ae-4f3e-4697-a3e9-11ab9abc81b4",
+      "name": "Clear Soup (Chicken)",
+      "description": "Chicken clear soup",
+      "price": 10,
+      "category": "Soup",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "b8f5ac1e-1717-4ff2-893f-df29baa507cd",
+      "name": "Clear Soup (Veg)",
+      "description": "Veg clear soup",
+      "price": 8,
+      "category": "Soup",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "c714046d-6ffc-451f-9e2c-ceecba56c519",
+      "name": "Hot and Sour (Chicken)",
+      "description": "Chicken hot and sour",
+      "price": 10,
+      "category": "Soup",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "ad428948-8d7c-4537-b1c9-6cbc3c161957",
+      "name": "Hot and Sour (Veg)",
+      "description": "Veg hot and sour",
+      "price": 8,
+      "category": "Soup",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "73281857-795f-4e27-952d-6b85d2fcb524",
+      "name": "Manchow Soup (Chicken)",
+      "description": "Chicken Manchow",
+      "price": 10,
+      "category": "Soup",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "ebd2474b-7c1e-4cb2-b62e-cb2061efe2c6",
+      "name": "Manchow Soup (Veg)",
+      "description": "Veg Manchow",
+      "price": 8,
+      "category": "Soup",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "3235053f-1059-4182-8320-42b70f446273",
+      "name": "Sweet Corn (Chicken)",
+      "description": "Chicken sweet corn soup",
+      "price": 10,
+      "category": "Soup",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "4063b7f7-fae1-4692-bd9c-fc7c056ccdf8",
+      "name": "Sweet Corn (Veg)",
+      "description": "Veg sweet corn soup",
+      "price": 8,
+      "category": "Soup",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "e1ae83c8-ef09-4bb5-8722-60d84bbb3718",
+      "name": "Tomato Soup",
+      "description": "Tomato soup",
+      "price": 8,
+      "category": "Soup",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "b5fdfb54-8ab0-4a48-b1e8-b49469ad6d8d",
+      "name": "Besan Laddu (2pcs)",
+      "description": "Sweet besan laddu",
+      "price": 5,
+      "category": "Sweets",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "da284e0d-3737-4ff1-ad73-1232b7275ff2",
+      "name": "Desi Ghee Gur Wali Chori",
+      "description": "Desi ghee chori with jaggery",
+      "price": 10,
+      "category": "Sweets",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "3e4a0892-e6ea-43c9-b1bc-6d1ea12ab85f",
+      "name": "Gulab Jamun (2pcs)",
+      "description": "Traditional gulab jamun",
+      "price": 6,
+      "category": "Sweets",
+      "image_url": "https://images.unsplash.com/photo-1589113155355-667cb44369e9?w=800&auto=format&fit=crop",
+      "is_available": true
+    },
+    {
+      "id": "0e848ac2-4a64-4689-88e8-f69e008399a4",
+      "name": "Gulab Jamun with Vanilla Icecream",
+      "description": "Gulab jamun served with vanilla ice cream",
+      "price": 10,
+      "category": "Sweets",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "330bce1f-3300-4b1f-b964-c905ea2d29ff",
+      "name": "Ice Cream (2 Scoop)",
+      "description": "Vanilla, Butterscotch, Chocolate",
+      "price": 6,
+      "category": "Sweets",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "2e774709-cf5a-442f-af1c-e630b6447572",
+      "name": "Ras Malai (2pcs)",
+      "description": "Creamy ras malai",
+      "price": 10,
+      "category": "Sweets",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "1d98575a-4e40-4abf-bebb-7d5807f6d018",
+      "name": "Shakapare Gud Wale",
+      "description": "Shakarpare with jaggery",
+      "price": 8,
+      "category": "Sweets",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "10a72bb9-cdf6-4b53-a6fa-3070f1d06783",
+      "name": "Sharma Spl Malai Kulfi",
+      "description": "Special malai kulfi",
+      "price": 6,
+      "category": "Sweets",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "432705e7-1554-4f4c-9384-d4a5f5260e9a",
+      "name": "Special Non Veg Thali",
+      "description": "Complete non veg thali",
+      "price": 18,
+      "category": "Thali",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "a8054484-476d-4e7a-902a-5672c961bce1",
+      "name": "Special Veg Thali",
+      "description": "Complete veg thali",
+      "price": 16,
+      "category": "Thali",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "01796e0e-eb58-498a-81ef-7efcef109015",
+      "name": "Daba Choice Platter (Veg)",
+      "description": "3 Paneer Tikka, 3 Paneer Malai, 3 Mushroom Tikka, 3 Tandoori Soya Chaap, 3 Pahadi Tikka",
+      "price": 36,
+      "category": "Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "ffb0702e-f4fb-4cf8-8a3f-72d03cefa804",
+      "name": "Hara Bhara Kabab",
+      "description": "Hara bhara kabab",
+      "price": 18,
+      "category": "Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "7b1cb57f-58a5-490b-a7a7-ec38ca0d4971",
+      "name": "Mushroom Stuffed Tikka",
+      "description": "Stuffed mushroom tikka",
+      "price": 22,
+      "category": "Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "2d9da4b7-3a5e-4e26-acb7-f65faa3f4d90",
+      "name": "Mushroom Tikka",
+      "description": "Mushroom tikka",
+      "price": 18,
+      "category": "Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "93d02a7d-98d1-4f8f-b742-d131086af4f3",
+      "name": "Pahadi Paneer",
+      "description": "Pahadi paneer",
+      "price": 18,
+      "category": "Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "d1a909df-345d-4821-9451-0c5ab660ea89",
+      "name": "Paneer Achari Tikka",
+      "description": "Achari paneer tikka",
+      "price": 18,
+      "category": "Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "89d1cbd9-07b2-4b9a-94e0-1878ee90bcaf",
+      "name": "Paneer Angara Tikka",
+      "description": "Angara paneer tikka",
+      "price": 20,
+      "category": "Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "a2c83a07-28a7-44ee-a69d-81e0cb325488",
+      "name": "Paneer Malai Tikka",
+      "description": "Malai paneer tikka",
+      "price": 20,
+      "category": "Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "11005586-1144-4c74-8ba5-c8517dd46971",
+      "name": "Paneer Tikka",
+      "description": "Tandoori paneer tikka",
+      "price": 18,
+      "category": "Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "2b329c9a-6318-4900-9ba8-8a28491c2dfb",
+      "name": "Tandoori Malai Chaap",
+      "description": "Malai soya chaap",
+      "price": 20,
+      "category": "Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "8cede49c-1470-4933-9c88-2b37c8cec404",
+      "name": "Tandoori Soya Chaap",
+      "description": "Tandoori soya chaap",
+      "price": 18,
+      "category": "Veg Starter",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "c46186a8-38ee-4c12-88b4-d51a0518e458",
+      "name": "Aloo Jeera",
+      "description": "Cumin potato",
+      "price": 12,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "e225589e-4755-44f6-b9e4-cfa7a0fe984a",
+      "name": "Aloo Matar",
+      "description": "Potato peas",
+      "price": 13,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "6c915a67-76b8-4a00-87f4-b9435a9eb8e6",
+      "name": "Aloo Methi",
+      "description": "Potato with fenugreek",
+      "price": 12,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "229bc32c-6465-4020-8b84-5b7a32cea145",
+      "name": "Amritsari Chole Gravy",
+      "description": "Amritsari chole",
+      "price": 14,
+      "category": "Vegetable",
+      "image_url": "https://images.unsplash.com/photo-1626132646529-5003375a954e?w=800&auto=format&fit=crop",
+      "is_available": true
+    },
+    {
+      "id": "b513cb0d-fdbf-400d-8b4d-63dfc2d7c1a9",
+      "name": "Amritsari Paneer",
+      "description": "Amritsari paneer",
+      "price": 22,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "86bd96f0-d5f7-480f-9ed6-14b97fa9fc22",
+      "name": "Baingan ka Bharta",
+      "description": "Smoky eggplant",
+      "price": 15,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "b1ff4049-4895-4a51-8125-5d20e9936a6d",
+      "name": "Bhindi Do Pyaza",
+      "description": "Okra do pyaza",
+      "price": 18,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "8b6ac4a3-b39a-4ec5-a80d-4f4fc74cdf63",
+      "name": "Bhindi Masala",
+      "description": "Okra masala",
+      "price": 16,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "76a16814-a00e-412f-abd3-d341bb675153",
+      "name": "Channa Masala (Dry)",
+      "description": "Dry channa masala",
+      "price": 14,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "71d0377b-5bcd-4b6b-bad6-64d9a3db1601",
+      "name": "Dal Dhaba",
+      "description": "Spicy dhaba style dal",
+      "price": 14,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "29a169cd-3a3f-420b-91b9-3e21877fddfd",
+      "name": "Dal Makhani",
+      "description": "Creamy black lentil",
+      "price": 16,
+      "category": "Vegetable",
+      "image_url": "https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=800&auto=format&fit=crop",
+      "is_available": true
+    },
+    {
+      "id": "c80459e9-9a2a-4f25-aa26-e087407acb86",
+      "name": "Dal Palak",
+      "description": "Spinach dal",
+      "price": 14,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "5661639c-8efb-4741-84f9-42420d157a4e",
+      "name": "Dal Tadka (Yellow)",
+      "description": "Yellow dal tadka",
+      "price": 13,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "b1f3bad1-3dfb-430e-9a16-edb0bf9da007",
+      "name": "Dum Aloo Punjabi",
+      "description": "Punjabi dum aloo",
+      "price": 16,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "aec820d2-60fc-4d10-b537-6bc203bfd047",
+      "name": "Kadai Paneer",
+      "description": "Kadai paneer",
+      "price": 18,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "a8f14781-2cc8-4498-bc8f-1e0197ef1d50",
+      "name": "Malai Kofta",
+      "description": "Malai kofta",
+      "price": 20,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "f5c46d42-4b5c-4b77-a5d4-f861c6ac9b2f",
+      "name": "Matar Paneer",
+      "description": "Peas paneer",
+      "price": 18,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "33d64153-540e-4b76-a747-62c4e9b3dea6",
+      "name": "Mix Veg (Fresh)",
+      "description": "Fresh mixed vegetables",
+      "price": 16,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "84c4ee9a-0176-4dcd-a512-de98c5b99622",
+      "name": "Mushroom Masala",
+      "description": "Mushroom masala",
+      "price": 14,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "df7dbd58-6523-4641-adfe-96d84c3f2ec4",
+      "name": "Palak Channa",
+      "description": "Spinach channa",
+      "price": 14,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "4cc3b1b1-2486-44b0-9848-c42eff3ccc30",
+      "name": "Palak Paneer",
+      "description": "Spinach paneer",
+      "price": 20,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "b848e41b-5f5e-4ade-bc55-9e5f11d260b8",
+      "name": "Paneer Bhurji",
+      "description": "Scrambled paneer",
+      "price": 20,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "21c4ca33-d122-4671-a276-2f74f96e89ff",
+      "name": "Paneer Do Pyaza",
+      "description": "Paneer do pyaza",
+      "price": 18,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "fd002083-a819-4efb-b41b-c9f75c40bc7b",
+      "name": "Paneer Makhani",
+      "description": "Paneer makhani",
+      "price": 18,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "b40b1404-e061-4a11-9ac6-69922c128e84",
+      "name": "Paneer Tikka Butter Masala",
+      "description": "Paneer butter masala",
+      "price": 24,
+      "category": "Vegetable",
+      "image_url": "https://images.unsplash.com/photo-1567188041302-36fb644369e9?w=800&auto=format&fit=crop",
+      "is_available": true
+    },
+    {
+      "id": "b85bfc26-2d5f-4e13-be42-f8740da5f14a",
+      "name": "Paneer Tikka Masala",
+      "description": "Paneer tikka masala",
+      "price": 22,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "580f0e6f-03c2-4b4b-9d11-219124e43e35",
+      "name": "Rajma Masala",
+      "description": "Kidney bean curry",
+      "price": 15,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "ea2b6816-23e5-4b36-acb3-17014aae31c7",
+      "name": "Sahi Paneer",
+      "description": "Sahi paneer",
+      "price": 20,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    },
+    {
+      "id": "c1ac53c3-9a2c-408f-b9bf-ce51fab02c73",
+      "name": "Sarso da Saag (Fresh)",
+      "description": "Fresh mustard greens",
+      "price": 18,
+      "category": "Vegetable",
+      "image_url": null,
+      "is_available": true
+    }
+  ],
+  "features": {
+    "whatsapp_only": true,
+    "show_admin": false,
+    "show_auth": false
+  }
+}
