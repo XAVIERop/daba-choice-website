@@ -38,11 +38,11 @@ const features = [
 ];
 
 const testimonials = [
-  { name: "Tariq M.", review: "The best Paya I've ever had in Dubai. Tastes exactly like back home in Lahore.", rating: 5 },
-  { name: "Sana K.", review: "Their Chicken Karahi is legendary. Perfectly spiced, tender, and absolutely divine.", rating: 5 },
-  { name: "Bilal R.", review: "Daba Choice is my go-to spot in International City. The Biryani never disappoints!", rating: 5 },
-  { name: "Ayesha F.", review: "Best Malai Boti in Dubai, hands down. Creamy, smoky, and melts in your mouth.", rating: 5 },
-  { name: "Usman A.", review: "Loved the Kashmiri chai and Gulab Jaman. Perfect ending to a beautiful meal.", rating: 5 },
+  { name: "Rahul Bhagat", review: "If you love authentic Punjabi food, this place is a must-visit! The flavors are rich, portions are generous, and every dish feels like it’s made with love.", rating: 5 },
+  { name: "prabhpreet singh", review: "Absolutely loved the food here! Their Indian and Punjabi dishes are top-notch – the Daal Makhani and Kadhai Chicken were bursting with authentic flavors.", rating: 5 },
+  { name: "Harira Normal", review: "Just perfect. After ordering like 2-3 times now, the consistent quality is unbelievable. The taste of absolutely everything is just impeccable.", rating: 5 },
+  { name: "Shehzad Ahmed", review: "Daba Choice Restaurant is a very nice place to enjoy delicious food. The quality of the food is excellent, and the taste is truly mouth-watering.", rating: 5 },
+  { name: "KOmal Kang", review: "I had such a wonderful experience dining here! The food was absolutely delicious every dish was fresh, flavorful, and beautifully presented.", rating: 5 },
 ];
 
 /** Optional YouTube hero — off by default (embed often black on localhost / without referrer). Set `VITE_HERO_USE_YOUTUBE=1` to try. */
