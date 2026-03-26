@@ -103,9 +103,14 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-display text-xl font-bold mb-2">Call Us</h3>
-                <a href="tel:+971504247836" className="text-muted-foreground hover:text-primary transition-colors leading-relaxed block">
-                  +971 50 424 7836
-                </a>
+                <div className="space-y-1">
+                  <a href="tel:+971504247836" className="text-muted-foreground hover:text-primary transition-colors leading-relaxed block">
+                    +971 50 424 7836 (Mobile)
+                  </a>
+                  <a href="tel:+97145770225" className="text-muted-foreground hover:text-primary transition-colors leading-relaxed block">
+                    +971 4 577 0225 (Landline)
+                  </a>
+                </div>
                 <p className="text-xs text-muted-foreground/60 mt-1">Available during restaurant hours</p>
               </div>
             </div>
@@ -163,7 +168,7 @@ export default function Contact() {
         <div className="glass-card rounded-3xl overflow-hidden h-80">
           <iframe
             title="Daba Choice Restaurant Location"
-            src="https://maps.google.com/maps?q=International+City+England+Cluster+Dubai&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            src="https://maps.google.com/maps?q=Daba+Choice+Restaurant+International+City+Dubai&t=&z=16&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0, filter: "invert(90%) hue-rotate(180deg)" }}

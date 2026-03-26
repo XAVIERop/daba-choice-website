@@ -30,6 +30,8 @@ import Tiffin from "./pages/Tiffin";
 import Catering from "./pages/Catering";
 import Admin from "./pages/Admin";
 import TemplatePicker from "./pages/TemplatePicker";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/not-found";
 
 const queryClient = new QueryClient({
@@ -115,6 +117,8 @@ function AppRouter() {
           <Route path="/catering" component={Catering} />
           <Route path="/contact" component={Contact} />
           {features.show_admin && <Route path="/admin" component={Admin} />}
+          <Route path="/privacy-policy" component={PrivacyPolicy} />
+          <Route path="/terms-of-service" component={TermsOfService} />
 
           <Route component={NotFound} />
         </Switch>

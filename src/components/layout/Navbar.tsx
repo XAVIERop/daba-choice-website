@@ -178,15 +178,14 @@ export function Navbar() {
             {/* Logo + optional change template */}
             <div className="flex items-center gap-4 shrink-0">
               <Link href="/" aria-label={`${SITE_NAME} home`} className="group flex items-center gap-2.5 md:gap-3 shrink-0 min-w-0">
-                <img
-                  src={SITE_LOGO_URL}
-                  alt=""
-                  className="h-10 w-auto sm:h-12 md:h-14 object-contain object-left group-hover:opacity-90 transition-opacity max-w-[100px] sm:max-w-[140px] md:max-w-[180px]"
-                  width={180}
-                  height={64}
-                  decoding="async"
-                  aria-hidden
-                />
+                    <img
+                      src={SITE_LOGO_URL}
+                      alt="Daba Choice Restaurant Logo"
+                      className="h-10 w-auto sm:h-12 md:h-14 object-contain object-left group-hover:opacity-90 transition-opacity max-w-[100px] sm:max-w-[140px] md:max-w-[180px]"
+                      width={180}
+                      height={64}
+                      decoding="async"
+                    />
                 <span className="font-display text-sm sm:text-lg md:text-xl lg:text-2xl font-bold tracking-[0.12em] sm:tracking-[0.18em] md:tracking-widest gold-gradient-text group-hover:opacity-80 transition-opacity whitespace-nowrap">
                   {SITE_WORDMARK}
                 </span>
@@ -316,12 +315,11 @@ export function Navbar() {
                 >
                   <img
                     src={SITE_LOGO_URL}
-                    alt=""
+                    alt="Daba Choice Restaurant Logo"
                     className="h-9 w-auto object-contain shrink-0 max-w-[72px]"
                     width={72}
                     height={48}
                     decoding="async"
-                    aria-hidden
                   />
                   <span className="font-display text-base font-bold tracking-widest gold-gradient-text truncate">
                     {SITE_WORDMARK}

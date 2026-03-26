@@ -312,7 +312,10 @@ export default function Reservation() {
               </div>
               <div>
                 <p className="font-bold text-white text-sm mb-1">Call for Reservations</p>
-                <a href="tel:+971504247836" className="text-muted-foreground text-sm hover:text-primary transition-colors">+971 50 424 7836</a>
+                <div className="space-y-1">
+                  <a href="tel:+971504247836" className="text-muted-foreground text-sm hover:text-primary transition-colors block">+971 50 424 7836</a>
+                  <a href="tel:+97145770225" className="text-muted-foreground text-sm hover:text-primary transition-colors block">+971 4 577 0225</a>
+                </div>
                 <p className="text-xs text-white/30 mt-1">Available during restaurant hours</p>
               </div>
             </div>

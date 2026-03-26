@@ -18,12 +18,11 @@ export function Footer() {
             <div className="mb-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
               <img
                 src={SITE_LOGO_URL}
-                alt=""
+                alt="Daba Choice Restaurant Logo"
                 className="h-14 w-auto md:h-20 object-contain object-left max-w-[200px] md:max-w-[240px]"
                 width={240}
                 height={80}
                 decoding="async"
-                aria-hidden
               />
               <h3 className="font-display text-2xl md:text-3xl font-bold tracking-widest gold-gradient-text">
                 {SITE_WORDMARK}
@@ -125,12 +124,12 @@ export function Footer() {
               &copy; {new Date().getFullYear()} Daba Choice. All rights reserved. · England Cluster, International City, Dubai
             </p>
             <p className="text-xs text-muted-foreground font-medium">
-              Powered by <span className="text-primary font-bold tracking-wide">Plattr OS</span>
+              Powered by <a href="https://plattros.in/landing" target="_blank" rel="noopener noreferrer" className="text-primary font-bold tracking-wide hover:underline transition-all">Plattr OS</a>
             </p>
           </div>
           <div className="flex gap-6 text-sm text-muted-foreground mt-4 md:mt-0">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+            <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

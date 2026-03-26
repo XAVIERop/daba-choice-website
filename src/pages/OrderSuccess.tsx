@@ -24,12 +24,12 @@ export default function OrderSuccess() {
         </p>
         
         <div className="space-y-4">
-          <Link href="/orders" className="outline-button w-full block py-3 rounded-xl">
-            Track Order Status
-          </Link>
-          <Link href="/" className="text-primary hover:underline text-sm block">
+          <Link href="/" className="gold-button w-full block py-3 rounded-xl">
             Return to Home
           </Link>
+          <p className="text-xs text-muted-foreground">
+            Our team has received your request via WhatsApp and will confirm shortly.
+          </p>
         </div>
       </motion.div>
     </div>
