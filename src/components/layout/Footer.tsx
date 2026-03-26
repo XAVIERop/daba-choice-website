@@ -69,9 +69,14 @@ export function Footer() {
                 <MapPin className="text-primary shrink-0 mt-1" size={18} />
                 <span>Y-20, England-Y Street, England Cluster, International City, Dubai, UAE</span>
               </li>
-              <li className="flex items-center gap-3 text-muted-foreground">
-                <Phone className="text-primary shrink-0" size={18} />
-                <a href="tel:+971504247836" className="hover:text-primary transition-colors">+971 50 424 7836</a>
+              <li className="flex flex-col gap-2 text-muted-foreground">
+                <div className="flex items-center gap-3">
+                  <Phone className="text-primary shrink-0" size={18} />
+                  <a href="tel:+971504247836" className="hover:text-primary transition-colors">+971 50 424 7836</a>
+                </div>
+                <div className="flex items-center gap-3 pl-[30px]">
+                  <a href="tel:+97145770225" className="hover:text-primary transition-colors">+971 4 577 0225</a>
+                </div>
               </li>
               <li>
                 <a
