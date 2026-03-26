@@ -154,7 +154,7 @@ export default function Home() {
   );
   const [youtubeEmbedSrc, setYoutubeEmbedSrc] = useState<string | null>(null);
 
-  const useYoutubeHero = import.meta.env.VITE_HERO_USE_YOUTUBE === "1";
+  const useYoutubeHero = true;
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
