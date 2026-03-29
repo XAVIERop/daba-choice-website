@@ -22,7 +22,7 @@ function RatingBar({ label, count, total }: { label: string; count: number; tota
   return (
     <div className="flex items-center gap-3">
       <span className="text-xs text-muted-foreground w-8 shrink-0">{label}</span>
-      <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+      <div className="flex-1 h-1.5 bg-amber-200/40 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${pct}%` }}
@@ -119,7 +119,7 @@ export default function Reviews() {
             </a>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="inline-flex items-center gap-2 outline-button px-6 py-3 rounded-xl text-sm font-medium w-full sm:w-auto justify-center cursor-pointer hover:bg-white/5 transition-colors"
+              className="inline-flex items-center gap-2 outline-button px-6 py-3 rounded-xl text-sm font-medium w-full sm:w-auto justify-center cursor-pointer hover:bg-primary/5 transition-colors"
             >
               <PenLine size={16} /> Leave a Review
             </button>
@@ -136,7 +136,7 @@ export default function Reviews() {
               </div>
               <div className="flex justify-center gap-1 mb-3">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={16} className={i < Math.round(avgRating) ? "fill-primary text-primary" : "text-white/20"} />
+                  <Star key={i} size={16} className={i < Math.round(avgRating) ? "fill-primary text-primary" : "text-foreground/20"} />
                 ))}
               </div>
               <p className="text-muted-foreground text-sm">{allReviews.length} verified reviews</p>
@@ -157,7 +157,7 @@ export default function Reviews() {
                 <div className="flex flex-wrap gap-2 mb-6">
                   <button
                     onClick={() => setFilterRating(null)}
-                    className={`px-4 py-1.5 rounded-full text-sm border transition-all ${!filterRating ? "bg-primary text-black border-primary" : "border-white/20 text-muted-foreground hover:border-primary/50"}`}
+                    className={`px-4 py-1.5 rounded-full text-sm border transition-all ${!filterRating ? "bg-primary text-primary-foreground border-primary" : "border-amber-300/60 text-muted-foreground hover:border-primary/50"}`}
                   >
                     All
                   </button>
@@ -165,7 +165,7 @@ export default function Reviews() {
                     <button
                       key={n}
                       onClick={() => setFilterRating(n === filterRating ? null : n)}
-                      className={`px-4 py-1.5 rounded-full text-sm border transition-all ${filterRating === n ? "bg-primary text-black border-primary" : "border-white/20 text-muted-foreground hover:border-primary/50"}`}
+                      className={`px-4 py-1.5 rounded-full text-sm border transition-all ${filterRating === n ? "bg-primary text-primary-foreground border-primary" : "border-amber-300/60 text-muted-foreground hover:border-primary/50"}`}
                     >
                       {n}★
                     </button>
@@ -188,19 +188,19 @@ export default function Reviews() {
               transition={{ delay: i * 0.08 }}
               className="glass-card p-8 rounded-3xl relative overflow-hidden group hover:border-primary/30 transition-all"
             >
-              <Quote className="absolute top-4 right-4 text-white/4" size={72} />
+              <Quote className="absolute top-4 right-4 text-foreground/[0.04]" size={72} />
               <div className="flex gap-1 mb-5">
                 {Array.from({ length: 5 }).map((_, j) => (
-                  <Star key={j} size={14} className={j < review.rating ? "fill-primary text-primary" : "text-white/20"} />
+                  <Star key={j} size={14} className={j < review.rating ? "fill-primary text-primary" : "text-foreground/20"} />
                 ))}
               </div>
               <p className="text-muted-foreground italic mb-8 relative z-10 leading-relaxed text-sm">"{review.comment}"</p>
-              <div className="flex items-center gap-4 border-t border-white/10 pt-5">
-                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-black font-bold font-display text-lg">
+              <div className="flex items-center gap-4 border-t border-amber-200/50 pt-5">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold font-display text-lg">
                   {review.authorName.charAt(0)}
                 </div>
                 <div>
-                  <h4 className="font-bold text-white text-sm">{review.authorName}</h4>
+                  <h4 className="font-bold text-foreground text-sm">{review.authorName}</h4>
                   <span className="text-xs text-primary font-medium">✓ Verified Guest</span>
                 </div>
                 <div className="ml-auto text-right">
@@ -223,7 +223,7 @@ export default function Reviews() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-overlay/60 backdrop-blur-sm"
               onClick={() => setIsModalOpen(false)}
             />
             <motion.div
@@ -234,7 +234,7 @@ export default function Reviews() {
             >
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 p-2 text-muted-foreground hover:text-white transition-colors rounded-full hover:bg-white/10"
+                className="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-primary/10"
               >
                 <X size={20} />
               </button>
@@ -250,7 +250,7 @@ export default function Reviews() {
               <form onSubmit={handleSubmitReview} className="space-y-4">
                 <div className="space-y-2">
                   <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Your Name *</label>
-                  <input required value={reviewForm.name} onChange={e => setReviewForm({...reviewForm, name: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none" />
+                  <input required value={reviewForm.name} onChange={e => setReviewForm({...reviewForm, name: e.target.value})} className="w-full bg-white/80 border border-amber-200/60 rounded-xl px-4 py-3 focus:border-primary focus:outline-none placeholder:text-muted-foreground" />
                 </div>
 
                 <div className="space-y-2">
@@ -274,7 +274,7 @@ export default function Reviews() {
 
                 <div className="space-y-2">
                   <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Your Review *</label>
-                  <textarea required rows={4} value={reviewForm.review} onChange={e => setReviewForm({...reviewForm, review: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none resize-none" />
+                  <textarea required rows={4} value={reviewForm.review} onChange={e => setReviewForm({...reviewForm, review: e.target.value})} className="w-full bg-white/80 border border-amber-200/60 rounded-xl px-4 py-3 focus:border-primary focus:outline-none resize-none placeholder:text-muted-foreground" />
                 </div>
 
                 <button type="submit" className="gold-button w-full py-4 rounded-xl font-medium mt-2 text-black">

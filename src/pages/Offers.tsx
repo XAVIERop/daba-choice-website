@@ -36,9 +36,9 @@ function Countdown({ validUntil }: { validUntil: string | null }) {
           { val: time.mins, label: "m" },
           { val: time.secs, label: "s" },
         ].map(({ val, label }) => (
-          <div key={label} className="bg-black/50 border border-white/10 rounded-lg px-2 py-1 min-w-[2.5rem] text-center">
+          <div key={label} className="bg-amber-50 border border-amber-200/60 rounded-lg px-2 py-1 min-w-[2.5rem] text-center">
             <span className="font-display font-bold text-primary text-sm">{String(val).padStart(2, "0")}</span>
-            <span className="text-white/30 text-xs ml-0.5">{label}</span>
+            <span className="text-foreground/50 text-xs ml-0.5">{label}</span>
           </div>
         ))}
       </div>
@@ -115,7 +115,7 @@ export default function Offers() {
               <Sparkles className="text-primary" size={22} />
             </div>
             <div>
-              <p className="font-display font-bold text-white">New Customer Offer</p>
+              <p className="font-display font-bold text-foreground">New Customer Offer</p>
               <p className="text-muted-foreground text-sm">Get 10% off your first order — order online below</p>
             </div>
           </div>
@@ -136,7 +136,7 @@ export default function Offers() {
             >
               {/* Decorative bg */}
               <div className={`absolute inset-0 bg-gradient-to-br ${offer.color || "from-primary/10 to-accent/5"} pointer-events-none`} />
-              <div className="absolute -right-10 -top-10 text-white/[0.03] pointer-events-none">
+              <div className="absolute -right-10 -top-10 text-foreground/[0.03] pointer-events-none">
                 <TicketPercent size={250} />
               </div>
 
@@ -150,13 +150,13 @@ export default function Offers() {
                     </span>
                   )}
                   {offer.badge && (
-                    <span className="inline-block px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-white/60 uppercase tracking-wider">
+                    <span className="inline-block px-3 py-1 bg-amber-50 border border-amber-200/60 rounded-full text-xs text-foreground/60 uppercase tracking-wider">
                       {offer.badge}
                     </span>
                   )}
                 </div>
 
-                <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">{offer.title}</h3>
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">{offer.title}</h3>
                 <p className="text-muted-foreground text-base mb-4 leading-relaxed max-w-xl">{offer.description}</p>
 
                 {offer.validUntil && <Countdown validUntil={offer.validUntil} />}
@@ -179,7 +179,7 @@ export default function Offers() {
                     alt={offer.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/20 md:to-card/60" />
+                  <div className="absolute inset-0 bg-gradient-to-l from-transparent to-overlay/20 md:to-card/60" />
                 </div>
               )}
             </motion.div>
@@ -199,7 +199,7 @@ export default function Offers() {
             <a href="https://instagram.com/daba_choice" target="_blank" rel="noopener noreferrer" className="outline-button px-8 py-3 rounded-xl text-sm">
               Follow on Instagram
             </a>
-            <Link href="/contact" className="px-8 py-3 rounded-xl text-sm border border-white/20 text-white/60 hover:border-white/40 hover:text-white transition-all">
+            <Link href="/contact" className="px-8 py-3 rounded-xl text-sm border border-primary/40 text-primary hover:border-primary hover:bg-primary hover:text-white transition-all">
               Contact Us
             </Link>
           </div>

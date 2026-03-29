@@ -175,22 +175,22 @@ export default function Checkout() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-muted-foreground">Full Name *</label>
-                  <input required value={formData.name} onChange={e=>setFormData({...formData, name: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary" />
+                  <input required value={formData.name} onChange={e=>setFormData({...formData, name: e.target.value})} className="w-full bg-overlay/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-muted-foreground">Email Address *</label>
-                  <input type="email" required value={formData.email} onChange={e=>setFormData({...formData, email: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary" />
+                  <input type="email" required value={formData.email} onChange={e=>setFormData({...formData, email: e.target.value})} className="w-full bg-overlay/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary" />
                 </div>
               </div>
               
               <div className="space-y-2">
                 <label className="text-sm font-medium text-muted-foreground">Phone Number *</label>
-                <input type="tel" required value={formData.phone} onChange={e=>setFormData({...formData, phone: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary" />
+                <input type="tel" required value={formData.phone} onChange={e=>setFormData({...formData, phone: e.target.value})} className="w-full bg-overlay/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary" />
               </div>
               
               <div className="space-y-2">
                 <label className="text-sm font-medium text-muted-foreground">Order Type</label>
-                <select value={formData.orderType} onChange={e=>setFormData({...formData, orderType: e.target.value as "delivery"|"pickup"|"table"})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary">
+                <select value={formData.orderType} onChange={e=>setFormData({...formData, orderType: e.target.value as "delivery"|"pickup"|"table"})} className="w-full bg-overlay/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary">
                   <option value="delivery">Delivery</option>
                   <option value="pickup">Pickup</option>
                   <option value="table">Dine-in</option>
@@ -199,13 +199,13 @@ export default function Checkout() {
               {formData.orderType === "delivery" && (
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-muted-foreground">Delivery Address *</label>
-                  <textarea required rows={3} value={formData.address} onChange={e=>setFormData({...formData, address: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary resize-none" />
+                  <textarea required rows={3} value={formData.address} onChange={e=>setFormData({...formData, address: e.target.value})} className="w-full bg-overlay/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary resize-none" />
                 </div>
               )}
               
               <div className="space-y-2">
                 <label className="text-sm font-medium text-muted-foreground">Order Notes (Optional)</label>
-                <textarea rows={2} value={formData.notes} onChange={e=>setFormData({...formData, notes: e.target.value})} placeholder="Special requests, allergies..." className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary resize-none" />
+                <textarea rows={2} value={formData.notes} onChange={e=>setFormData({...formData, notes: e.target.value})} placeholder="Special requests, allergies..." className="w-full bg-overlay/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary resize-none" />
               </div>
             </form>
           </div>

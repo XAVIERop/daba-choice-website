@@ -9,6 +9,7 @@
   --font-sans: 'Outfit', sans-serif;
 
   --color-background: hsl(var(--background));
+  --color-overlay: hsl(var(--overlay));
   --color-foreground: hsl(var(--foreground));
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
@@ -34,69 +35,49 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* Day (light) — when <html> does not have .dark */
+/* ─── LIGHT MODE DEFAULT — Warm Cream + Gold + Saffron ─── */
 html {
   color-scheme: light;
-  --background: 40 28% 97%;
-  --foreground: 24 18% 11%;
+
+  /* Rich Royal Parchment background - deeper than cream */
+  --background: 40 28% 92%;
+  --foreground: 221 28% 12%;
+
   --card: 0 0% 100%;
-  --card-foreground: 24 18% 11%;
+  --card-foreground: 221 28% 12%;
   --popover: 0 0% 100%;
-  --popover-foreground: 24 18% 11%;
+  --popover-foreground: 221 28% 12%;
 
-  --primary: 43 76% 44%;
-  --primary-foreground: 24 18% 8%;
+  /* Gold — primary */
+  --primary: 43 78% 44%;
+  --primary-foreground: 221 28% 4%;
 
-  --secondary: 38 22% 92%;
-  --secondary-foreground: 24 18% 11%;
+  /* Warm ivory secondary */
+  --secondary: 40 20% 88%;
+  --secondary-foreground: 221 28% 12%;
 
-  --muted: 38 18% 93%;
-  --muted-foreground: 24 10% 38%;
+  --muted: 40 18% 85%;
+  --muted-foreground: 221 12% 42%;
 
-  --accent: 22 88% 46%;
+  /* Deep Royal Blue — accent */
+  --accent: 221 45% 35%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 50%;
   --destructive-foreground: 0 0% 100%;
 
-  --border: 35 16% 86%;
-  --input: 35 16% 86%;
-  --ring: 43 76% 44%;
+  --border: 35 18% 80%;
+  --input: 35 18% 80%;
+  --ring: 221 45% 35%;
 
+  --overlay: 221 28% 6%;
   --radius: 0.75rem;
 }
 
-/* Night (dark) — default for new visitors; toggled via theme control */
-html.dark {
-  color-scheme: dark;
-  --background: 0 0% 4%;
-  --foreground: 45 15% 92%;
-  --card: 0 0% 8%;
-  --card-foreground: 45 15% 88%;
-  --popover: 0 0% 8%;
-  --popover-foreground: 45 15% 88%;
+/* ─── DARK MODE REMOVED — forcing light theme ─── */
 
-  --primary: 43 85% 55%;
-  --primary-foreground: 0 0% 4%;
 
-  --secondary: 0 0% 14%;
-  --secondary-foreground: 45 15% 92%;
-
-  --muted: 0 0% 12%;
-  --muted-foreground: 45 10% 60%;
-
-  --accent: 22 95% 55%;
-  --accent-foreground: 0 0% 4%;
-
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
-
-  --border: 43 30% 20%;
-  --input: 43 30% 20%;
-  --ring: 43 85% 55%;
-}
-
-/* Template 2: Copper Warm */
+/* ─── Template variants ─── */
 [data-template="2"] {
   --primary: 25 65% 45%;
   --accent: 20 90% 42%;
@@ -106,22 +87,13 @@ html.dark {
 }
 [data-template="2"] .gold-gradient-text {
   background: linear-gradient(90deg, #E8B4A0, #B87333, #8B5A2B);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 [data-template="2"] .gold-button {
   background: linear-gradient(90deg, #B87333, #8B5A2B);
   box-shadow: 0 4px 14px hsl(var(--primary) / 0.25);
 }
-[data-template="2"] ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #B87333, #8B5A2B);
-}
-[data-template="2"] ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #E8B4A0, #B87333);
-}
 
-/* Template 3: Emerald Luxe */
 [data-template="3"] {
   --primary: 160 84% 31%;
   --accent: 43 85% 55%;
@@ -131,22 +103,13 @@ html.dark {
 }
 [data-template="3"] .gold-gradient-text {
   background: linear-gradient(90deg, #6EE7B7, #10B981, #047857);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 [data-template="3"] .gold-button {
   background: linear-gradient(90deg, #10B981, #047857);
   box-shadow: 0 4px 14px hsl(var(--primary) / 0.25);
 }
-[data-template="3"] ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #10B981, #047857);
-}
-[data-template="3"] ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #6EE7B7, #10B981);
-}
 
-/* Template 4: Cream Minimal (light theme) */
 [data-template="4"] {
   --background: 30 10% 96%;
   --foreground: 24 10% 10%;
@@ -166,36 +129,7 @@ html.dark {
   --input: 30 15% 88%;
   --ring: 25 35% 45%;
 }
-[data-template="4"] body {
-  background-image: radial-gradient(circle at top right, hsl(var(--primary) / 0.08), transparent 40%),
-                    radial-gradient(circle at bottom left, hsl(var(--accent) / 0.06), transparent 40%);
-}
-[data-template="4"] .glass-card {
-  background: hsl(var(--card) / 0.8);
-  border-color: hsl(var(--border));
-}
-[data-template="4"] .gold-gradient-text {
-  background: linear-gradient(90deg, #78716C, #57534E, #44403C);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-[data-template="4"] .gold-button {
-  background: linear-gradient(90deg, #78716C, #57534E);
-  color: white;
-  box-shadow: 0 4px 14px hsl(var(--primary) / 0.2);
-}
-[data-template="4"] ::-webkit-scrollbar-track {
-  background: hsl(var(--background));
-}
-[data-template="4"] ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #78716C, #57534E);
-}
-[data-template="4"] ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #A8A29E, #78716C);
-}
 
-/* Template 5: Royal editorial — distinct display face for headings */
 [data-template="5"] {
   --font-display: "Playfair Display", "Cinzel", serif;
   --primary: 348 52% 36%;
@@ -207,42 +141,6 @@ html.dark {
   --input: 348 35% 22%;
   --ring: 348 52% 36%;
 }
-[data-template="5"] body {
-  background-image: radial-gradient(circle at top right, hsl(var(--primary) / 0.08), transparent 45%),
-                    radial-gradient(circle at bottom left, hsl(43 74% 52% / 0.04), transparent 45%);
-}
-[data-template="5"] .gold-gradient-text {
-  background: linear-gradient(90deg, #E8C4A0, #D4AF37, #AA7C11);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-[data-template="5"] .gold-button {
-  background: linear-gradient(90deg, #8B2942, #6B1E32);
-  color: #FDE08B;
-  box-shadow: 0 4px 14px hsl(var(--primary) / 0.35);
-}
-[data-template="5"] .gold-button:hover {
-  background: linear-gradient(90deg, #9B3552, #7B2E42);
-  box-shadow: 0 6px 20px hsl(var(--primary) / 0.4);
-}
-[data-template="5"] .outline-button {
-  border-color: hsl(var(--accent) / 0.5);
-  color: hsl(var(--accent));
-}
-[data-template="5"] .outline-button:hover {
-  background: hsl(var(--accent));
-  color: hsl(var(--accent-foreground));
-}
-[data-template="5"] .glass-card {
-  border-color: hsl(348 30% 25% / 0.5);
-}
-[data-template="5"] ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #8B2942, #6B1E32);
-}
-[data-template="5"] ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #A63D58, #8B2942);
-}
 
 @layer base {
   * {
@@ -251,15 +149,14 @@ html.dark {
 
   body {
     @apply font-sans antialiased bg-background text-foreground selection:bg-primary/30 selection:text-primary;
-    background-image: radial-gradient(circle at top right, hsl(var(--primary) / 0.05), transparent 40%),
-                      radial-gradient(circle at bottom left, hsl(var(--accent) / 0.05), transparent 40%);
+    background-image:
+      radial-gradient(circle at top right, hsl(var(--primary) / 0.10), transparent 42%),
+      radial-gradient(circle at bottom left, hsl(var(--accent) / 0.07), transparent 42%);
     background-attachment: fixed;
   }
 
-  html:not(.dark) body {
-    background-image: radial-gradient(circle at top right, hsl(var(--primary) / 0.14), transparent 42%),
-                      radial-gradient(circle at bottom left, hsl(var(--accent) / 0.1), transparent 42%);
-  }
+  /* Removed html.dark body override */
+
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
@@ -267,47 +164,58 @@ html.dark {
   }
 }
 
-/* Glassmorphism Utilities */
+/* ─── Glassmorphism ─── */
 .glass-panel {
-  @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50;
+  @apply bg-white/85 backdrop-blur-xl border border-amber-200/60 shadow-xl shadow-amber-900/12;
 }
+/* Removed glass-panel dark override */
 
-html:not(.dark) .glass-panel {
-  @apply bg-white/75 backdrop-blur-xl border border-black/10 shadow-xl shadow-black/15;
-}
 
 .glass-card {
-  @apply bg-card/60 backdrop-blur-md border border-white/5 shadow-xl shadow-black/40 hover:border-primary/30 transition-all duration-300;
+  @apply bg-card/90 backdrop-blur-md border border-amber-200/50 shadow-lg shadow-amber-900/10 hover:border-primary/40 transition-all duration-300;
+}
+/* Removed glass-card dark override */
+
+
+.glass-card:hover {
+  box-shadow: 0 8px 40px -8px hsl(var(--primary) / 0.18), 0 0 0 1px hsl(var(--primary) / 0.14);
 }
 
-html:not(.dark) .glass-card {
-  @apply bg-card/90 backdrop-blur-md border border-black/10 shadow-lg shadow-black/10 hover:border-primary/35 transition-all duration-300;
-}
+/* Removed glass-card hover dark override */
 
-html:not(.dark) .glass-card:hover {
-  box-shadow: 0 8px 40px -8px hsl(var(--primary) / 0.14), 0 0 0 1px hsl(var(--primary) / 0.12);
-}
 
+/* ─── Gold Gradient Text ─── */
 .gold-gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#FDE08B] via-[#D4AF37] to-[#AA7C11];
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(90deg, #FDE08B, #D4AF37, #AA7C11);
+}
+/* Removed gold-gradient-text dark override */
+
+
+/* Saffron variant */
+.saffron-gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(90deg, #f59e0b, #f97316, #ea580c);
 }
 
+/* ─── Gold Button ─── */
 .gold-button {
-  @apply bg-gradient-to-r from-[#D4AF37] to-[#AA7C11] text-black font-semibold shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300;
+  @apply font-semibold hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-[#1a0a00];
+  background: linear-gradient(135deg, #D4AF37, #F0C040, #AA7C11);
+  box-shadow: 0 4px 14px hsl(43 78% 44% / 0.35);
+}
+.gold-button:hover {
+  background: linear-gradient(135deg, #E8C850, #D4AF37, #B8890F);
+  box-shadow: 0 6px 22px hsl(43 78% 44% / 0.45);
 }
 
 .outline-button {
-  @apply border-2 border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-semibold;
+  @apply border-2 border-primary/60 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-semibold;
 }
 
-/* Custom scrollbar for webkit */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  @apply bg-background;
-}
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { @apply bg-background; }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #D4AF37, #AA7C11);
   border-radius: 999px;
@@ -316,30 +224,67 @@ html:not(.dark) .glass-card:hover {
   background: linear-gradient(180deg, #FDE08B, #D4AF37);
 }
 
-/* Marquee / ticker strip */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+/* ─── Punjabi Cultural Utilities ─── */
 
-/* Smooth fade-in for page transitions */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Phulkari-inspired gradient border — gold + saffron */
+.punjabi-border {
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
 }
-
-/* Grain / noise texture overlay */
-.noise-overlay::before {
+.punjabi-border::before {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, #D4AF37, #f97316, #D4AF37, #FDE08B);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   pointer-events: none;
-  z-index: 1000;
-  opacity: 0.4;
 }
 
-/* Divider ornament */
+/* Phulkari decorative divider — gold to saffron */
+.phulkari-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.phulkari-divider::before,
+.phulkari-divider::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, hsl(43 78% 44% / 0.5), hsl(22 88% 46% / 0.4), transparent);
+}
+
+/* Subtle Punjabi pattern background */
+.punjabi-pattern-bg {
+  background-color: hsl(var(--background));
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      hsl(43 78% 44% / 0.04) 0px,
+      hsl(43 78% 44% / 0.04) 1px,
+      transparent 1px,
+      transparent 12px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      hsl(22 88% 46% / 0.025) 0px,
+      hsl(22 88% 46% / 0.025) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+}
+
+/* Stats bar — warm gold to saffron */
+.royal-saffron-bar {
+  background: linear-gradient(135deg, #78350f 0%, #92400e 25%, #b45309 55%, #d97706 80%, #f59e0b 100%);
+}
+
+/* ─── Ornament Divider ─── */
 .ornament-divider {
   display: flex;
   align-items: center;
@@ -353,34 +298,48 @@ html:not(.dark) .glass-card:hover {
   background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent);
 }
 
-/* Page-level entrance animation */
+/* ─── Animations ─── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 main > * {
   animation: fadeInUp 0.4s ease both;
 }
 
-/* Input/select focus ring polish */
-input:focus, textarea:focus, select:focus {
-  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.15);
+/* ─── Noise overlay ─── */
+.noise-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.25;
 }
 
-/* Better date/time input styling */
+/* ─── Input focus ─── */
+input:focus, textarea:focus, select:focus {
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.18);
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.7) sepia(1) saturate(3) hue-rotate(10deg);
+  filter: invert(0.35) sepia(1) saturate(2.5) hue-rotate(5deg);
   cursor: pointer;
 }
-
-html:not(.dark) input[type="date"]::-webkit-calendar-picker-indicator,
-html:not(.dark) input[type="time"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.35) sepia(1) saturate(2.5) hue-rotate(5deg);
+html.dark input[type="date"]::-webkit-calendar-picker-indicator,
+html.dark input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.7) sepia(1) saturate(3) hue-rotate(10deg);
 }
 
-/* Glass card hover glow */
-.glass-card:hover {
-  box-shadow: 0 8px 40px -8px hsl(var(--primary) / 0.12), 0 0 0 1px hsl(var(--primary) / 0.15);
-}
-
-/* Gold border gradient utility */
+/* ─── Gold border gradient utility ─── */
 .gold-border {
   border: 1px solid transparent;
   background-clip: padding-box;
@@ -397,4 +356,9 @@ html:not(.dark) input[type="time"]::-webkit-calendar-picker-indicator {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+}
+
+/* ─── Glass card hover glow ─── */
+html.dark .glass-card:hover {
+  box-shadow: 0 8px 40px -8px hsl(var(--primary) / 0.12), 0 0 0 1px hsl(var(--primary) / 0.15);
 }

@@ -61,7 +61,7 @@ export default function Orders() {
                 placeholder="e.g. DC-20240325-1234" 
                 value={orderNumber} 
                 onChange={e=>setOrderNumber(e.target.value)} 
-                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none" 
+                className="w-full bg-overlay/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none" 
               />
             </div>
             <div className="space-y-2">
@@ -71,7 +71,7 @@ export default function Orders() {
                 placeholder="+971 ..." 
                 value={phone} 
                 onChange={e=>setPhone(e.target.value)} 
-                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none" 
+                className="w-full bg-overlay/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none" 
               />
             </div>
             <button 
@@ -98,7 +98,7 @@ export default function Orders() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="glass-card bg-black/20 border-white/5 md:col-span-2">
+            <Card className="glass-card bg-overlay/20 border-white/5 md:col-span-2">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm uppercase tracking-widest text-muted-foreground flex items-center gap-2">
                   <Package size={16} /> Order Details

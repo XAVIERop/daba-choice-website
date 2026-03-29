@@ -75,8 +75,8 @@ export default function Menu() {
                 onClick={() => setActiveCategory(cat)}
                 className={`whitespace-nowrap px-6 py-2 rounded-full text-sm tracking-wider font-medium transition-all ${
                   activeCategory === cat 
-                    ? "bg-primary text-black shadow-lg shadow-primary/20" 
-                    : "bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-white border border-white/5"
+                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" 
+                    : "bg-primary/5 text-muted-foreground hover:bg-primary/10 hover:text-primary border border-primary/10"
                 }`}
               >
                 {cat}
@@ -91,7 +91,7 @@ export default function Menu() {
               placeholder="Search dishes..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-black/40 border border-white/10 rounded-full py-3 pl-12 pr-4 text-white placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+              className="w-full bg-white/60 border border-primary/20 rounded-full py-3 pl-12 pr-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-sm"
             />
           </div>
         </div>
@@ -109,7 +109,7 @@ export default function Menu() {
         ) : isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="glass-card rounded-2xl h-96 animate-pulse bg-white/5" />
+              <div key={i} className="glass-card rounded-2xl h-96 animate-pulse bg-primary/5" />
             ))}
           </div>
         ) : cafeError || !cafeId ? (
@@ -155,16 +155,16 @@ export default function Menu() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  className="glass-card rounded-2xl overflow-hidden flex flex-col group"
+                   className="glass-card rounded-2xl overflow-hidden flex flex-col group min-h-[16rem]"
                 >
-                  {item.image_url && (
-                    <div className="h-56 relative overflow-hidden bg-black/50">
+                  {item.image_url ? (
+                    <div className="h-56 relative overflow-hidden bg-primary/10">
                       <img 
                         src={item.image_url} 
                         alt={item.name} 
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                       />
-                      <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+                      <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-md px-3 py-1 rounded-full border border-primary/20 shadow-sm">
                         {item.price > 0 ? (
                           <span className="font-bold text-primary">AED {item.price}</span>
                         ) : (
@@ -172,27 +172,33 @@ export default function Menu() {
                         )}
                       </div>
                     </div>
+                  ) : (
+                    <div className="h-24 bg-gradient-to-br from-primary/10 to-transparent border-b border-primary/5 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center text-primary/30 border border-primary/10">
+                        ਸ
+                      </div>
+                    </div>
                   )}
                   
                   <div className="p-6 flex flex-col flex-1">
                     <div className="flex justify-between items-start mb-2 gap-4">
-                      <h3 className="font-display text-xl font-bold text-white">{item.name}</h3>
+                      <h3 className="font-display text-xl font-bold text-foreground">{item.name}</h3>
                       <div className="flex flex-col items-end gap-2 shrink-0">
                         {!item.image_url && (
-                          <div className="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-bold border border-primary/30 whitespace-nowrap">
+                          <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-black border border-primary/25 whitespace-nowrap shadow-sm">
                             {item.price > 0 ? `AED ${item.price}` : "Price on Selection"}
                           </div>
                         )}
                         {item.spiceLevel > 0 && <SpiceLevel level={item.spiceLevel} />}
                       </div>
                     </div>
-                    <p className="text-sm text-muted-foreground flex-1 mb-6">{item.description}</p>
+                    <p className="text-sm font-medium text-foreground/80 flex-1 mb-6 leading-relaxed">{item.description}</p>
                     
                     {item.price > 0 ? (
                       <button 
                         onClick={() => handleAddToCart(item)}
                         disabled={!item.is_available}
-                        className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-primary/30 text-primary hover:bg-primary hover:text-black transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-primary"
+                        className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-primary"
                       >
                         <Plus size={18} />
                         {item.is_available ? "Add to Order" : "Sold Out"}
@@ -220,19 +226,19 @@ export default function Menu() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 md:p-8" 
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-background/95 backdrop-blur-md p-4 md:p-8" 
               onClick={() => setShowMenuCard(false)}
             >
               <motion.div 
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
-                className="relative max-w-4xl w-full max-h-[95vh] overflow-y-auto rounded-2xl bg-black border border-white/10 p-2 md:p-4 scrollbar-hide" 
+                className="relative max-w-4xl w-full max-h-[95vh] overflow-y-auto rounded-2xl bg-card border border-primary/20 p-2 md:p-4 scrollbar-hide" 
                 onClick={e => e.stopPropagation()}
               >
                 <button 
                   onClick={() => setShowMenuCard(false)}
-                  className="sticky top-2 float-right bg-white/10 backdrop-blur border border-white/20 p-2 rounded-full text-white hover:bg-primary hover:text-black transition-colors z-20"
+                  className="sticky top-2 float-right bg-primary/10 backdrop-blur border border-primary/20 p-2 rounded-full text-primary hover:bg-primary hover:text-primary-foreground transition-colors z-20"
                 >
                   <X size={24} />
                 </button>

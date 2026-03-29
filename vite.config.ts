@@ -21,5 +21,9 @@ export default defineConfig({
   server: {
     port: 5173,
     host: "127.0.0.1",
+    headers: {
+      // Avoid stale CSS/JS while iterating locally (hard refresh still recommended).
+      "Cache-Control": "no-store",
+    },
   },
 });

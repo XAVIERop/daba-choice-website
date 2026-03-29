@@ -4,7 +4,9 @@ import { persist, createJSONStorage } from "zustand/middleware";
 export type ThemeMode = "light" | "dark";
 
 function applyTheme(mode: ThemeMode) {
-  document.documentElement.classList.toggle("dark", mode === "dark");
+  // Redesign: forced light mode globally
+  document.documentElement.classList.remove("dark");
+  document.documentElement.setAttribute("data-theme", "light");
 }
 
 export const useThemeStore = create(
@@ -14,7 +16,7 @@ export const useThemeStore = create(
     toggleMode: () => void;
   }>(
     (set, get) => ({
-      mode: "dark",
+      mode: "light",
       setMode: (mode) => {
         applyTheme(mode);
         set({ mode });
@@ -26,7 +28,11 @@ export const useThemeStore = create(
       storage: createJSONStorage(() => localStorage),
       partialize: (s) => ({ mode: s.mode }),
       onRehydrateStorage: () => (state) => {
-        if (state?.mode) applyTheme(state.mode);
+        // Migration: ensure every user is switched to light theme for the new redesign
+        if (state?.mode === "dark") {
+          state.setMode("light");
+        }
+        applyTheme("light");
       },
     }
   )

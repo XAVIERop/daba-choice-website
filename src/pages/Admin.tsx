@@ -69,14 +69,14 @@ export default function Admin() {
         </div>
         <button 
           onClick={() => { refetchOrders(); refetchReservations(); refetchMessages(); }}
-          className="flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 text-primary rounded-xl hover:bg-primary hover:text-black transition-all"
+          className="flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 text-primary rounded-xl hover:bg-primary hover:text-primary-foreground transition-all"
         >
           <RefreshCw size={16} /> Refresh
         </button>
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="bg-black/40 border border-white/10 p-1 rounded-2xl">
+        <TabsList className="bg-overlay/40 border border-white/10 p-1 rounded-2xl">
           <TabsTrigger value="orders" className="rounded-xl px-6 py-2 gap-2">
             <ShoppingBag size={18} /> Orders
           </TabsTrigger>
@@ -212,7 +212,7 @@ export default function Admin() {
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {messages?.map((msg: any) => (
-                    <div key={msg.id} className="p-6 rounded-2xl border border-white/10 bg-black/20 hover:border-primary/30 transition-all">
+                    <div key={msg.id} className="p-6 rounded-2xl border border-white/10 bg-overlay/20 hover:border-primary/30 transition-all">
                       <div className="flex justify-between items-start mb-4">
                         <div>
                           <h4 className="font-bold text-white">{msg.customer_name}</h4>

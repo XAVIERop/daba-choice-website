@@ -21,7 +21,7 @@ export function CartDrawer() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[70]"
+            className="fixed inset-0 bg-overlay/60 backdrop-blur-sm z-[70]"
           />
           <motion.div
             initial={{ x: "100%" }}
@@ -57,7 +57,7 @@ export function CartDrawer() {
                 </div>
               ) : (
                 items.map((item) => (
-                  <div key={item.menuItem.id} className="flex gap-4 items-center bg-black/40 p-4 rounded-xl border border-white/5">
+                  <div key={item.menuItem.id} className="flex gap-4 items-center bg-overlay/40 p-4 rounded-xl border border-white/5">
                     {item.menuItem.image_url ? (
                       <img 
                         src={item.menuItem.image_url} 
@@ -105,7 +105,7 @@ export function CartDrawer() {
             </div>
 
             {items.length > 0 && (
-              <div className="p-6 border-t border-white/10 bg-black/40">
+              <div className="p-6 border-t border-white/10 bg-overlay/40">
                 <div className="flex justify-between items-center mb-6">
                   <span className="text-muted-foreground">Subtotal</span>
                   <span className="text-2xl font-display font-bold gold-gradient-text">

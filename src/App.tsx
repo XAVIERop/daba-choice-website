@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Switch, Route, Redirect, Router as WouterRouter, useLocation } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CafeProvider } from "@/contexts/CafeContext";
-import { TemplateProvider, type TemplateId } from "@/contexts/TemplateContext";
+import { TemplateProvider } from "@/contexts/TemplateContext";
 
 // Layout & UI
 import { Navbar } from "./components/layout/Navbar";
@@ -21,13 +21,13 @@ import OrderSuccess from "./pages/OrderSuccess";
 import Orders from "./pages/Orders";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
-import Reservation from "./pages/Reservation";
 import Gallery from "./pages/Gallery";
 import Reviews from "./pages/Reviews";
 import Offers from "./pages/Offers";
 import Contact from "./pages/Contact";
 import Tiffin from "./pages/Tiffin";
 import Catering from "./pages/Catering";
+import About from "./pages/About";
 import Admin from "./pages/Admin";
 import TemplatePicker from "./pages/TemplatePicker";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -43,46 +43,9 @@ const queryClient = new QueryClient({
   },
 });
 
-const VALID_TEMPLATES: TemplateId[] = ["1", "2", "3", "4", "5"];
-const TEMPLATE_STORAGE_KEY = "daba-preview-template";
-
-function getTemplateFromUrl(): string | null {
-  if (typeof window === "undefined") return null;
-  const tid = new URLSearchParams(window.location.search).get("template");
-  return tid && VALID_TEMPLATES.includes(tid as TemplateId) ? tid : null;
-}
-
 function TemplateWrapper({ children }: { children: React.ReactNode }) {
-  const [location] = useLocation();
-  const [templateId, setTemplateId] = useState<TemplateId | null>(null);
-
-  useEffect(() => {
-    const baseUrl = import.meta.env.BASE_URL?.replace(/\/$/, "") || "";
-    const fullPath = location.split("?")[0] || "/";
-    const pathname = baseUrl && fullPath.startsWith(baseUrl) ? fullPath.slice(baseUrl.length) || "/" : fullPath;
-
-    if (pathname === "/choose") {
-      sessionStorage.removeItem(TEMPLATE_STORAGE_KEY);
-      setTemplateId(null);
-      return;
-    }
-
-    const fromUrl = getTemplateFromUrl();
-    const fromStorage = sessionStorage.getItem(TEMPLATE_STORAGE_KEY) as TemplateId | null;
-    const stored = fromStorage && VALID_TEMPLATES.includes(fromStorage) ? fromStorage : null;
-
-    if (fromUrl) {
-      sessionStorage.setItem(TEMPLATE_STORAGE_KEY, fromUrl);
-      setTemplateId(fromUrl as TemplateId);
-    } else if (stored) {
-      setTemplateId(stored);
-    } else {
-      setTemplateId(null);
-    }
-  }, [location]);
-
-  if (!templateId) return <>{children}</>;
-  return <TemplateProvider templateId={templateId}>{children}</TemplateProvider>;
+  // Permanently set to Template 4 (Refined Light Theme)
+  return <TemplateProvider templateId="4">{children}</TemplateProvider>;
 }
 
 function ScrollToTop() {
@@ -109,13 +72,18 @@ function AppRouter() {
           {features.show_auth && <Route path="/orders" component={Orders} />}
           {features.show_auth && <Route path="/auth" component={Auth} />}
           {features.show_auth && <Route path="/profile" component={Profile} />}
-          <Route path="/reservation" component={Reservation} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/reservation" component={() => {
+            const [, setLocation] = useLocation();
+            useEffect(() => { setLocation("/contact"); }, [setLocation]);
+            return null;
+          }} />
           <Route path="/gallery" component={Gallery} />
           <Route path="/reviews" component={Reviews} />
           <Route path="/offers" component={Offers} />
           <Route path="/tiffin" component={Tiffin} />
           <Route path="/catering" component={Catering} />
-          <Route path="/contact" component={Contact} />
+          <Route path="/about" component={About} />
           {features.show_admin && <Route path="/admin" component={Admin} />}
           <Route path="/privacy-policy" component={PrivacyPolicy} />
           <Route path="/terms-of-service" component={TermsOfService} />

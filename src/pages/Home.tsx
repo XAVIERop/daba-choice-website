@@ -51,7 +51,7 @@ const HERO_YOUTUBE_POSTER = `https://i.ytimg.com/vi/${HERO_YOUTUBE_ID}/hqdefault
 
 /** Always-visible still (under video) so the hero never flashes empty black while the MP4 buffers. */
 const HERO_STILL_BG =
-  "https://images.unsplash.com/photo-1626776880227-9415683a690d?q=80&w=2070&auto=format&fit=crop";
+  "https://images.unsplash.com/photo-1541167760496-1628856ab752?q=80&w=2070&auto=format&fit=crop";
 
 /** Smaller files first so the first frame appears sooner. */
 const HERO_MP4_SOURCES = [
@@ -194,7 +194,7 @@ export default function Home() {
       {isRoyal ? (
         <section
           ref={heroRef}
-          className="relative min-h-[min(820px,90vh)] lg:min-h-screen overflow-hidden border-b border-white/10"
+          className="relative min-h-[min(820px,90vh)] lg:min-h-screen overflow-hidden border-b border-amber-200/30"
         >
           <div className="grid lg:grid-cols-2 min-h-[min(820px,90vh)] lg:min-h-screen">
             <motion.div
@@ -252,7 +252,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.35 }}
-                  className="flex flex-wrap gap-x-8 gap-y-3 mb-10 text-muted-foreground text-sm"
+                  className="flex flex-wrap gap-x-8 gap-y-3 mb-10 text-foreground font-medium"
                 >
                   <span className="flex items-center gap-2">
                     <Star size={16} className="fill-primary text-primary shrink-0" />
@@ -313,9 +313,9 @@ export default function Home() {
               youtubeEmbedSrc={youtubeEmbedSrc}
             />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-background" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-black/50 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent via-40% to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/5 via-transparent via-30% to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent via-30% to-transparent pointer-events-none" />
 
           <div className="absolute top-1/4 left-8 w-px h-32 bg-gradient-to-b from-transparent via-primary/50 to-transparent hidden lg:block" />
           <div className="absolute top-1/4 right-8 w-px h-32 bg-gradient-to-b from-transparent via-primary/50 to-transparent hidden lg:block" />
@@ -338,42 +338,20 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-block text-primary font-bold tracking-[0.4em] uppercase text-xs md:text-sm mb-6 border border-primary/30 px-6 py-2 rounded-full backdrop-blur-sm bg-primary/5"
+              className="inline-block text-amber-500 font-bold tracking-[0.4em] uppercase text-xs md:text-sm mb-6 border border-amber-500/40 px-6 py-2 rounded-full backdrop-blur-sm bg-amber-500/10 shadow-lg shadow-amber-500/10"
             >
-              Welcome to Dubai's Finest Punjabi Cafe
+              Dubai ਦਾ ਸਭ ਤੋਂ ਵਧੀਆ ਢਾਬਾ
             </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 leading-[1.05]"
+              className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-4 leading-[1.05] drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
             >
-              THE REAL TASTE<br />
-              <span className="gold-gradient-text">OF PUNJAB</span>
+              <span className="text-white">THE REAL TASTE</span><br />
+              <span className="text-white">OF PUNJAB</span>
             </motion.h1>
-
-
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mb-8 text-white/80 text-sm"
-            >
-              <span className="flex items-center gap-2">
-                <Star size={16} className="fill-primary text-primary" />
-                4.9/5 Rating
-              </span>
-              <span className="flex items-center gap-2">
-                <Users size={16} className="text-primary" />
-                1000+ Happy Guests
-              </span>
-              <span className="flex items-center gap-2">
-                <ShieldCheck size={16} className="text-primary" />
-                100% Authentic
-              </span>
-            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -381,11 +359,11 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <Link href="/menu" className="gold-button px-10 py-4 rounded-full text-sm tracking-[0.2em] w-full sm:w-auto text-center">
+              <Link href="/menu" className="gold-button px-12 py-4 rounded-full text-sm font-bold tracking-[0.2em] w-full sm:w-auto text-center shadow-2xl shadow-amber-500/20">
                 EXPLORE MENU
               </Link>
-              <Link href="/reservation" className="outline-button px-10 py-4 rounded-full text-sm tracking-[0.2em] w-full sm:w-auto text-center bg-black/30 backdrop-blur-md">
-                BOOK A TABLE
+              <Link href="/contact" className="px-12 py-4 rounded-full text-sm font-bold tracking-[0.2em] w-full sm:w-auto text-center backdrop-blur-md border border-amber-500/50 text-amber-500 hover:bg-amber-500/10 transition-all shadow-xl shadow-black/10">
+                BOOK & CONTACT
               </Link>
             </motion.div>
           </motion.div>
@@ -394,9 +372,9 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40"
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60"
           >
-            <span className="text-xs tracking-[0.3em] uppercase">Scroll</span>
+            <span className="text-xs tracking-[0.3em] uppercase drop-shadow-sm font-medium">Scroll</span>
             <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
               <ChevronDown size={20} />
             </motion.div>
@@ -405,23 +383,19 @@ export default function Home() {
       )}
 
       {/* ─── STATS BAR ─── */}
-      <section
-        className={`py-12 border-y border-white/5 relative overflow-hidden ${
-          isRoyal ? "bg-gradient-to-r from-secondary/40 via-black to-secondary/40" : "bg-black"
-        }`}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5" />
+      <section className="py-12 border-y border-amber-200/60 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 30%, #fbbf24 60%, #f59e0b 85%, #d97706 100%)' }}>
+        <div className="absolute inset-0 opacity-10"
+          style={{ backgroundImage: "repeating-linear-gradient(45deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 14px), repeating-linear-gradient(-45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 14px)" }}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div
-            className={`grid grid-cols-2 md:grid-cols-4 text-center ${
-              isRoyal ? "gap-6 md:gap-0 md:divide-x md:divide-white/10 [&>div]:md:px-6" : "gap-8"
-            }`}
-          >
+          <div className={`grid grid-cols-2 md:grid-cols-4 text-center ${
+            isRoyal ? "gap-6 md:gap-0 md:divide-x md:divide-amber-700/30 [&>div]:md:px-6" : "gap-8"
+          }`}>
             {[
-              { value: 73, suffix: "+", label: "Authentic Dishes" },
-              { value: 12, suffix: "", label: "Menu Categories" },
-              { value: 100, suffix: "%", label: "Authentic Recipes" },
-              { value: 5, suffix: "★", label: "Average Rating" },
+              { value: 73, suffix: "+", label: "Authentic Dishes", punjabi: "ਪਕਵਾਨ" },
+              { value: 12, suffix: "", label: "Menu Categories", punjabi: "ਕੈਟਾਗਰੀਆਂ" },
+              { value: 100, suffix: "%", label: "Authentic Recipes", punjabi: "ਅਸਲੀ" },
+              { value: 5, suffix: "★", label: "Average Rating", punjabi: "ਰੇਟਿੰਗ" },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -430,10 +404,11 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
               >
-                <div className="font-display text-4xl md:text-5xl font-bold gold-gradient-text mb-2">
+                <div className="font-display text-4xl md:text-5xl font-bold text-amber-900 mb-1">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 </div>
-                <p className="text-muted-foreground text-sm uppercase tracking-widest">{stat.label}</p>
+                <p className="text-amber-800/80 text-sm uppercase tracking-widest">{stat.label}</p>
+                <p className="text-amber-700/60 text-xs mt-0.5">{stat.punjabi}</p>
               </motion.div>
             ))}
           </div>
@@ -502,8 +477,8 @@ export default function Home() {
                       <item.icon size={18} />
                     </div>
                     <div>
-                      <p className="font-bold text-white text-sm">{item.label}</p>
-                      <p className="text-xs text-muted-foreground">{item.sub}</p>
+                      <p className="font-bold text-foreground text-sm">{item.label}</p>
+                      <p className="text-sm text-foreground/70 font-medium flex-1 mb-6 leading-relaxed">{item.sub}</p>
                     </div>
                   </div>
                 ))}
@@ -519,7 +494,7 @@ export default function Home() {
 
       {/* ─── FEATURED DISHES ─── */}
       {featuredItems.length > 0 && (
-        <section className="py-28 bg-card/20 border-y border-white/5 relative overflow-hidden">
+        <section className="py-28 bg-amber-50/60 border-y border-amber-200/50 relative overflow-hidden">
           <div
             className="absolute inset-0 opacity-[0.025] pointer-events-none"
             style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/arabic-pattern.png)`, backgroundSize: '300px' }}
@@ -567,27 +542,27 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                     <div className="absolute top-4 right-4 flex flex-col gap-2 items-end">
                       {i === 0 && (
-                        <span className="bg-primary/90 text-black text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        <span className="bg-primary/90 text-primary-foreground text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
                           Bestseller
                         </span>
                       )}
                       {i === 2 && (
-                        <span className="bg-accent/90 text-black text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        <span className="bg-accent/90 text-accent-foreground text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
                           Highly Rated
                         </span>
                       )}
-                      <span className="bg-black/60 backdrop-blur-md border border-primary/40 text-primary text-xs font-bold px-3 py-1 rounded-full">
+                      <span className="bg-white/80 backdrop-blur-md border border-primary/40 text-primary text-xs font-bold px-3 py-1 rounded-full">
                         {item.category}
                       </span>
                     </div>
                     <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
                       <h3 className="font-display text-xl font-bold text-white leading-tight">{item.name}</h3>
-                      <span className="text-primary font-bold text-lg shrink-0 ml-3">AED {item.price}</span>
+                      <span className="text-white font-bold text-lg shrink-0 ml-3">AED {item.price}</span>
                     </div>
                   </div>
                   <div className="p-6">
                     <p className="text-muted-foreground text-sm line-clamp-2 mb-4">{item.description}</p>
-                    <Link href="/menu" className="text-primary text-xs font-bold uppercase tracking-widest hover:text-white transition-colors flex items-center gap-1">
+                    <Link href="/menu" className="text-primary text-xs font-bold uppercase tracking-widest hover:text-accent transition-colors flex items-center gap-1">
                       Order Now <ArrowRight size={14} />
                     </Link>
                   </div>
@@ -638,7 +613,7 @@ export default function Home() {
                   className={
                     isRoyal
                       ? "w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center text-primary shrink-0"
-                      : "w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6 group-hover:bg-primary group-hover:text-black transition-all duration-300"
+                      : "w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
                   }
                 >
                   <f.icon size={isRoyal ? 22 : 28} />
@@ -654,7 +629,7 @@ export default function Home() {
       </section>
 
       {/* ─── CATERING & SONG SHOOTS ─── */}
-      <section className="py-28 relative overflow-hidden bg-black/40">
+      <section className="py-28 relative overflow-hidden bg-amber-50/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -684,7 +659,7 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 border border-white/5"
+              className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 border border-amber-200/40"
             >
               <img 
                 src="https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2070&auto=format&fit=crop" 
@@ -693,7 +668,7 @@ export default function Home() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-6 left-6 flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-black">
+                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground">
                   <Star className="fill-current" size={20} />
                 </div>
                 <p className="text-white font-bold text-lg">Trusted by Professionals</p>
@@ -704,7 +679,7 @@ export default function Home() {
       </section>
 
       {/* ─── TIFFIN SERVICES (EXISTING) ─── */}
-      <section className="py-28 bg-card/20 border-y border-white/5 relative overflow-hidden">
+      <section className="py-28 bg-amber-50/40 border-y border-amber-200/50 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
           style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/arabic-pattern.png)`, backgroundSize: '300px' }}
@@ -716,9 +691,6 @@ export default function Home() {
             viewport={{ once: true }}
             className="flex flex-col md:flex-row items-center justify-center gap-8"
           >
-            <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-              <Package size={40} />
-            </div>
             <div>
               <span className="text-primary font-bold tracking-[0.3em] uppercase text-xs block mb-2">Daily Meal Plans</span>
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-3">
@@ -736,12 +708,30 @@ export default function Home() {
       </section>
 
       {/* ─── POPULAR CATEGORIES STRIP ─── */}
-      <section className="py-8 bg-black border-y border-white/5 overflow-hidden">
-        <div className="flex gap-8 animate-[marquee_20s_linear_infinite] whitespace-nowrap">
-          {["Breakfast", "Desi Chaat", "Biryani", "BBQ", "Karahi", "Lassi", "Fish", "Breads", "Sweets", "Tea", "Lunch & Dinner", "Special Dish",
-            "Breakfast", "Desi Chaat", "Biryani", "BBQ", "Karahi", "Lassi", "Fish", "Breads", "Sweets", "Tea", "Lunch & Dinner", "Special Dish"].map((cat, i) => (
-            <span key={i} className="text-white/30 text-sm font-display tracking-[0.3em] uppercase shrink-0">
-              {cat} <span className="text-primary mx-4">✦</span>
+      <section className="py-8 bg-primary/5 border-y border-primary/15 overflow-hidden">
+        <div className="flex gap-8 animate-[marquee_22s_linear_infinite] whitespace-nowrap">
+          {[
+            { en: "Breakfast", pa: "ਨਾਸ਼ਤਾ" },
+            { en: "Desi Chaat", pa: "ਚਾਟ" },
+            { en: "Biryani", pa: "ਬਿਰਯਾਨੀ" },
+            { en: "BBQ", pa: "ਬੀਬੀਕਿਊ" },
+            { en: "Karahi", pa: "ਕੜਾਹੀ" },
+            { en: "Lassi", pa: "ਲੱਸੀ" },
+            { en: "Breads", pa: "ਰੋਟੀ" },
+            { en: "Sweets", pa: "ਮਿਠਾਈ" },
+            { en: "Tea", pa: "ਚਾਹ" },
+            { en: "Tiffin", pa: "ਟਿਫਿਨ" },
+            { en: "Breakfast", pa: "ਨਾਸ਼ਤਾ" },
+            { en: "Desi Chaat", pa: "ਚਾਟ" },
+            { en: "Biryani", pa: "ਬਿਰਯਾਨੀ" },
+            { en: "Karahi", pa: "ਕੜਾਹੀ" },
+            { en: "Lassi", pa: "ਲੱਸੀ" },
+            { en: "Breads", pa: "ਰੋਟੀ" },
+          ].map((cat, i) => (
+            <span key={i} className="text-foreground/50 text-sm font-display tracking-[0.2em] uppercase shrink-0 flex items-center gap-3">
+              <span>{cat.en}</span>
+              <span className="text-primary/60 text-xs font-sans font-medium normal-case tracking-normal">{cat.pa}</span>
+              <span className="text-accent mx-2">✦</span>
             </span>
           ))}
         </div>
@@ -769,19 +759,19 @@ export default function Home() {
                   transition={{ delay: i * 0.15 }}
                   className="glass-card p-8 rounded-3xl relative overflow-hidden"
                 >
-                  <div className="absolute top-4 right-4 font-display text-8xl text-white/3 leading-none select-none">"</div>
+                  <div className="absolute top-4 right-4 font-display text-8xl text-foreground/5 leading-none select-none">“</div>
                   <div className="flex gap-1 mb-5">
                     {Array.from({ length: 5 }).map((_, j) => (
-                      <Star key={j} size={14} className={j < review.rating ? "fill-primary text-primary" : "text-white/20"} />
+                      <Star key={j} size={14} className={j < review.rating ? "fill-primary text-primary" : "text-foreground/20"} />
                     ))}
                   </div>
                   <p className="text-muted-foreground italic mb-6 leading-relaxed text-sm relative z-10">"{review.comment}"</p>
-                  <div className="flex items-center gap-3 border-t border-white/10 pt-5">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-black font-bold font-display">
+                  <div className="flex items-center gap-3 border-t border-amber-200/40 pt-5">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold font-display">
                       {review.authorName.charAt(0)}
                     </div>
                     <div>
-                      <p className="font-bold text-white text-sm">{review.authorName}</p>
+                      <p className="font-bold text-foreground text-sm">{review.authorName}</p>
                       <p className="text-xs text-primary">Verified Guest</p>
                     </div>
                   </div>
@@ -790,7 +780,7 @@ export default function Home() {
             </div>
 
             <div className="text-center mt-12">
-              <Link href="/reviews" className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors font-medium tracking-wider text-sm uppercase">
+              <Link href="/reviews" className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors font-medium tracking-wider text-sm uppercase">
                 Read All Reviews <ArrowRight size={16} />
               </Link>
             </div>
@@ -824,7 +814,7 @@ export default function Home() {
                     ))}
                   </div>
                   <p className="text-muted-foreground italic mb-6 text-sm">"{t.review}"</p>
-                  <p className="font-bold text-white text-sm">{t.name}</p>
+                  <p className="font-bold text-foreground text-sm">{t.name}</p>
                   <p className="text-xs text-primary">Verified Guest</p>
                 </motion.div>
               ))}
@@ -833,8 +823,129 @@ export default function Home() {
         </section>
       )}
 
+      {/* ─── ABOUT DABA CHOICE ─── */}
+      <section className="py-28 bg-background relative overflow-hidden punjabi-pattern-bg">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary opacity-60" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <span className="text-accent font-bold tracking-[0.3em] uppercase text-xs block mb-2">ਸਾਡੇ ਬਾਰੇ</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
+              ABOUT <span className="gold-gradient-text">DABA CHOICE</span>
+            </h2>
+            <div className="phulkari-divider max-w-xs mx-auto my-6">
+              <span className="text-accent text-lg shrink-0">✦</span>
+            </div>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+              Born from a deep love for Punjabi culture and food, Daba Choice is Dubai's premier destination for authentic North Indian and Punjabi cuisine. Every dish honours the legacy of the legendary Haveli-style Dhabas of Punjab.
+            </p>
+          </div>
+
+          {/* Values grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                icon: "🙏",
+                title: "Seva",
+                punjabi: "ਸੇਵਾ",
+                desc: "True service runs in our veins. Every guest is treated like family — with warmth, respect, and genuine care."
+              },
+              {
+                icon: "🍛",
+                title: "Swad",
+                punjabi: "ਸੁਆਦ",
+                desc: "Taste is our identity. Hand-ground masalas, slow-cooked gravies, and recipes passed down through generations."
+              },
+              {
+                icon: "👑",
+                title: "Shaan",
+                punjabi: "ਸ਼ਾਨ",
+                desc: "Pride in every plate. The pride of Punjab shines through every dish we serve — no shortcuts, ever."
+              },
+            ].map((val, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+                className="glass-card rounded-2xl p-8 text-center group hover:border-primary/50 punjabi-border"
+              >
+                <div className="text-5xl mb-5">{val.icon}</div>
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <h3 className="font-display text-2xl font-bold text-foreground">{val.title}</h3>
+                  <span className="text-primary font-medium text-lg">{val.punjabi}</span>
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">{val.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Story + image */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-6"
+            >
+              <blockquote className="text-2xl font-display italic text-primary leading-relaxed border-l-4 border-accent pl-6">
+                "ਦਿਲ ਤੋਂ, ਢਾਬੇ ਤੱਕ"
+              </blockquote>
+              <p className="text-muted-foreground text-base leading-relaxed">
+                In Punjabi culture, food is never just sustenance — it is love made visible. At Daba Choice, our journey started with one simple promise: to bring the true spirit of the Punjabi Dhaba to the heart of Dubai.
+              </p>
+              <p className="text-muted-foreground text-base leading-relaxed">
+                From Amritsari Kulcha and smoky Tandoori Rotis to rich Daal Makhani and Kadhai dishes — every recipe honours the kitchens of our ancestors. We serve not just food, but a feeling: the joy of a shared meal under the open Punjab sky.
+              </p>
+              <div className="flex gap-6 pt-2">
+                {[
+                  { num: "3+", label: "Years in Dubai" },
+                  { num: "1000+", label: "Happy Families" },
+                  { num: "73+", label: "Authentic Dishes" },
+                ].map((s, i) => (
+                  <div key={i} className="text-center">
+                    <p className="font-display text-2xl font-bold gold-gradient-text">{s.num}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+              <Link href="/about" className="inline-flex items-center gap-2 gold-button px-8 py-3 rounded-full text-sm">
+                Our Full Story <ArrowRight size={16} />
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-primary/15 punjabi-border">
+                <img
+                  src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=900&fit=crop"
+                  alt="Punjabi Dhaba Culture"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="bg-white/90 dark:bg-card/90 backdrop-blur-md rounded-2xl px-5 py-4 border border-primary/20">
+                    <p className="font-display text-sm font-bold text-foreground">ਪੰਜਾਬੀ ਸੱਭਿਆਚਾਰ</p>
+                    <p className="text-xs text-muted-foreground">Authentic Punjabi Culture • Dubai</p>
+                  </div>
+                </div>
+              </div>
+              <div className="absolute -top-4 -right-4 w-20 h-20 border-t-2 border-r-2 border-accent/50 rounded-tr-2xl" />
+              <div className="absolute -bottom-4 -left-4 w-20 h-20 border-b-2 border-l-2 border-primary/40 rounded-bl-2xl" />
+            </motion.div>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-primary to-accent opacity-60" />
+      </section>
+
       {/* ─── VISIT US / DELIVERY CTA ─── */}
-      <section className="py-28 bg-card/20 border-y border-white/5 relative overflow-hidden">
+      <section className="py-28 bg-amber-50/60 border-y border-amber-200/50 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5"
           style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/arabic-pattern.png)`, backgroundSize: '300px' }}
@@ -861,7 +972,7 @@ export default function Home() {
               <a href="tel:+971504247836" className="outline-button px-10 py-4 rounded-full text-sm tracking-[0.2em]">
                 CALL NOW
               </a>
-              <a href="https://maps.google.com/?q=Daba+Choice+Restaurant+International+City+Dubai" target="_blank" rel="noopener noreferrer" className="px-10 py-4 rounded-full text-sm tracking-[0.2em] border border-white/20 text-white/70 hover:border-white/40 hover:text-white transition-all">
+              <a href="https://maps.google.com/?q=Daba+Choice+Restaurant+International+City+Dubai" target="_blank" rel="noopener noreferrer" className="px-10 py-4 rounded-full text-sm tracking-[0.2em] border border-primary/40 text-primary hover:border-primary hover:bg-primary hover:text-white transition-all">
                 GET DIRECTIONS
               </a>
             </div>

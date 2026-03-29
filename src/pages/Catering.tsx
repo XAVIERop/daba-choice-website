@@ -57,7 +57,7 @@ export default function Catering() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(https://images.unsplash.com/photo-1555244162-803834f70033?w=1600&fit=crop)` }}
         />
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-overlay/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
         
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
@@ -159,7 +159,7 @@ export default function Catering() {
                   <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
                     <CheckCircle2 size={14} className="text-primary" />
                   </div>
-                  <span className="text-white/90">{item}</span>
+                  <span className="text-foreground/80">{item}</span>
                 </div>
               ))}
             </div>
@@ -182,33 +182,33 @@ export default function Catering() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="space-y-2">
                    <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Full Name *</label>
-                   <input required value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none" />
+                   <input required value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="w-full bg-white/80 border border-amber-200/60 rounded-xl px-4 py-3 focus:border-primary focus:outline-none text-foreground" />
                 </div>
                 <div className="space-y-2">
                    <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Phone Number *</label>
-                   <input required type="tel" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none" />
+                   <input required type="tel" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} className="w-full bg-white/80 border border-amber-200/60 rounded-xl px-4 py-3 focus:border-primary focus:outline-none text-foreground" />
                 </div>
               </div>
 
               <div className="space-y-2">
                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Email Address</label>
-                 <input type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none" />
+                 <input type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} className="w-full bg-white/80 border border-amber-200/60 rounded-xl px-4 py-3 focus:border-primary focus:outline-none text-foreground" />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="space-y-2">
                   <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Event Date *</label>
-                  <input required min={today} type="date" value={form.date} onChange={e => setForm({...form, date: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none text-sm" />
+                   <input required min={today} type="date" value={form.date} onChange={e => setForm({...form, date: e.target.value})} className="w-full bg-white/80 border border-amber-200/60 rounded-xl px-4 py-3 focus:border-primary focus:outline-none text-sm text-foreground" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Approx Guest Count *</label>
-                  <input required type="number" placeholder="e.g. 50" value={form.guestCount} onChange={e => setForm({...form, guestCount: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none" />
+                   <input required type="number" placeholder="e.g. 50" value={form.guestCount} onChange={e => setForm({...form, guestCount: e.target.value})} className="w-full bg-white/80 border border-amber-200/60 rounded-xl px-4 py-3 focus:border-primary focus:outline-none text-foreground" />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Event Type *</label>
-                <select value={form.eventType} onChange={e => setForm({...form, eventType: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none appearance-none">
+                <select value={form.eventType} onChange={e => setForm({...form, eventType: e.target.value})} className="w-full bg-white/80 border border-amber-200/60 rounded-xl px-4 py-3 focus:border-primary focus:outline-none appearance-none text-foreground">
                   <option value="Punjabi Song Shoot">Punjabi Song Shoot</option>
                   <option value="Corporate Event">Corporate Event</option>
                   <option value="Wedding">Wedding / Reception</option>
@@ -219,7 +219,7 @@ export default function Catering() {
 
               <div className="space-y-2">
                 <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Event Details & Requirements</label>
-                <textarea rows={4} placeholder="Tell us more about your event..." value={form.message} onChange={e => setForm({...form, message: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-primary focus:outline-none resize-none" />
+                <textarea rows={4} placeholder="Tell us more about your event..." value={form.message} onChange={e => setForm({...form, message: e.target.value})} className="w-full bg-white/80 border border-amber-200/60 rounded-xl px-4 py-3 focus:border-primary focus:outline-none resize-none text-foreground" />
               </div>
 
               <button type="submit" className="gold-button w-full py-4 rounded-xl flex items-center justify-center gap-2 text-base font-semibold">

@@ -104,7 +104,7 @@ export default function Tiffin() {
               <Package className="text-primary" size={28} />
             </div>
             <div>
-              <p className="font-display font-bold text-white text-lg">Fresh Daily · Delivered Hot</p>
+              <p className="font-display font-bold text-foreground text-lg">Fresh Daily · Delivered Hot</p>
               <p className="text-muted-foreground text-sm">We deliver to International City Phase 2, Warsan 4, Al Warqa 1-4, Dubai Silicon Oasis, and Academic City.</p>
             </div>
           </div>
@@ -136,7 +136,7 @@ export default function Tiffin() {
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
                   <Utensils size={24} />
                 </div>
-                <h3 className="font-display text-2xl font-bold text-white mb-2">{plan.title}</h3>
+                <h3 className="font-display text-2xl font-bold text-foreground mb-2">{plan.title}</h3>
                 <p className="text-muted-foreground text-sm mb-6 flex-1">{plan.description}</p>
                 <div className="flex items-baseline gap-1 mb-6">
                   <span className="font-display text-3xl font-bold gold-gradient-text">{plan.price}</span>
@@ -179,7 +179,7 @@ export default function Tiffin() {
                 className="glass-card p-6 rounded-2xl flex flex-col items-center text-center"
               >
                 <Calendar className="text-primary mb-4" size={32} />
-                <h4 className="font-display text-xl font-bold text-white mb-1">{opt.title}</h4>
+                <h4 className="font-display text-xl font-bold text-foreground mb-1">{opt.title}</h4>
                 <p className="text-muted-foreground text-sm mb-3">{opt.desc}</p>
                 <p className="font-display text-2xl font-bold gold-gradient-text mb-2">{opt.price}</p>
                 <p className="text-xs text-primary/80">{opt.note}</p>

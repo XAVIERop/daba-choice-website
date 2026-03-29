@@ -9,7 +9,7 @@ export function SpiceLevel({ level }: { level: number }) {
         <Utensils 
           key={i} 
           size={14} 
-          className={i < level ? "text-accent fill-accent" : "text-white/10"} 
+          className={i < level ? "text-accent fill-accent" : "text-muted/30"} 
         />
       ))}
     </div>

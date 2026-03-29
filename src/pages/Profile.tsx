@@ -20,7 +20,7 @@ export default function Profile() {
     <div className="min-h-screen pt-32 pb-24 max-w-4xl mx-auto px-4">
       <div className="glass-card rounded-3xl p-10 flex flex-col md:flex-row items-center md:items-start gap-10">
         
-        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-4xl font-display font-bold text-black shrink-0 shadow-2xl shadow-primary/20 border-4 border-black">
+        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-4xl font-display font-bold text-primary-foreground shrink-0 shadow-2xl shadow-primary/20 border-4 border-black">
           {user.name.charAt(0)}
         </div>
         

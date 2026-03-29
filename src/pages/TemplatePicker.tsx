@@ -14,7 +14,7 @@ export default function TemplatePicker() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-xl border-b border-white/10 py-4">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-overlay/60 backdrop-blur-xl border-b border-white/10 py-4">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
           <Link
             href="/"
@@ -104,7 +104,7 @@ export default function TemplatePicker() {
                           </div>
                         </div>
                         <div className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2">
-                          <span className="text-[10px] uppercase tracking-wider text-white/80 bg-black/45 backdrop-blur-sm px-2.5 py-1 rounded border border-white/15 max-w-[85%]">
+                          <span className="text-[10px] uppercase tracking-wider text-white/80 bg-overlay/45 backdrop-blur-sm px-2.5 py-1 rounded border border-white/15 max-w-[85%]">
                             {template.layoutSummary}
                           </span>
                           <div className="flex gap-1.5 shrink-0" aria-hidden>

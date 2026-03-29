@@ -4,7 +4,7 @@ import { SITE_LOGO_URL, SITE_WORDMARK } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="bg-black border-t border-white/5 pt-16 pb-8 mt-24 relative overflow-hidden">
+    <footer className="bg-amber-50/60 border-t border-amber-200/50 pt-16 pb-8 mt-24 relative overflow-hidden">
       <div 
         className="absolute inset-0 opacity-5 pointer-events-none"
         style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/arabic-pattern.png)`, backgroundSize: '400px' }}
@@ -28,6 +28,7 @@ export function Footer() {
                 {SITE_WORDMARK}
               </h3>
             </div>
+            <p className="text-accent font-bold text-sm mb-2 tracking-wide">ਦਿਲ ਤੋਂ, ਢਾਬੇ ਤੱਕ</p>
             <p className="text-muted-foreground leading-relaxed mb-6">
               The Real Taste of Punjab in the heart of International City, Dubai. Dine-in, takeaway, delivery & tiffin services. Authentic recipes, premium ingredients, warm Punjabi hospitality.
             </p>
@@ -37,7 +38,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-primary hover:bg-primary hover:text-black transition-all"
+                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all shadow-sm"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
@@ -48,9 +49,10 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-lg text-white mb-6 tracking-wider">QUICK LINKS</h4>
+            <h4 className="font-display text-lg text-foreground mb-6 tracking-wider">QUICK LINKS</h4>
             <ul className="space-y-4">
               <li><Link href="/menu" className="text-muted-foreground hover:text-primary transition-colors">Our Menu</Link></li>
+              <li><Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
               <li><Link href="/tiffin" className="text-muted-foreground hover:text-primary transition-colors">Tiffin Plans</Link></li>
               <li><Link href="/catering" className="text-muted-foreground hover:text-primary transition-colors">Catering</Link></li>
               <li><Link href="/reservation" className="text-muted-foreground hover:text-primary transition-colors">Book a Table</Link></li>
@@ -62,7 +64,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-display text-lg text-white mb-6 tracking-wider">FIND US</h4>
+            <h4 className="font-display text-lg text-foreground mb-6 tracking-wider">FIND US</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <MapPin className="text-primary shrink-0 mt-1" size={18} />
@@ -92,7 +94,7 @@ export function Footer() {
 
           {/* Delivery */}
           <div>
-            <h4 className="font-display text-lg text-white mb-6 tracking-wider">DELIVERY AREAS</h4>
+            <h4 className="font-display text-lg text-foreground mb-6 tracking-wider">DELIVERY AREAS</h4>
             <ul className="space-y-3 text-muted-foreground text-sm">
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
@@ -118,7 +120,7 @@ export function Footer() {
 
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-amber-200/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex flex-col gap-1 items-center md:items-start text-center md:text-left">
             <p className="text-muted-foreground text-sm">
               &copy; {new Date().getFullYear()} Daba Choice. All rights reserved. · England Cluster, International City, Dubai
