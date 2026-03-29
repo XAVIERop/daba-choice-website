@@ -612,7 +612,7 @@
       "description": "Mango lassi",
       "price": 10,
       "category": "Drinks",
-      "image_url": "https://images.unsplash.com/photo-1544145945-f904253d0c7b?w=800&auto=format&fit=crop",
+      "image_url": "",
       "is_available": true
     },
     {
@@ -1476,7 +1476,7 @@
       "description": "Traditional gulab jamun",
       "price": 6,
       "category": "Sweets",
-      "image_url": "https://images.unsplash.com/photo-1589113155355-667cb44369e9?w=800&auto=format&fit=crop",
+      "image_url": "",
       "is_available": true
     },
     {
@@ -1674,7 +1674,7 @@
       "description": "Amritsari chole",
       "price": 14,
       "category": "Vegetable",
-      "image_url": "https://images.unsplash.com/photo-1626132646529-5003375a954e?w=800&auto=format&fit=crop",
+      "image_url": "",
       "is_available": true
     },
     {
@@ -1737,7 +1737,7 @@
       "description": "Creamy black lentil",
       "price": 16,
       "category": "Vegetable",
-      "image_url": "https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=800&auto=format&fit=crop",
+      "image_url": "",
       "is_available": true
     },
     {
@@ -1863,7 +1863,7 @@
       "description": "Paneer butter masala",
       "price": 24,
       "category": "Vegetable",
-      "image_url": "https://images.unsplash.com/photo-1567188041302-36fb644369e9?w=800&auto=format&fit=crop",
+      "image_url": "",
       "is_available": true
     },
     {

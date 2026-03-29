@@ -23,12 +23,7 @@ const timeSlots = [
   "20:00", "20:30", "21:00", "21:30", "22:00", "22:30",
 ];
 
-const reservationFeatures = [
-  { icon: "🍛", label: "Authentic Punjabi" },
-  { icon: "🌶️", label: "Fresh Daily" },
-  { icon: "✅", label: "100% Authentic" },
-  { icon: "🎉", label: "Events & Group" },
-];
+
 
 export default function Contact() {
   const { toast } = useToast();
@@ -254,15 +249,6 @@ export default function Contact() {
               </form>
             </div>
 
-            {/* Why Us Cards */}
-            <div className="grid grid-cols-2 gap-3">
-              {reservationFeatures.map((f, i) => (
-                <div key={i} className="glass-panel p-3 rounded-xl border border-amber-200/20 flex items-center gap-2">
-                  <span className="text-lg">{f.icon}</span>
-                  <span className="text-muted-foreground text-[10px] font-bold uppercase tracking-wider">{f.label}</span>
-                </div>
-              ))}
-            </div>
 
           </div>
         </div>
