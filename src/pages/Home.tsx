@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Star, ChevronDown, Utensils, MapPin, ShieldCheck, Flame, Award, Users, Package } from "lucide-react";
 import { useCafeMenu } from "@/hooks/useCafeMenu";
-import { useRef, useEffect, useState, type RefObject } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useTemplate, TEMPLATES, type TemplateLayout } from "@/contexts/TemplateContext";
 
 function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
@@ -45,96 +45,27 @@ const testimonials = [
   { name: "KOmal Kang", review: "I had such a wonderful experience dining here! The food was absolutely delicious every dish was fresh, flavorful, and beautifully presented.", rating: 5 },
 ];
 
-/** Optional YouTube hero — off by default (embed often black on localhost / without referrer). Set `VITE_HERO_USE_YOUTUBE=1` to try. */
-const HERO_YOUTUBE_ID = "fMCtQ-h6_mw";
-const HERO_YOUTUBE_POSTER = `https://i.ytimg.com/vi/${HERO_YOUTUBE_ID}/hqdefault.jpg`;
+/** Always-visible still for the Punjabi Heritage rustic tone. */
+const HERO_STILL_BG_DESKTOP =
+  "https://ik.imagekit.io/foodclub/Daba%20Choice/ChatGPT%20Image%20Mar%2030,%202026,%2010_45_27%20AM.png";
+const HERO_STILL_BG_MOBILE = 
+  "https://ik.imagekit.io/foodclub/Daba%20Choice/ChatGPT%20Image%20Mar%2030,%202026,%2010_51_53%20AM.png";
 
-/** Always-visible still (under video) so the hero never flashes empty black while the MP4 buffers. */
-const HERO_STILL_BG =
-  "https://images.unsplash.com/photo-1541167760496-1628856ab752?q=80&w=2070&auto=format&fit=crop";
-
-/** Smaller files first so the first frame appears sooner. */
-const HERO_MP4_SOURCES = [
-  { src: "https://videos.pexels.com/video-files/5834304/5834304-hd_1280_720_24fps.mp4", type: "video/mp4" },
-  { src: "https://videos.pexels.com/video-files/5834304/5834304-hd_1920_1080_24fps.mp4", type: "video/mp4" },
-  { src: "https://videos.pexels.com/video-files/4092617/4092617-hd_1920_1080_30fps.mp4", type: "video/mp4" },
-] as const;
-
-function heroYoutubeEmbedSrc(id: string, pageOrigin: string) {
-  const p = new URLSearchParams({
-    autoplay: "1",
-    mute: "1",
-    loop: "1",
-    playlist: id,
-    controls: "0",
-    modestbranding: "1",
-    playsinline: "1",
-    rel: "0",
-    iv_load_policy: "3",
-    disablekb: "1",
-    enablejsapi: "1",
-  });
-  if (pageOrigin) p.set("origin", pageOrigin);
-  return `https://www.youtube.com/embed/${id}?${p.toString()}`;
-}
-
-type HeroMediaProps = {
-  heroVideoRef: RefObject<HTMLVideoElement | null>;
-  prefersReducedMotion: boolean;
-  useYoutubeHero: boolean;
-  youtubeEmbedSrc: string | null;
-};
-
-function HeroMediaStack({ heroVideoRef, prefersReducedMotion, useYoutubeHero, youtubeEmbedSrc }: HeroMediaProps) {
+function HeroMediaStack() {
   return (
     <>
+      {/* Desktop Background */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
-        style={{ backgroundImage: `url(${HERO_STILL_BG})` }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 hidden sm:block"
+        style={{ backgroundImage: `url(${HERO_STILL_BG_DESKTOP})` }}
         aria-hidden
       />
-      {prefersReducedMotion ? null : useYoutubeHero ? (
-        <div className="absolute inset-0 overflow-hidden bg-black z-[1]">
-          {youtubeEmbedSrc ? (
-            <iframe
-              title="Daba Choice hero background"
-              src={youtubeEmbedSrc}
-              className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-0"
-              style={{
-                width: "100vw",
-                height: "56.25vw",
-                minHeight: "100vh",
-                minWidth: "177.78vh",
-              }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen={false}
-              referrerPolicy="strict-origin-when-cross-origin"
-              aria-hidden
-            />
-          ) : (
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${HERO_YOUTUBE_POSTER})` }}
-            />
-          )}
-        </div>
-      ) : (
-        <video
-          ref={heroVideoRef}
-          className="absolute inset-0 z-[1] h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster={HERO_STILL_BG}
-          aria-hidden
-        >
-          {HERO_MP4_SOURCES.map((s) => (
-            <source key={s.src} src={s.src} type={s.type} />
-          ))}
-        </video>
-      )}
+      {/* Mobile Background */}
+      <div
+        className="absolute inset-0 bg-[position:60%_center] bg-cover bg-no-repeat scale-105 sm:hidden"
+        style={{ backgroundImage: `url(${HERO_STILL_BG_MOBILE})` }}
+        aria-hidden
+      />
     </>
   );
 }
@@ -148,37 +79,7 @@ export default function Home() {
   const { data: menuItems = [] } = useCafeMenu();
   const reviews = testimonials;
   const heroRef = useRef<HTMLDivElement>(null);
-  const heroVideoRef = useRef<HTMLVideoElement>(null);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(
-    () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  );
-  const [youtubeEmbedSrc, setYoutubeEmbedSrc] = useState<string | null>(null);
 
-  const useYoutubeHero = true;
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
-    const onChange = () => setPrefersReducedMotion(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-
-  useEffect(() => {
-    if (!useYoutubeHero || prefersReducedMotion) return;
-    setYoutubeEmbedSrc(heroYoutubeEmbedSrc(HERO_YOUTUBE_ID, window.location.origin));
-  }, [useYoutubeHero, prefersReducedMotion]);
-
-  useEffect(() => {
-    const v = heroVideoRef.current;
-    if (!v || prefersReducedMotion || useYoutubeHero) return;
-    const tryPlay = () => {
-      void v.play().catch(() => {});
-    };
-    tryPlay();
-    v.addEventListener("canplay", tryPlay, { once: true });
-    return () => v.removeEventListener("canplay", tryPlay);
-  }, [prefersReducedMotion, useYoutubeHero]);
 
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
@@ -203,12 +104,7 @@ export default function Home() {
             >
               <div className="absolute inset-3 sm:inset-4 lg:inset-8 overflow-hidden rounded-sm border-2 border-double border-primary/35 shadow-[inset_0_0_80px_hsl(0_0%_0%/0.45)]">
                 <div className="absolute inset-0 z-0 overflow-hidden">
-                  <HeroMediaStack
-                    heroVideoRef={heroVideoRef}
-                    prefersReducedMotion={prefersReducedMotion}
-                    useYoutubeHero={useYoutubeHero}
-                    youtubeEmbedSrc={youtubeEmbedSrc}
-                  />
+                  <HeroMediaStack />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-black/50 to-black/25 pointer-events-none z-[2]" />
                 <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent pointer-events-none z-[2] hidden lg:block" />
@@ -306,12 +202,7 @@ export default function Home() {
       ) : (
         <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
           <motion.div style={{ y: heroY }} className="absolute inset-0 z-0 overflow-hidden">
-            <HeroMediaStack
-              heroVideoRef={heroVideoRef}
-              prefersReducedMotion={prefersReducedMotion}
-              useYoutubeHero={useYoutubeHero}
-              youtubeEmbedSrc={youtubeEmbedSrc}
-            />
+            <HeroMediaStack />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent via-40% to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/5 via-transparent via-30% to-transparent" />
@@ -334,38 +225,11 @@ export default function Home() {
             style={{ opacity: heroOpacity }}
             className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20"
           >
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-block text-amber-500 font-bold tracking-[0.4em] uppercase text-xs md:text-sm mb-6 border border-amber-500/40 px-6 py-2 rounded-full backdrop-blur-sm bg-amber-500/10 shadow-lg shadow-amber-500/10"
-            >
-              Dubai ਦਾ ਸਭ ਤੋਂ ਵਧੀਆ ਢਾਬਾ
-            </motion.span>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-4 leading-[1.05] drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
-            >
-              <span className="text-white">THE REAL TASTE</span><br />
-              <span className="text-white">OF PUNJAB</span>
-            </motion.h1>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
-            >
-              <Link href="/menu" className="gold-button px-12 py-4 rounded-full text-sm font-bold tracking-[0.2em] w-full sm:w-auto text-center shadow-2xl shadow-amber-500/20">
-                EXPLORE MENU
-              </Link>
-              <Link href="/contact" className="px-12 py-4 rounded-full text-sm font-bold tracking-[0.2em] w-full sm:w-auto text-center backdrop-blur-md border border-amber-500/50 text-amber-500 hover:bg-amber-500/10 transition-all shadow-xl shadow-black/10">
-                BOOK & CONTACT
-              </Link>
-            </motion.div>
+
+
+
           </motion.div>
 
           <motion.div
