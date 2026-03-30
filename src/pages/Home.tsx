@@ -47,9 +47,9 @@ const testimonials = [
 
 /** Always-visible still for the Punjabi Heritage rustic tone. */
 const HERO_STILL_BG_DESKTOP =
-  "https://ik.imagekit.io/foodclub/Daba%20Choice/ChatGPT%20Image%20Mar%2030,%202026,%2010_45_27%20AM.png";
+  "https://ik.imagekit.io/foodclub/Daba%20Choice/Gemini_Generated_Image_rz2hrarz2hrarz2h.png";
 const HERO_STILL_BG_MOBILE = 
-  "https://ik.imagekit.io/foodclub/Daba%20Choice/ChatGPT%20Image%20Mar%2030,%202026,%2010_51_53%20AM.png";
+  "https://ik.imagekit.io/foodclub/Daba%20Choice/Gemini_Generated_Image_rz2hrarz2hrarz2h.png";
 
 function HeroMediaStack() {
   return (
@@ -62,7 +62,7 @@ function HeroMediaStack() {
       />
       {/* Mobile Background */}
       <div
-        className="absolute inset-0 bg-[position:60%_center] bg-cover bg-no-repeat scale-105 sm:hidden"
+        className="absolute inset-0 bg-contain bg-center bg-no-repeat sm:hidden"
         style={{ backgroundImage: `url(${HERO_STILL_BG_MOBILE})` }}
         aria-hidden
       />
