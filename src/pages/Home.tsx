@@ -49,7 +49,7 @@ const testimonials = [
 const HERO_STILL_BG_DESKTOP =
   "https://ik.imagekit.io/foodclub/Daba%20Choice/Gemini_Generated_Image_rz2hrarz2hrarz2h.png";
 const HERO_STILL_BG_MOBILE = 
-  "https://ik.imagekit.io/foodclub/Daba%20Choice/Gemini_Generated_Image_rz2hrarz2hrarz2h.png";
+  "https://ik.imagekit.io/foodclub/Daba%20Choice/Gemini_Generated_Image_5qy0di5qy0di5qy0.png";
 
 function HeroMediaStack() {
   return (
