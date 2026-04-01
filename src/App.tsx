@@ -33,6 +33,7 @@ import TemplatePicker from "./pages/TemplatePicker";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/not-found";
+import { SeoHead } from "@/components/SeoHead";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -103,6 +104,7 @@ function RootRouter() {
   return (
     <WouterRouter base={baseUrl}>
       <TemplateWrapper>
+        <SeoHead />
         <PreviewRedirectOrRouter baseUrl={baseUrl} />
       </TemplateWrapper>
     </WouterRouter>

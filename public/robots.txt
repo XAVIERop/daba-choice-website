@@ -1,0 +1,14 @@
+# https://dabachoice.com
+User-agent: *
+Allow: /
+
+# App-style and account routes (not useful in search)
+Disallow: /admin
+Disallow: /checkout
+Disallow: /order-success
+Disallow: /orders
+Disallow: /auth
+Disallow: /profile
+Disallow: /choose
+
+Sitemap: https://dabachoice.com/sitemap.xml

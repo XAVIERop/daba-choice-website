@@ -7,60 +7,81 @@
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#D4AF37" />
     <title>Daba Choice – Authentic Punjabi Restaurant in International City, Dubai</title>
-    <meta name="description" content="Discover the real taste of Punjab at Daba Choice, Dubai. Authentic Punjabi cuisine, pure ingredients, chef's specials, Tiffin services, and more in International City." />
+    <meta name="description" content="Discover the real taste of Punjab at Daba Choice, Dubai. Authentic Punjabi cuisine, pure ingredients, chef's specials, tiffin plans, catering, and dine-in in International City." />
     <meta name="keywords" content="Punjabi restaurant Dubai, Daba Choice, authentic Punjabi food International City, North Indian food Dubai, Tiffin service Dubai, Indian restaurant Dubai" />
-    
+    <link rel="canonical" href="https://dabachoice.com/" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Daba Choice" />
+    <meta property="og:locale" content="en_AE" />
     <meta property="og:url" content="https://dabachoice.com/" />
     <meta property="og:title" content="Daba Choice – Authentic Punjabi Restaurant in Dubai" />
     <meta property="og:description" content="The real taste of Punjab. Authentic recipes, fresh ingredients, and genuine hospitality in the heart of International City, Dubai." />
-    <meta property="og:image" content="/opengraph.jpg" />
+    <meta property="og:image" content="https://dabachoice.com/opengraph.jpeg" />
+    <meta property="og:image:alt" content="Daba Choice – Punjabi restaurant in International City, Dubai" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://dabachoice.com/" />
-    <meta property="twitter:title" content="Daba Choice – Authentic Punjabi Restaurant in Dubai" />
-    <meta property="twitter:description" content="The real taste of Punjab. Authentic recipes, fresh ingredients, and genuine hospitality in the heart of International City, Dubai." />
-    <meta property="twitter:image" content="/opengraph.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://dabachoice.com/" />
+    <meta name="twitter:title" content="Daba Choice – Authentic Punjabi Restaurant in Dubai" />
+    <meta name="twitter:description" content="The real taste of Punjab. Authentic recipes, fresh ingredients, and genuine hospitality in the heart of International City, Dubai." />
+    <meta name="twitter:image" content="https://dabachoice.com/opengraph.jpeg" />
 
     <link rel="icon" type="image/png" href="https://ik.imagekit.io/foodclub/Daba%20Choice/logo/Fresh%20Mango%20Dessert%20Brand%20Logo.png" />
     <link rel="apple-touch-icon" href="https://ik.imagekit.io/foodclub/Daba%20Choice/logo/Fresh%20Mango%20Dessert%20Brand%20Logo.png" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Restaurant",
-        "name": "Daba Choice",
-        "image": "https://ik.imagekit.io/foodclub/Daba%20Choice/logo/Fresh%20Mango%20Dessert%20Brand%20Logo.png",
-        "url": "https://dabachoice.vercel.app",
-        "telephone": "+971504247836",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Y-20, England-Y Street, England Cluster, International City",
-          "addressLocality": "Dubai",
-          "addressCountry": "AE"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 25.1633,
-          "longitude": 55.4026
-        },
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-          ],
-          "opens": "08:00",
-          "closes": "23:00"
-        },
-        "servesCuisine": "Punjabi, Indian",
-        "priceRange": "AED"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://dabachoice.com/#website",
+            "url": "https://dabachoice.com/",
+            "name": "Daba Choice",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://dabachoice.com/#restaurant" }
+          },
+          {
+            "@type": "Restaurant",
+            "@id": "https://dabachoice.com/#restaurant",
+            "name": "Daba Choice",
+            "image": "https://ik.imagekit.io/foodclub/Daba%20Choice/logo/Fresh%20Mango%20Dessert%20Brand%20Logo.png",
+            "url": "https://dabachoice.com/",
+            "hasMenu": "https://dabachoice.com/menu",
+            "telephone": "+971504247836",
+            "sameAs": ["https://www.instagram.com/daba_choice"],
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Y-20, England-Y Street, England Cluster, International City",
+              "addressLocality": "Dubai",
+              "addressRegion": "Dubai",
+              "addressCountry": "AE"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 25.1633,
+              "longitude": 55.4026
+            },
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+              ],
+              "opens": "08:00",
+              "closes": "23:00"
+            },
+            "servesCuisine": ["Punjabi", "Indian", "North Indian"],
+            "priceRange": "$$",
+            "currenciesAccepted": "AED"
+          }
+        ]
       }
     </script>
     <script>
