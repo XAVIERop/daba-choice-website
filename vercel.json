@@ -1,11 +1,14 @@
 {
-  "redirects": [
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
+  "headers": [
     {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.dabachoice.com" }],
-      "destination": "https://dabachoice.com/:path*",
-      "permanent": true
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
     }
-  ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  ]
 }
