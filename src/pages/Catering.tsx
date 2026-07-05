@@ -5,6 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useCafe } from "@/contexts/CafeContext";
 import { features } from "@/config/features";
 import { formatWhatsAppCateringMessage, getWhatsAppUrl } from "@/lib/whatsapp";
+import { imagekitUrl } from "@/lib/imagekit";
 
 export default function Catering() {
   const { toast } = useToast();
@@ -100,12 +101,12 @@ export default function Catering() {
             {
               title: "Punjabi Song Shoots",
               desc: "Powering high-energy production sets with authentic, hearty Punjabi meals tailored for large crews and artists.",
-              image: "https://ik.imagekit.io/foodclub/Daba%20Choice/catering/ab6761610000e5ebaf94287a28816f8bfb8776e1.jpg"
+              image: imagekitUrl("https://ik.imagekit.io/xavierop/Daba%20Choice/pre-prepared-food-showcasing-ready-eat-delicious-meals-go.jpg")
             },
             {
               title: "Corporate Events",
               desc: "Elevate your office gatherings with premium North Indian buffets, offering a perfect blend of rich flavors and professional service.",
-              image: "https://ik.imagekit.io/foodclub/Daba%20Choice/catering/closed-metal-pots_1203-2059.avif"
+              image: imagekitUrl("https://ik.imagekit.io/xavierop/Daba%20Choice/daba%20choice%20outside%20photo.webp")
             },
             {
               title: "Weddings & Parties",

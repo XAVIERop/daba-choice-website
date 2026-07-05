@@ -7,6 +7,7 @@ import { useCart } from "@/store/use-cart";
 import { SpiceLevel } from "@/components/SpiceLevel";
 import { Search, Plus, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { imagekitUrl } from "@/lib/imagekit";
 
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -243,8 +244,8 @@ export default function Menu() {
                   <X size={24} />
                 </button>
                 <div className="flex flex-col gap-6 pt-10">
-                  <img src="https://ik.imagekit.io/foodclub/Daba%20Choice/menu/DABA%20CHOICE_MENU%20NEW%20(1).jpg" alt="Daba Choice Menu Page 1" className="w-full h-auto rounded-xl shadow-2xl" />
-                  <img src="https://ik.imagekit.io/foodclub/Daba%20Choice/menu/DABA%20CHOICE_MENU_NEW%2002%20(1).jpg" alt="Daba Choice Menu Page 2" className="w-full h-auto rounded-xl shadow-2xl" />
+                  <img src={imagekitUrl("https://ik.imagekit.io/foodclub/Daba%20Choice/menu/DABA%20CHOICE_MENU%20NEW%20(1).jpg")} alt="Daba Choice Menu Page 1" className="w-full h-auto rounded-xl shadow-2xl" />
+                  <img src={imagekitUrl("https://ik.imagekit.io/foodclub/Daba%20Choice/menu/DABA%20CHOICE_MENU_NEW%2002%20(1).jpg")} alt="Daba Choice Menu Page 2" className="w-full h-auto rounded-xl shadow-2xl" />
                 </div>
               </motion.div>
             </motion.div>

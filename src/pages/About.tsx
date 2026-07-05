@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Heart, Star, Users, Award } from "lucide-react";
+import { imagekitUrl } from "@/lib/imagekit";
 
 const values = [
   {
@@ -129,10 +130,10 @@ export default function About() {
             >
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border border-primary/10">
-                  <img src="https://ik.imagekit.io/foodclub/Daba%20Choice/pre-prepared-food-showcasing-ready-eat-delicious-meals-go.jpg" alt="Authentic Punjabi catering" className="w-full h-full object-cover" />
+                  <img src={imagekitUrl("https://ik.imagekit.io/foodclub/Daba%20Choice/pre-prepared-food-showcasing-ready-eat-delicious-meals-go.jpg")} alt="Authentic Punjabi catering" className="w-full h-full object-cover" />
                 </div>
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden mt-8 shadow-lg border border-primary/10">
-                  <img src="https://ik.imagekit.io/foodclub/Daba%20Choice/pre-prepared-food-showcasing-ready-eat-delicious-meals-go%20(1).jpg?ik-sdk-version=javascript-1.4.3&updatedAt=16726880227" alt="Ready to eat delicious meals" className="w-full h-full object-cover" />
+                  <img src={imagekitUrl("https://ik.imagekit.io/foodclub/Daba%20Choice/pre-prepared-food-showcasing-ready-eat-delicious-meals-go%20(1).jpg?ik-sdk-version=javascript-1.4.3&updatedAt=16726880227")} alt="Ready to eat delicious meals" className="w-full h-full object-cover" />
                 </div>
              </div>
               {/* Floating badge */}

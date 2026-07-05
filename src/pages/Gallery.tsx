@@ -1,8 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+import { imagekitUrl } from "@/lib/imagekit";
 
-const galleryItems = [
+const rawGalleryItems = [
   // --- LATEST MULTIMEDIA ---
   { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/New%20Folder/New%20Folder/New%20Folder/AQMf32EfS4XoUDrWE4c8hZRGxi8q6lX0e0yneI2DtZmGScHgicnfkyTnkeqIkMdp7dHlPHxAHEQ3nT-nx32x6N84.mp4", category: "Trending", label: "Heritage Cooking", size: "tall" },
   { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/New%20Folder/New%20Folder/New%20Folder/AQNNTx0rZ9caHmkFdEVNziSfocvmVoYVxs1YXye-oG8rm3em1_J55McII7D1BFZ5omiB4No5fQRsGLvRccSjaZbFpPzC1d91f2aGEv8.mp4", category: "Trending", label: "Daba Spirit", size: "wide" },
@@ -41,18 +42,17 @@ const galleryItems = [
   { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/New%20Folder/AQO9hjpZvH0iKu4SX1qvh_9J7I1rj68Y9a-YP8GNjZYkL1kojU4O-xdVgUDE2NdOiLndEeMpbM-mFx3vhl4zvbkIZ1BUVBnfI6SG1wc.mp4", category: "Trending", label: "Heritage Recipes", size: "wide" },
 
   // --- NEW IMAGES ---
-  { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/New%20Folder/491897777_17887370280252352_1694517751082571545_n.webp", category: "Food", label: "Signature Platter", size: "normal" },
   { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/New%20Folder/586788706_18319996105171567_2699830781182895935_n.jpg", category: "Ambiance", label: "Authentic Decor", size: "wide" },
-  { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/New%20Folder/491469473_17887370298252352_4185896674475211131_n.webp", category: "Food", label: "Traditional Spices", size: "normal" },
-  { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/New%20Folder/491456511_17887370289252352_5755944614297680954_n.webp", category: "Catering", label: "Premium Service", size: "tall" },
-  { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/New%20Folder/491894127_17887370307252352_4571910801165798552_n.webp", category: "Food", label: "Chef's Special", size: "normal" },
-  { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/New%20Folder/491465124_17887370316252352_2070187316603610443_n.webp", category: "Vibes", label: "Community", size: "wide" },
 
   // --- LEGACY ---
-  { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/istockphoto-1292436403-612x612.jpg", category: "Food", label: "Chicken Tikka Biryani", size: "tall" },
-  { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/360_F_746343390_cz4z2B0qgHcvhzqwyvvXQj7bsS0LxlpG.jpg", category: "Food", label: "Chicken Dum Biryani", size: "normal" },
-  { src: "https://ik.imagekit.io/foodclub/Daba%20Choice/catering/ab6761610000e5ebaf94287a28816f8bfb8776e1.jpg", category: "Catering", label: "Punjabi Song Shoots", size: "wide" },
+  { src: "https://ik.imagekit.io/xavierop/Daba%20Choice/istockphoto-1292436403-612x612.jpg", category: "Food", label: "Chicken Tikka Biryani", size: "tall" },
+  { src: "https://ik.imagekit.io/xavierop/Daba%20Choice/ai-generated-royal-feast-master-the-art-of-chicken-biryani-at-home-generative-ai-photo.jpg", category: "Food", label: "Chicken Dum Biryani", size: "normal" },
 ];
+
+const galleryItems = rawGalleryItems.map((item) => ({
+  ...item,
+  src: imagekitUrl(item.src),
+}));
 
 const CATEGORIES = ["All", "Trending", "Food", "Catering", "Vibes", "Ambiance"];
 

@@ -4,6 +4,7 @@ import { ArrowRight, Star, ChevronDown, Utensils, MapPin, ShieldCheck, Flame, Aw
 import { useCafeMenu } from "@/hooks/useCafeMenu";
 import { useRef, useEffect, useState } from "react";
 import { useTemplate, TEMPLATES, type TemplateLayout } from "@/contexts/TemplateContext";
+import { imagekitUrl } from "@/lib/imagekit";
 
 function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -46,10 +47,12 @@ const testimonials = [
 ];
 
 /** Always-visible still for the Punjabi Heritage rustic tone. */
-const HERO_STILL_BG_DESKTOP =
-  "https://ik.imagekit.io/foodclub/Daba%20Choice/Gemini_Generated_Image_rz2hrarz2hrarz2h.png";
-const HERO_STILL_BG_MOBILE = 
-  "https://ik.imagekit.io/foodclub/Daba%20Choice/Gemini_Generated_Image_5qy0di5qy0di5qy0.png";
+const HERO_STILL_BG_DESKTOP = imagekitUrl(
+  "https://ik.imagekit.io/foodclub/Daba%20Choice/Gemini_Generated_Image_rz2hrarz2hrarz2h.png",
+);
+const HERO_STILL_BG_MOBILE = imagekitUrl(
+  "https://ik.imagekit.io/foodclub/Daba%20Choice/Gemini_Generated_Image_5qy0di5qy0di5qy0.png",
+);
 
 function HeroMediaStack() {
   return (

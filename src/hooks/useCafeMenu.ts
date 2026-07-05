@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabase";
 import { useCafe } from "@/contexts/CafeContext";
 import { features } from "@/config/features";
 import dabaConfig from "@/config/daba.json";
+import { imagekitUrl } from "@/lib/imagekit";
 
 
 export interface MenuItem {
@@ -24,7 +25,7 @@ function mapDbToMenuItem(row: Record<string, unknown>): MenuItem {
     description: (row.description as string) || "",
     price: Number(row.price),
     category: row.category as string,
-    image_url: row.image_url as string | null,
+    image_url: row.image_url ? imagekitUrl(row.image_url as string) : null,
     is_available: row.is_available !== false,
     spiceLevel: 0,
     isFeatured: false,
@@ -41,7 +42,7 @@ export function useCafeMenu() {
         return (dabaConfig.menu || []).map((item) => ({
           ...item,
           description: item.description || "",
-          image_url: item.image_url || null,
+          image_url: item.image_url ? imagekitUrl(item.image_url) : null,
           spiceLevel: 0,
           isFeatured: false,
         }));
