@@ -51,7 +51,7 @@ const HERO_STILL_BG_DESKTOP = imagekitUrl(
   "https://ik.imagekit.io/foodclub/Daba%20Choice/Gemini_Generated_Image_rz2hrarz2hrarz2h.png",
 );
 const HERO_STILL_BG_MOBILE = imagekitUrl(
-  "https://ik.imagekit.io/foodclub/Daba%20Choice/Gemini_Generated_Image_5qy0di5qy0di5qy0.png",
+  "https://ik.imagekit.io/xavierop/Daba%20Choice/ChatGPT%20Image%20Jul%209,%202026,%2002_54_05%20AM.png",
 );
 
 function HeroMediaStack() {
