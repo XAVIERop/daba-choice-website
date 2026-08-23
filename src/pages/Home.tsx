@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Star, ChevronDown, Utensils, MapPin, ShieldCheck, Flame, Award, Users, Package } from "lucide-react";
+import { ArrowRight, Star, ChevronDown, Utensils, MapPin, ShieldCheck, Flame, Award, Users, Package, Sparkles } from "lucide-react";
 import { useCafeMenu } from "@/hooks/useCafeMenu";
 import { useRef, useEffect, useState } from "react";
 import { useTemplate, TEMPLATES, type TemplateLayout } from "@/contexts/TemplateContext";
@@ -52,6 +52,10 @@ const HERO_STILL_BG_DESKTOP = imagekitUrl(
 );
 const HERO_STILL_BG_MOBILE = imagekitUrl(
   "https://ik.imagekit.io/xavierop/Daba%20Choice/ChatGPT%20Image%20Jul%209,%202026,%2002_54_05%20AM.png",
+);
+
+const GANPATI_OFFER_IMAGE = imagekitUrl(
+  "https://ik.imagekit.io/xavierop/Daba%20Choice/WhatsApp%20Image%202026-08-23%20at%2022.08.04.jpeg",
 );
 
 function HeroMediaStack() {
@@ -279,6 +283,52 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── GANPATI SPECIAL THALI PROMO ─── */}
+      <section className="py-16 md:py-20 bg-gradient-to-br from-amber-50 via-orange-50/60 to-amber-50 border-y border-amber-200/60 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass-card rounded-3xl overflow-hidden flex flex-col md:flex-row items-stretch ring-2 ring-primary/40 shadow-[0_0_50px_-12px_rgba(212,160,23,0.5)]"
+          >
+            <Link
+              href="/offers"
+              className="group block w-full md:w-96 h-72 md:h-auto shrink-0 relative overflow-hidden"
+              aria-label="View Ganpati Special Thali offer"
+            >
+              <img
+                src={GANPATI_OFFER_IMAGE}
+                alt="Ganpati Special Thali offer poster"
+                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 md:from-transparent md:to-transparent" />
+            </Link>
+
+            <div className="flex-1 p-8 md:p-12 flex flex-col justify-center text-center md:text-left">
+              <span className="inline-flex items-center gap-2 justify-center md:justify-start text-primary font-bold tracking-[0.25em] uppercase text-xs mb-4">
+                <Sparkles size={14} /> Limited Time · Ganpati Special
+              </span>
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                GANPATI SPECIAL <span className="gold-gradient-text">THALI</span>
+              </h2>
+              <p className="text-muted-foreground text-base mb-6 leading-relaxed max-w-lg mx-auto md:mx-0">
+                Satvik, pure, and delicious — a complete no-onion, no-garlic thali made with love and devotion for Ganpati Puja & blessings.
+              </p>
+              <div className="flex items-center gap-3 justify-center md:justify-start mb-8">
+                <span className="font-display text-4xl font-bold gold-gradient-text">25 AED</span>
+                <span className="text-muted-foreground text-sm">only</span>
+              </div>
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                <Link href="/offers" className="gold-button px-8 py-3 rounded-full text-sm tracking-[0.15em] inline-flex items-center gap-2">
+                  View Offer <ArrowRight size={16} />
+                </Link>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

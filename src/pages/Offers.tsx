@@ -1,7 +1,9 @@
-import { motion } from "framer-motion";
-import { TicketPercent, Clock, Tag, ChevronRight, Sparkles } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { TicketPercent, Clock, Tag, ChevronRight, Sparkles, Maximize2, X, Star } from "lucide-react";
 import { Link } from "wouter";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { imagekitUrl } from "@/lib/imagekit";
 
 function Countdown({ validUntil }: { validUntil: string | null }) {
   const [time, setTime] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
@@ -48,42 +50,31 @@ function Countdown({ validUntil }: { validUntil: string | null }) {
 
 const staticOffers = [
   {
-    id: "s1",
-    title: "Family Feast Combo",
-    description: "Feed the family! Get a Butter Chicken Masala, 4 Butter Naans, 2 Mango Lassis, and a Gulab Jamun plate — all at a special bundled price.",
-    discount: "20%",
-    imageUrl: "https://images.unsplash.com/photo-1603894584104-6339d20c3272?w=800&fit=crop",
+    id: "s0",
+    title: "Ganpati Special Thali",
+    description: "Satvik, pure, and delicious — 2 Puri/Roti, Aloo Jeera, Dal Tadka, Sahi Paneer, Jeera Rice, Dahi, Cucumber Tomato Salad, and Ras Malai. All made with no onion, no garlic. The perfect thali for Ganpati Puja & blessings.",
+    discount: null,
+    imageUrl: imagekitUrl("https://ik.imagekit.io/xavierop/Daba%20Choice/WhatsApp%20Image%202026-08-23%20at%2022.08.04.jpeg"),
     validUntil: null,
     isActive: true,
-    badge: "Popular",
-    color: "from-primary/20 to-accent/10",
-  },
-  {
-    id: "s2",
-    title: "Biryani Night Special",
-    description: "Every Thursday and Friday evening — enjoy our premium Chicken Dum Biryani with raita and salad at a reduced price.",
-    discount: "15%",
-    imageUrl: "https://images.unsplash.com/photo-1563379091339-03b21bc4a4f8?w=800&fit=crop",
-    validUntil: null,
-    isActive: true,
-    badge: "Thu & Fri",
-    color: "from-accent/20 to-primary/10",
-  },
-  {
-    id: "s3",
-    title: "Student Discount",
-    description: "Show your student ID at the counter to get a special discount on your order. Valid on all menu items.",
-    discount: "10%",
-    imageUrl: "https://images.unsplash.com/photo-1585937421612-70a8d5ab6bc9?w=800&fit=crop",
-    validUntil: null,
-    isActive: true,
-    badge: "Students",
-    color: "from-blue-500/10 to-primary/10",
+    badge: "Only 25 AED",
+    color: "from-amber-500/20 to-primary/10",
+    featured: true,
   },
 ];
 
 export default function Offers() {
   const allOffers = staticOffers;
+  const [lightboxImage, setLightboxImage] = useState<{ url: string; title: string } | null>(null);
+
+  useEffect(() => {
+    if (!lightboxImage) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxImage(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightboxImage]);
 
   return (
     <div className="min-h-screen pt-32 pb-24 relative overflow-hidden">
@@ -132,13 +123,24 @@ export default function Offers() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.12 }}
-              className={`glass-card rounded-3xl overflow-hidden flex flex-col md:flex-row relative`}
+              className={`glass-card rounded-3xl overflow-hidden flex flex-col md:flex-row relative ${
+                offer.featured ? "ring-2 ring-primary/50 shadow-[0_0_40px_-10px_rgba(212,160,23,0.45)]" : ""
+              }`}
             >
               {/* Decorative bg */}
               <div className={`absolute inset-0 bg-gradient-to-br ${offer.color || "from-primary/10 to-accent/5"} pointer-events-none`} />
               <div className="absolute -right-10 -top-10 text-foreground/[0.03] pointer-events-none">
                 <TicketPercent size={250} />
               </div>
+
+              {/* Featured ribbon */}
+              {offer.featured && (
+                <div className="absolute top-5 -left-11 z-20 rotate-[-45deg] w-40 py-1.5 text-center bg-primary text-white text-xs font-bold uppercase tracking-widest shadow-lg">
+                  <span className="inline-flex items-center gap-1">
+                    <Star size={11} fill="currentColor" /> Featured
+                  </span>
+                </div>
+              )}
 
               {/* Content */}
               <div className="flex-1 p-8 md:p-10 relative z-10 flex flex-col justify-center">
@@ -150,7 +152,7 @@ export default function Offers() {
                     </span>
                   )}
                   {offer.badge && (
-                    <span className="inline-block px-3 py-1 bg-amber-50 border border-amber-200/60 rounded-full text-xs text-foreground/60 uppercase tracking-wider">
+                    <span className="inline-block px-4 py-1.5 bg-primary text-white rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
                       {offer.badge}
                     </span>
                   )}
@@ -173,14 +175,24 @@ export default function Offers() {
 
               {/* Image */}
               {offer.imageUrl && (
-                <div className="w-full md:w-80 h-56 md:h-auto shrink-0 relative overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => setLightboxImage({ url: offer.imageUrl, title: offer.title })}
+                  className="group w-full md:w-96 h-72 md:h-auto shrink-0 relative overflow-hidden cursor-zoom-in bg-black/5"
+                  aria-label={`View full ${offer.title} poster`}
+                >
                   <img
                     src={offer.imageUrl}
                     alt={offer.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain md:object-cover object-top transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-l from-transparent to-overlay/20 md:to-card/60" />
-                </div>
+                  <div className="absolute inset-0 bg-gradient-to-l from-transparent to-overlay/20 md:to-card/60 pointer-events-none" />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/25 transition-colors">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 text-white text-sm font-semibold bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm">
+                      <Maximize2 size={15} /> View Full Poster
+                    </span>
+                  </div>
+                </button>
               )}
             </motion.div>
           ))}
@@ -206,6 +218,40 @@ export default function Offers() {
         </motion.div>
 
       </div>
+
+      {/* Lightbox */}
+      {createPortal(
+        <AnimatePresence>
+          {lightboxImage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 md:p-10"
+              onClick={() => setLightboxImage(null)}
+            >
+              <button
+                type="button"
+                onClick={() => setLightboxImage(null)}
+                aria-label="Close"
+                className="absolute top-5 right-5 md:top-8 md:right-8 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+              >
+                <X size={20} />
+              </button>
+              <motion.img
+                initial={{ scale: 0.92, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.92, opacity: 0 }}
+                src={lightboxImage.url}
+                alt={lightboxImage.title}
+                onClick={(e) => e.stopPropagation()}
+                className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
   );
 }
